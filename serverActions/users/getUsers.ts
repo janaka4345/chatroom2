@@ -1,7 +1,7 @@
 'use server'
 
+import { auth } from '@/auth'
 import prisma from '@/utils/prismaClient'
-import getUserSession from './getUserSession'
 
 export const getUserByEmail = async (email: string) => {
     try {
@@ -39,7 +39,8 @@ export const getUserByName = async (name: string) => {
 }
 export const getAllUsers = async () => {
     try {
-        const currentUser = await getUserSession()
+        const session = await auth()
+        const currentUser = session?.user
         if (!currentUser?.email) {
             return { error: 'need to log in first' } //TODO
         }

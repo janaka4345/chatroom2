@@ -1,25 +1,27 @@
-import getUserSession from './getUserSession'
+import { auth } from '@/auth'
 import prisma from '@/utils/prismaClient'
 export const getFriends = async () => {
-    const { id } = await getUserSession()
+    const session = await auth()
     const friends = await prisma.user_friend.findMany({
-        where: { userId: id },
+        where: { userId: session?.user?.id },
         select: {
             friend: true,
             status: true,
             friendId: true,
         },
     })
+    return friends
 }
 
 export const getAFriendById = async (friendId: string) => {
-    const { id } = await getUserSession()
-    const friends = await prisma.user_friend.findMany({
-        where: { userId: id, friendId: friendId },
+    const session = await auth()
+    const friend = await prisma.user_friend.findMany({
+        where: { userId: session?.user?.id, friendId: friendId },
         select: {
             friend: true,
             status: true,
             friendId: true,
         },
     })
+    return friend
 }

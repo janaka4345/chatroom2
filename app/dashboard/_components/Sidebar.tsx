@@ -1,4 +1,3 @@
-import User from '@/components/custom/User'
 import Link from 'next/link'
 
 export default function Sidebar() {
