@@ -25,7 +25,7 @@ export default async function RootLayout({
                 {/* <SessionProvider session={session}> */}
                 <main>
                     {/* <Navbar /> */}
-                    <User className="fixed top-0 right-0 w-10 h-10" />
+                    <User className="fixed top-0 right-0 w-10 h-10 z-50" />
                     {children}
                 </main>
 

@@ -1,10 +1,10 @@
 'use client'
 import { Button } from '@/components/ui/button'
-import { createUser } from '@/serverActions/users/createUser'
+import { createFakerUserList } from '@/serverActions/users/createFakerUser'
 
 export default function page() {
     const handleClick = async () => {
-        const user = await createUser()
+        const user = await createFakerUserList()
         console.log(user)
     }
     return (
