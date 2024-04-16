@@ -1,6 +1,8 @@
+import { getAllUsers } from '@/serverActions/users/getUsers'
 import UserCard from '../_components/UserCard'
 
-export default function usersPage() {
+export default async function usersPage() {
+    const users = await getAllUsers()
     return (
         <section className="relative overflow-y-auto h-[90svh] grid grid-cols-2">
             <div>
@@ -13,6 +15,7 @@ export default function usersPage() {
                     <UserCard key={i} friend={false} />
                 ))}
             </div>
+            <pre>{JSON.stringify(users, null, 2)}</pre>
         </section>
     )
 }
