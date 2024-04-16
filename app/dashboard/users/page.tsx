@@ -1,16 +1,14 @@
-import { getAllUsers } from '@/serverActions/users/getUsers'
+import { ReturnUser, getAllUsers } from '@/serverActions/users/getUsers'
 import UserCard from '../_components/UserCard'
 
 export default async function usersPage() {
-    const users = await getAllUsers()
-    if (!users) {
-        return null
-    }
+    const users = (await getAllUsers()) as ReturnUser[]
+
     return (
         <section className="relative overflow-y-auto h-[90svh] grid grid-cols-2">
             <div>
-                {users.map((_, i) => (
-                    <UserCard key={i} friend={true} />
+                {users.map((user, i) => (
+                    <UserCard key={i} user={user} />
                 ))}
             </div>
             {/* <div>

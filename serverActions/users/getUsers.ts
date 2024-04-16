@@ -2,7 +2,7 @@
 
 import { auth } from '@/auth'
 import prisma from '@/utils/prismaClient'
-type ReturnUser = {
+export type ReturnUser = {
     image: string | null
     name: string | null
     email: string
