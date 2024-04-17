@@ -42,16 +42,4 @@ export const getRequestSentUsers = async () => {
     })
     return requestSentUsers
 }
-export const getRequestSentUserList = async () => {
-    const session = await auth()
 
-    const requestSentUsers = await prisma.request.findMany({
-        where: {
-            senderId: session?.user?.id as string,
-        },
-        select: {
-            receiverId: true,
-        },
-    })
-    return requestSentUsers
-}

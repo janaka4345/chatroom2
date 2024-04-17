@@ -3,7 +3,9 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { sendFriendRequest } from '@/serverActions/requests/requests'
 import { User } from '@prisma/client'
-export default function UserCard({ user, requestedUsers }: { user: Partial<User>, requestedUsers: boolean }) {
+export default function UserCard({ user, requestedUser }: { user: Partial<User>, requestedUser: boolean }) {
+    console.log(requestedUser);
+
     return (
         <Card className="bg-transparent w-fit">
             <CardContent className="flex items-center justify-center p-0 ">
@@ -15,16 +17,17 @@ export default function UserCard({ user, requestedUsers }: { user: Partial<User>
                 </Avatar>
                 <div className="space-y-0.5 font-medium dark:text-white text-left rtl:text-right ms-3">
                     <div>{user.name}</div>
-                    {requestedUsers ? <Button disabled>Request Sent</Button> : <form
+                    {requestedUser ? (<Button disabled>Request Sent</Button>) : (<form
                         action={async () => {
                             'use server'
                             await sendFriendRequest({ receiverId: user.id as string, groupId: null, message: 'ght' })
+
                         }}
                     >
 
                         <Button type='submit'>Send Request</Button>
 
-                    </form>}
+                    </form>)}
                 </div>
             </CardContent>
         </Card>
