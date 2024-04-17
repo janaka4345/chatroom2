@@ -1,18 +1,34 @@
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Card, CardContent } from '@/components/ui/card'
-export default function ConversationCard() {
+
+type friend = {
+    friend: {
+        id: string
+        status: boolean
+        name: string | null
+        email: string
+        image: string | null
+    }
+    friendId: string
+    status: string
+}
+export default function ConversationCard({ friend }: { friend: friend }) {
     return (
         <Card className="bg-transparent ">
             <CardContent className="flex items-center justify-center p-0 ">
                 <Avatar>
                     <AvatarImage
-                        src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/karen-nelson.png"
+                        src={friend.friend.image as string} //TODO type eror
                         alt="avatar"
                     />
-                    <AvatarFallback>BG</AvatarFallback>
+                    <AvatarFallback>
+                        {(friend.friend.name as string)
+                            .slice(0, 2)
+                            .toUpperCase()}
+                    </AvatarFallback>
                 </Avatar>
                 <div className="space-y-0.5 font-medium dark:text-white text-left rtl:text-right ms-3">
-                    <div>Bonnie Green</div>
+                    <div>{friend.friend.name as string}</div>
                     <div className="text-sm text-gray-500 dark:text-gray-400 line-clamp-2 ">
                         Lorem ipsum dolor sit amet, consectetur adipisicing
                         elit. Beatae consectetur fuga nobis? Voluptas molestiae
