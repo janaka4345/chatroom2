@@ -63,6 +63,7 @@ export const getAllUsers = async () => {
                 },
             },
             select: {
+                id: true,
                 image: true,
                 name: true,
                 email: true,

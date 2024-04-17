@@ -14,7 +14,7 @@ export default function UserCard({ user }: { user: Partial<User> }) {
                 <div className="space-y-0.5 font-medium dark:text-white text-left rtl:text-right ms-3">
                     <div>{user.name}</div>
                     <div className="text-sm text-gray-800 dark:text-gray-400 line-clamp-2 bg-blue-500 ">
-                        {true ? 'Message' : 'Invite'}
+                        Invite
                     </div>
                 </div>
             </CardContent>
