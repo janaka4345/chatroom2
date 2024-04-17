@@ -5,10 +5,10 @@ import { User } from 'next-auth'
 import UserCard from '../_components/UserCard'
 
 export default async function usersPage() {
-    const users = await getAllUsers()
-    const friends = await getFriends()
-    const requestedUsers = await getRequestSentUsers()
-    // const [users, friends, requestedUsers] = await Promise.all([getAllUsers(), getFriends(), getRequestSentUsers()])
+    // const users = await getAllUsers()
+    // const friends = await getFriends()
+    // const requestedUsers = await getRequestSentUsers()
+    const [users, friends, requestedUsers] = await Promise.all([getAllUsers(), getFriends(), getRequestSentUsers()])
 
     const nonFriends = (users as []).filter(user => !friends.some(friend => friend.friendId === user.id))
     //TODO type error fix

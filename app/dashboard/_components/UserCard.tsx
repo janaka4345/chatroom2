@@ -3,8 +3,9 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { sendFriendRequest } from '@/serverActions/requests/requests'
 import { User } from '@prisma/client'
+import { revalidatePath } from 'next/cache'
 export default function UserCard({ user, requestedUser }: { user: Partial<User>, requestedUser: boolean }) {
-    console.log(requestedUser);
+
 
     return (
         <Card className="bg-transparent w-fit">
@@ -21,7 +22,7 @@ export default function UserCard({ user, requestedUser }: { user: Partial<User>,
                         action={async () => {
                             'use server'
                             await sendFriendRequest({ receiverId: user.id as string, groupId: null, message: 'ght' })
-
+                            revalidatePath('/dashboard/users')
                         }}
                     >
 
