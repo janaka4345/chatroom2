@@ -5,7 +5,15 @@ export const getFriends = async () => {
     const friends = await prisma.user_friend.findMany({
         where: { userId: session?.user?.id },
         select: {
-            friend: true,
+            friend: {
+                select: {
+                    id: true,
+                    image: true,
+                    name: true,
+                    status: true,
+                    email: true,
+                },
+            },
             status: true,
             friendId: true,
         },

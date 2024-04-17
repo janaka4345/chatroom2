@@ -2,15 +2,13 @@
 
 import { auth } from '@/auth'
 import prisma from '@/utils/prismaClient'
-export type ReturnUser = {
-    image: string | null
-    name: string | null
-    email: string
-}
+// export type ReturnUser = {
+//     image: string | null
+//     name: string | null
+//     email: string
+// }
 
-export const getUserByEmail = async (
-    email: string
-): Promise<ReturnUser[] | any> => {
+export const getUserByEmail = async (email: string) => {
     try {
         const user = await prisma.user.findFirst({
             where: {
@@ -27,9 +25,7 @@ export const getUserByEmail = async (
         return { error }
     }
 }
-export const getUserByName = async (
-    name: string
-): Promise<ReturnUser[] | any> => {
+export const getUserByName = async (name: string) => {
     try {
         const user = await prisma.user.findMany({
             where: {
@@ -46,9 +42,7 @@ export const getUserByName = async (
         return { error }
     }
 }
-export const getAllUsers = async (): Promise<
-    ReturnUser[] | { error: string }
-> => {
+export const getAllUsers = async () => {
     try {
         const session = await auth()
         const currentUser = session?.user

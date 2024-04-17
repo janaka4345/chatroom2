@@ -1,7 +1,7 @@
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Card, CardContent } from '@/components/ui/card'
-import { ReturnUser } from '@/serverActions/users/getUsers'
-export default function UserCard({ user }: { user: ReturnUser }) {
+import { User } from '@prisma/client'
+export default function UserCard({ user }: { user: Partial<User> }) {
     return (
         <Card className="bg-transparent w-fit">
             <CardContent className="flex items-center justify-center p-0 ">

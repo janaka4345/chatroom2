@@ -1,8 +1,8 @@
-import { ReturnUser, getAllUsers } from '@/serverActions/users/getUsers'
+import { getAllUsers } from '@/serverActions/users/getUsers'
 import UserCard from '../_components/UserCard'
 
 export default async function usersPage() {
-    const users = (await getAllUsers()) as ReturnUser[]
+    const users = await getAllUsers()
 
     return (
         <section className="relative overflow-y-auto h-[90svh] grid grid-cols-2">
