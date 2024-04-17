@@ -87,7 +87,8 @@ model User {
   Friend             user_friend[]  @relation("friend")
   User               user_friend[]  @relation("user")
   user_group         user_group[]
-  Request            Request[]
+  Request            Request[]      @relation("sender")
+  Sender             Request[]      @relation("receiver")
   user_message       user_message[]
 
   @@map("users")
@@ -164,12 +165,14 @@ enum requestStatus {
 model Request {
   id         String        @id @default(auto()) @map("_id") @db.ObjectId
   group      Group?        @relation(fields: [groupId], references: [id], onDelete: Cascade)
-  receiver   User          @relation(fields: [receiverId], references: [id], onDelete: Cascade)
+  sender     User          @relation("sender", fields: [senderId], references: [id])
+  receiver   User          @relation("receiver", fields: [receiverId], references: [id], onDelete: Cascade)
   groupId    String?       @db.ObjectId
   receiverId String        @db.ObjectId
   message    String?
   sent       DateTime      @default(now())
-  status     requestStatus
+  status     requestStatus @default(PENDING)
+  senderId   String        @db.ObjectId
 }
 
 model VerificationToken {

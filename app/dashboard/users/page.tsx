@@ -1,11 +1,13 @@
+import { getRequestSentUserList } from '@/serverActions/requests/requests'
+import { getFriends } from '@/serverActions/users/getFriends'
 import { getAllUsers } from '@/serverActions/users/getUsers'
 import { User } from 'next-auth'
 import UserCard from '../_components/UserCard'
-import { getFriends } from '@/serverActions/users/getFriends'
 
 export default async function usersPage() {
     const users = await getAllUsers()
     const friends = await getFriends()
+    const requestedUsersList = await getRequestSentUserList()
 
     const nonFriends = users.filter(user => !friends.some(friend => friend.friendId === user.id))
     //TODO type error fix
@@ -16,12 +18,13 @@ export default async function usersPage() {
                 {/* <pre>{JSON.stringify(nonFriends, null, 2)}</pre> */}
                 {/* {(users as Partial<User[]>).filter((user)=>return user.id===user.id)}  */}
                 {(nonFriends as Partial<User[]>).map((user, i) => {
-                    if (user) {
-                        return (
-                            <UserCard key={i} user={user} /> //TODO fix type errors
-                        )
+                    console.log(requestedUsersList.includes({ receiverId: user?.id as string }));
+
+                    if (requestedUsersList.includes({ receiverId: user?.id as string })) {
+                        return (<UserCard key={i} user={user} requestedUser={true} />)
                     }
-                    return null
+                    return (<UserCard key={i} user={user} requestedUser={false} />) //TODO fix type errors
+
                 })}
             </div>
         </section>
