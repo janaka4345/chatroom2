@@ -2,12 +2,19 @@
 
 import { auth } from '@/auth'
 import prisma from '@/utils/prismaClient'
-// export type ReturnUser = {
-//     image: string | null
-//     name: string | null
-//     email: string
-// }
 
+export const getUserByEmailForAdmin = async (email: string) => {
+    try {
+        const user = await prisma.user.findFirst({
+            where: {
+                email: email,
+            },
+        })
+        return user
+    } catch (error) {
+        return { error }
+    }
+}
 export const getUserByEmail = async (email: string) => {
     try {
         const user = await prisma.user.findFirst({
