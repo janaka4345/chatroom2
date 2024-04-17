@@ -14,7 +14,7 @@ export default {
                 password: { label: 'Password', type: 'password' },
             },
             authorize: async (credentials) => {
-                console.log({ credentials })
+                // console.log({ credentials })
 
                 const user = await prisma.user.findFirst({
                     where: {

@@ -73,3 +73,24 @@ export const getAllUsers = async () => {
         return { error: 'error' }
     }
 }
+export const getAllUsersWithoutFriends = async () => {
+    try {
+        const session = await auth()
+        const currentUser = session?.user
+        if (!currentUser?.email) {
+            return { error: 'need to log in first' } //TODO
+        }
+        const users = await prisma.user.findMany({
+            include: {
+                Friend: {
+                    where: {
+                        friendId: currentUser.id,
+                    },
+                },
+            },
+        })
+        return users
+    } catch (error) {
+        return { error: 'error' }
+    }
+}
