@@ -43,3 +43,30 @@ export const getRequestSentUsers = async () => {
     return requestSentUsers
 }
 
+export const getRequested = async () => {
+    const session = await auth()
+
+    const requested = await prisma.request.findMany({
+        where: {
+            receiverId: session?.user?.id as string,
+        },
+    })
+    return requested
+}
+
+export const acceptRequest = async (senderId: string) => {
+    const session = await auth()
+
+    await prisma.request.updateMany({
+        where: {
+            AND: [
+                { receiverId: session?.user?.id as string },
+                { senderId: senderId },
+            ],
+        },
+        data: {
+            status: 'ACCEPTED',
+        },
+    })
+    return { success: 'success accepted' } //TODO
+}

@@ -11,7 +11,7 @@ export default function UserCard({ user, request }: { user: Partial<User>, reque
     function CTAButton(request: Requested) {
         switch (request) {
             case "REQUESTED":
-                return <RequestAcceptButton />;
+                return <RequestAcceptButton senderId={user?.id as string} />;
             case "SENT_REQUEST":
                 return <RequestSentButton />;
             case "NONE":

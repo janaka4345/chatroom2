@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button"
-import { sendFriendRequest } from "@/serverActions/requests/requests"
+import { acceptRequest, sendFriendRequest } from "@/serverActions/requests/requests"
+import { makeFriends } from "@/serverActions/users/makeFriends"
 import { revalidatePath } from "next/cache"
 
 export const RequestSentButton = () => {
@@ -20,15 +21,16 @@ export const RequestButton = ({ receiverId, groupId, message }: { receiverId: st
 
     </form>)
 }
-export const RequestAcceptButton = () => {
+export const RequestAcceptButton = ({ senderId }: { senderId: string }) => {
     return (
         <div className="flex flex-row gap-2">
             <form
                 action={async () => {
                     'use server'
                     console.log('accepted');
-                    // await sendFriendRequest({ receiverId: user.id as string, groupId: null, message: 'ght' })
-                    // revalidatePath('/dashboard/users')
+                    await acceptRequest(senderId)
+                    await makeFriends({ friendId: senderId })
+                    revalidatePath('/dashboard/users')
                 }}
             >
 
