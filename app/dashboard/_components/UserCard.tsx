@@ -1,12 +1,25 @@
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
-import { sendFriendRequest } from '@/serverActions/requests/requests'
-import { User } from '@prisma/client'
-import { revalidatePath } from 'next/cache'
-export default function UserCard({ user, requestedUser }: { user: Partial<User>, requestedUser: boolean }) {
+import { DefaultButton, RequestAcceptButton, RequestButton, RequestSentButton } from './RequestButton'
 
+type Requested = "REQUESTED" | "SENT_REQUEST" | "NONE"
+
+import { type User } from '@prisma/client'
+export default function UserCard({ user, request }: { user: Partial<User>, request: Requested }) {
+
+    function CTAButton(request: Requested) {
+        switch (request) {
+            case "REQUESTED":
+                return <RequestAcceptButton />;
+            case "SENT_REQUEST":
+                return <RequestSentButton />;
+            case "NONE":
+                return <RequestButton receiverId={user.id as string} groupId={null} message='ht' />;
+            default:
+                return <DefaultButton />;
+        }
+    }
 
     return (
         <Card className="bg-transparent w-fit relative">
@@ -20,22 +33,11 @@ export default function UserCard({ user, requestedUser }: { user: Partial<User>,
                 </Avatar>
                 <div className="space-y-0.5 font-medium dark:text-white text-left rtl:text-right ms-3">
                     <div>{user.name}</div>
-                    {requestedUser ?
-                        (<Button disabled>Request Sent</Button>)
-                        :
-                        (<form
-                            action={async () => {
-                                'use server'
-                                await sendFriendRequest({ receiverId: user.id as string, groupId: null, message: 'ght' })
-                                revalidatePath('/dashboard/users')
-                            }}
-                        >
-
-                            <Button type='submit'>Send Request</Button>
-
-                        </form>)}
+                    {CTAButton(request)}
                 </div>
             </CardContent>
         </Card>
     )
 }
+
+
