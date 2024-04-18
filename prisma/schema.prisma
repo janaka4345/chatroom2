@@ -73,23 +73,24 @@ model Session {
 }
 
 model User {
-  id                 String         @id @default(auto()) @map("_id") @db.ObjectId
-  name               String?
-  password           String?
-  status             Boolean        @default(false)
-  email              String         @unique
-  emailVerified      DateTime?      @map("email_verified")
-  image              String?
-  isTwoFactorEnabled Boolean        @default(false)
+  id                   String         @id @default(auto()) @map("_id") @db.ObjectId
+  name                 String?
+  password             String?
+  status               Boolean        @default(false)
+  email                String         @unique
+  emailVerified        DateTime?      @map("email_verified")
+  image                String?
+  isTwoFactorEnabled   Boolean        @default(false)
   // twofactorConfirmation  TODO
-  accounts           Account[]
-  sessions           Session[]
-  Friend             user_friend[]  @relation("friend")
-  User               user_friend[]  @relation("user")
-  user_group         user_group[]
-  Request            Request[]      @relation("sender")
-  Sender             Request[]      @relation("receiver")
-  user_message       user_message[]
+  accounts             Account[]
+  sessions             Session[]
+  Friend               user_friend[]  @relation("friend")
+  User                 user_friend[]  @relation("user")
+  user_group           user_group[]
+  Request              Request[]      @relation("sender")
+  Sender               Request[]      @relation("receiver")
+  user_message_receive user_message[] @relation("messageReceiver")
+  user_message_send    user_message[] @relation("messageSender")
 
   @@map("users")
 }
@@ -112,11 +113,12 @@ model user_friend {
 }
 
 model Group {
-  id         String       @id @default(auto()) @map("_id") @db.ObjectId
-  group_name String
-  user_group user_group[]
-  Message    Message[]
-  Request    Request[]
+  id           String         @id @default(auto()) @map("_id") @db.ObjectId
+  group_name   String
+  user_group   user_group[]
+  Message      Message[]
+  Request      Request[]
+  user_message user_message[]
 }
 
 enum groupRole {
@@ -138,22 +140,25 @@ model user_group {
 
 model user_message {
   id       String  @id @default(auto()) @map("_id") @db.ObjectId
-  receiver User    @relation(fields: [receiverId], references: [id], onDelete: Cascade)
+  receiver User    @relation("messageReceiver", fields: [receiverId], references: [id], onDelete: Cascade)
+  sender   User    @relation("messageSender", fields: [senderId], references: [id], onDelete: Cascade)
+  group    Group   @relation(fields: [groupId], references: [id], onDelete: Cascade)
   message  Message @relation(fields: [messageId], references: [id], onDelete: Cascade)
   seen     Boolean @default(false)
 
   receiverId String @db.ObjectId
   messageId  String @db.ObjectId
+  senderId   String @db.ObjectId
+  groupId    String @db.ObjectId
 }
 
 model Message {
   id           String         @id @default(auto()) @map("_id") @db.ObjectId
   message      String
-  group        Group?         @relation(fields: [groupId], references: [id], onDelete: Cascade)
   sent         DateTime       @default(now())
-  groupId      String?        @db.ObjectId
-  receiverId   String?        @db.ObjectId
   user_message user_message[]
+  Group        Group?         @relation(fields: [groupId], references: [id])
+  groupId      String?        @db.ObjectId
 }
 
 enum requestStatus {
