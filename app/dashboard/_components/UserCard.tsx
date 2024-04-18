@@ -1,5 +1,5 @@
-import { NotificationBadge } from '@/components/custom/NotificationBadge'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { sendFriendRequest } from '@/serverActions/requests/requests'
@@ -10,7 +10,7 @@ export default function UserCard({ user, requestedUser }: { user: Partial<User>,
 
     return (
         <Card className="bg-transparent w-fit relative">
-            <NotificationBadge />
+            <Badge variant='notificationOnline' />
             <CardContent className="flex items-center justify-center p-0 ">
                 <Avatar>
                     <AvatarImage src={user.image as string} alt="avatar" />

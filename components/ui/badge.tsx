@@ -15,7 +15,8 @@ const badgeVariants = cva(
         destructive:
           "border-transparent bg-destructive text-destructive-foreground shadow hover:bg-destructive/80",
         outline: "text-foreground",
-        notification: "border-transparent bg-primary text-primary-foreground shadow ",
+        notificationOnline: "border-transparent bg-blue-500 px-0.5 text-primary-foreground shadow w-3 h-3  absolute top-0 right-0",//TODO switchto css variables
+        notificationMessage: "border-transparent bg-green-500 px-0.5 text-primary-foreground w-3 h-3 shadow absolute top-0 right-0",//TODO switchto css variables
       },
     },
     defaultVariants: {
