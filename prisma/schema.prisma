@@ -142,14 +142,14 @@ model user_message {
   id       String  @id @default(auto()) @map("_id") @db.ObjectId
   receiver User    @relation("messageReceiver", fields: [receiverId], references: [id], onDelete: Cascade)
   sender   User    @relation("messageSender", fields: [senderId], references: [id], onDelete: Cascade)
-  group    Group   @relation(fields: [groupId], references: [id], onDelete: Cascade)
+  group    Group?  @relation(fields: [groupId], references: [id], onDelete: Cascade)
   message  Message @relation(fields: [messageId], references: [id], onDelete: Cascade)
   seen     Boolean @default(false)
 
-  receiverId String @db.ObjectId
-  messageId  String @db.ObjectId
-  senderId   String @db.ObjectId
-  groupId    String @db.ObjectId
+  receiverId String  @db.ObjectId
+  messageId  String  @db.ObjectId
+  senderId   String  @db.ObjectId
+  groupId    String? @db.ObjectId
 }
 
 model Message {
