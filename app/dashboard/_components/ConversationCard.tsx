@@ -1,3 +1,4 @@
+import { NotificationBadge } from '@/components/custom/NotificationBadge'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Card, CardContent } from '@/components/ui/card'
 
@@ -14,7 +15,8 @@ type friend = {
 }
 export default function ConversationCard({ friend }: { friend: friend }) {
     return (
-        <Card className="bg-transparent ">
+        <Card className="bg-transparent relative ">
+            <NotificationBadge className='bg-green-500' />
             <CardContent className="flex items-center justify-center p-0 ">
                 <Avatar>
                     <AvatarImage
