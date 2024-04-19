@@ -23,8 +23,8 @@ export const getFriends = async () => {
 
 export const getAFriendById = async (friendId: string) => {
     const session = await auth()
-    const friend = await prisma.user_friend.findMany({
-        where: { userId: session?.user?.id, friendId: friendId },
+    const friend = await prisma.user_friend.findFirst({
+        where: { AND: [{ userId: session?.user?.id }, { friendId: friendId }] },
         select: {
             friend: true,
             status: true,
@@ -32,4 +32,11 @@ export const getAFriendById = async (friendId: string) => {
         },
     })
     return friend
+}
+export const isMyFriend = async (friendId: string) => {
+    const friend = await getAFriendById(friendId)
+    if (friend) {
+        return true
+    }
+    return false
 }

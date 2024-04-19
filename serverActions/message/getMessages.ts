@@ -1,10 +1,27 @@
 'use server'
 import prisma from '@/utils/prismaClient'
-const getMessages = async ({ userId }: { userId: string }) => {
-    const messages = await prisma.user_message.findMany({
+export const getPrivateMessages = async ({
+    senderId,
+    receiverId,
+}: {
+    senderId: string
+    receiverId: string
+}) => {
+    const privateMessages = await prisma.user_message.findMany({
         where: {
-            receiverId: userId,
+            OR: [
+                { AND: [{ senderId: senderId }, { receiverId: receiverId }] },
+                { AND: [{ senderId: receiverId }, { receiverId: senderId }] },
+            ],
+        },
+        include: {
+            message: {
+                select: {
+                    message: true,
+                    sent: true,
+                },
+            },
         },
     })
+    return privateMessages
 }
-export default getMessages
