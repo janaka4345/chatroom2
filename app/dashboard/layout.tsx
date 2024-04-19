@@ -8,7 +8,8 @@ export default function layout({ children }: { children: React.ReactNode }) {
                 <Sidebar />
                 <Conversations />
             </div>
-            <div className="w-[70%] bg-green-500">{children}</div>
+            <div className="w-[70%]  bg-green-500  relative">{children}</div>
+
         </div>
     )
 }

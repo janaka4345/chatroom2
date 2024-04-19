@@ -7,12 +7,12 @@ export default async function Home() {
     <div>
       <h1>
 
-      Home page
+        Home page
       </h1>
       <Link href='/api/auth/signin'>Sign In</Link><br />
       <Link href='/api/auth/signout'>Sign Out</Link><br />
       <Link href='/dashboard'>dashboard</Link><br />
-      <pre>{JSON.stringify(session,null,2)}</pre>
-      </div>
+      <pre>{JSON.stringify(session, null, 2)}</pre>
+    </div>
   );
 }
