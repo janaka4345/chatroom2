@@ -19,7 +19,7 @@ export default async function usersPage() {
     const requestedList = requested.map(user => { return user.senderId })
 
     return (
-        <section className="relative overflow-y-auto h-[90svh] grid grid-cols-2">
+        <section className="relative overflow-y-auto h-[90svh]">
             <div>
                 {(nonFriends as Partial<User[]>).map((user, i) => {
                     if (requestedUsersList.includes(user?.id as string)) {
