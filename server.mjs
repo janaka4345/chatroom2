@@ -19,11 +19,13 @@ app.prepare().then(() => {
     // console.log('hi');
 
 
+
+
     //to the user only
     socket.emit('message', `welcome to the app ${socket.id}`)
 
     //to the other user only
-    socket.broadcast.emit('message', ` ${socket.id} has joined the chat`)
+    socket.broadcast.emit('message', ` ${socket.id} has joined the chat`,)
 
     // console.log('user id:', socket.id);
 
@@ -31,6 +33,7 @@ app.prepare().then(() => {
     socket.on('message', (data) => {
       // console.log('connected', data);
       io.emit('message', `${data}`)
+
     })
 
     //listnenig for the message event
