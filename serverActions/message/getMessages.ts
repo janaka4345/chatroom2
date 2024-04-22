@@ -21,6 +21,12 @@ export const getPrivateMessages = async ({
                     sent: true,
                 },
             },
+            sender: {
+                select: {
+                    image: true,
+                    name: true,
+                },
+            },
         },
     })
     return privateMessages

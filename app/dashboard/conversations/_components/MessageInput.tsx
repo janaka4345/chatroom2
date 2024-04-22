@@ -27,9 +27,10 @@ const MessageInput = ({ receiverId }: { receiverId: string }) => {
     async function onSubmit(values: z.infer<typeof formSchema>) {
         // Do something with the form values.
         // ✅ This will be type-safe and validated.
-        console.log(values)
+        // console.log(values)
         const message = await sendPrivateMessages({ receiverId: receiverId, message: values.message })
-        console.log(message);
+        // console.log(message);
+        form.reset()
 
 
     }

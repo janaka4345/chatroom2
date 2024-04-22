@@ -17,10 +17,17 @@ export default async function conversationsPage({ params }: { params: { id: stri
       <section className="relative overflow-y-auto h-[70svh] ">
         {/* <div>conversation of a user {params.id} </div> */}
         {/* <pre>{JSON.stringify(session, null, 2)}</pre>*/}
-        <pre>{JSON.stringify(messages, null, 2)}</pre>
+        {/* <pre>{JSON.stringify(messages, null, 2)}</pre> */}
 
-        {/* <MessageBox message="hiya sup2" type="RECEIVE" />
-        <MessageBox message="hiya sup" type="SEND" /> */}
+        {messages.map((message) => (
+          message.senderId === session?.user?.id ?
+            <MessageBox key={message.id} message={message.message} image={message?.sender?.image!} name={message?.sender?.name!} type="SEND" /> :
+
+            <MessageBox key={message.id} message={message.message} image={message?.sender?.image!} name={message?.sender?.name!} type="RECEIVE" />
+
+
+        ))}
+
 
 
       </section >
