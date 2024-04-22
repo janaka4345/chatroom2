@@ -31,7 +31,7 @@ app.prepare().then(() => {
 
     //listnenig for the message event
     socket.on('message', (data) => {
-      // console.log('connected', data);
+      console.log('connected', data);
       io.emit('message', `${data}`)
 
     })
