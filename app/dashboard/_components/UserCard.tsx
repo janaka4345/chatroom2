@@ -6,6 +6,7 @@ import { DefaultButton, RequestAcceptButton, RequestButton, RequestSentButton } 
 type Requested = "REQUESTED" | "SENT_REQUEST" | "NONE"
 
 import { type User } from '@prisma/client'
+import UserAvatar from '@/components/custom/UserAvatar'
 export default function UserCard({ user, request }: { user: Partial<User>, request: Requested }) {
 
     function CTAButton(request: Requested) {
@@ -25,12 +26,13 @@ export default function UserCard({ user, request }: { user: Partial<User>, reque
         <Card className="bg-transparent w-fit relative">
             <Badge variant='notificationOnline' />
             <CardContent className="flex items-center justify-center p-0 ">
-                <Avatar>
+                {/* <Avatar>
                     <AvatarImage src={user.image as string} alt="avatar" />
                     <AvatarFallback>
                         {(user.name as string).slice(0, 2).toUpperCase()}
                     </AvatarFallback>
-                </Avatar>
+                </Avatar> */}
+                <UserAvatar name={user.name!} image={user.image!} />
                 <div className="space-y-0.5 font-medium dark:text-white text-left rtl:text-right ms-3">
                     <div>{user.name}</div>
                     {CTAButton(request)}

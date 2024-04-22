@@ -1,3 +1,4 @@
+import UserAvatar from '@/components/custom/UserAvatar'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Badge } from '@/components/ui/badge'
 import { Card, CardContent } from '@/components/ui/card'
@@ -20,7 +21,7 @@ export default function ConversationCard({ friend }: { friend: friend }) {
             <Card className="bg-transparent relative ">
                 <Badge variant='notificationMessage' />
                 <CardContent className="flex items-center justify-center p-0 ">
-                    <Avatar>
+                    {/* <Avatar>
                         <AvatarImage
                             src={friend.friend.image as string} //TODO type eror
                             alt="avatar"
@@ -30,7 +31,8 @@ export default function ConversationCard({ friend }: { friend: friend }) {
                                 .slice(0, 2)
                                 .toUpperCase()}
                         </AvatarFallback>
-                    </Avatar>
+                    </Avatar> */}
+                    <UserAvatar name={friend.friend.name!} image={friend.friend.image!} />
                     <div className="space-y-0.5 font-medium dark:text-white text-left rtl:text-right ms-3">
                         <div>{friend.friend.name as string}</div>
                         <div className="text-sm text-gray-500 dark:text-gray-400 line-clamp-2 ">

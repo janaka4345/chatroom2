@@ -9,7 +9,7 @@ export default async function User({ className }: { className?: String }) {
     }
     return (
         <Avatar className={cn(className)}>
-            <AvatarImage src={session?.user?.image as string} alt="avatar" />
+            <AvatarImage src={session?.user?.image!} alt="avatar" />
             <AvatarFallback>
                 {(session.user?.name as string).slice(0, 2).toUpperCase()}
             </AvatarFallback>
