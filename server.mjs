@@ -17,9 +17,7 @@ app.prepare().then(() => {
   io.on("connection", (socket) => {
     // ...
     // console.log('hi');
-
-
-
+    // setUserStatus()
 
     //to the user only
     socket.emit('message', `welcome to the app ${socket.id}`)
@@ -32,7 +30,7 @@ app.prepare().then(() => {
     //listnenig for the message event
     socket.on('message', (data) => {
       console.log('connected', data);
-      io.emit('message', `${data}`)
+      // socket.emit('message', `${data}`)
 
     })
 
