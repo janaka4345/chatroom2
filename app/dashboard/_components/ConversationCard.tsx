@@ -17,10 +17,12 @@ type friend = {
 }
 export default async function ConversationCard({ friend }: { friend: friend }) {
     const lastMessage = await getLastMessage({ receiverId: friend.friendId })
+
+
     return (
         <Link href={`/dashboard/conversations/${friend.friendId}`}>
             <Card className="bg-transparent relative ">
-                <Badge variant='notificationMessage' />
+                {friend.friend.status && <Badge variant='notificationMessage' />}
                 <CardContent className="flex items-center justify-start py-2 ">
                     <UserAvatar name={friend.friend.name!} image={friend.friend.image!} />
                     <div className="space-y-0.5 font-medium dark:text-white text-left rtl:text-right ms-3">
