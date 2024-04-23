@@ -1,6 +1,8 @@
 import { createServer } from "node:http";
 import next from "next";
 import { Server } from "socket.io";
+import { Prisma } from "@prisma/client";
+
 
 const dev = process.env.NODE_ENV !== "production";
 const hostname = "localhost";
@@ -29,15 +31,37 @@ app.prepare().then(() => {
 
     //listnenig for the message event
     socket.on('message', (data) => {
-      console.log('connected', data);
+      // console.log('connected', data);
       // socket.emit('message', `${data}`)
 
     })
 
-    //listnenig for the message event
-    socket.on('disconnect', (data) => {
+    //listnenig for the disconnect event
+    socket.on('disconnect', async (data) => {
       console.log('disconnected', data);
-      io.emit('message', `user ${data} disconnected`)
+      // const user=await prisma.user.findFirst({
+      //   where:{
+      //     socketId:socket.id
+      //   }
+
+      // })
+      // if(user){
+      await prisma.user.updateMany({
+        where: {
+          socketId: socket.id
+        },
+        data: {
+          socketId: null,
+          status: false
+        }
+      })
+      // }
+
+      // io.emit('message', `user ${data} disconnected socket ${socket.id}`)
+    })
+    socket.on('connect', (data) => {
+      console.log('connected', data);
+      io.emit('message', `user ${data} connected socket ${socket.id}`)
     })
 
   });

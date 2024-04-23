@@ -1,6 +1,7 @@
 'use client'
 import { useEffect, useState } from 'react'
 import { socket } from '@/socket'
+import { setOnlineUserStatus } from '@/serverActions/users/onlineUser'
 
 const useSocket = () => {
     const [isConnected, setIsConnected] = useState(false)
@@ -11,18 +12,22 @@ const useSocket = () => {
             onConnect()
         }
 
-        function onConnect() {
+        async function onConnect() {
             setIsConnected(true)
             setTransport(socket.io.engine.transport.name)
+            // console.log('connected')
+            await setOnlineUserStatus({ socketId: socket.id, status: true })
 
             socket.io.engine.on('upgrade', (transport) => {
                 setTransport(transport.name)
             })
         }
 
-        function onDisconnect() {
+        async function onDisconnect() {
             setIsConnected(false)
             setTransport('N/A')
+            // console.log('disconnected')
+            // await setOnlineUserStatus({ socketId: null, status: false })
         }
 
         socket.on('connect', onConnect)
