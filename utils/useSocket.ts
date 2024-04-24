@@ -15,7 +15,7 @@ const useSocket = () => {
         async function onConnect() {
             setIsConnected(true)
             setTransport(socket.io.engine.transport.name)
-            // console.log('connected')
+            socket.emit('revalidateAll', '')
             await setOnlineUserStatus({ socketId: socket.id, status: true })
 
             socket.io.engine.on('upgrade', (transport) => {
@@ -26,18 +26,10 @@ const useSocket = () => {
         async function onDisconnect() {
             setIsConnected(false)
             setTransport('N/A')
-            // console.log('disconnected')
-            // await setOnlineUserStatus({ socketId: null, status: false })
         }
 
         socket.on('connect', onConnect)
         socket.on('disconnect', onDisconnect)
-
-        // //listening for the message
-        // socket.on('message', (data) => {
-        // console.log(data);
-
-        // })
 
         return () => {
             socket.off('connect', onConnect)
