@@ -10,6 +10,8 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { sendPrivateMessages } from "@/serverActions/message/sendMessages"
+import { getFriendBySocketId } from "@/serverActions/users/getUsers"
+import { socket } from "@/socket"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
@@ -29,7 +31,11 @@ const MessageInput = ({ receiverId }: { receiverId: string }) => {
         // ✅ This will be type-safe and validated.
         // console.log(values)
         const message = await sendPrivateMessages({ receiverId: receiverId, message: values.message })
+        const friend = await getFriendBySocketId(receiverId);
         // console.log(message);
+        // console.log(socket.id);
+        socket.emit('revalidateUser', { socketId: friend?.socketId, message: values.message, image: friend?.image, name: friend?.name })
+
         form.reset()
 
 
