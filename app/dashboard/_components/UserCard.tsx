@@ -20,7 +20,7 @@ export default function UserCard({ user, request }: { user: Partial<User> | unde
                 return <DefaultButton />;
         }
     }
-
+    //TODO badge showing only for friends fix
     return (
         <Card className="bg-transparent w-fit relative">
             <Badge variant='notificationOnline' />

@@ -1,7 +1,6 @@
 import { createServer } from "node:http";
 import next from "next";
 import { Server } from "socket.io";
-import { Prisma } from "@prisma/client";
 
 
 const dev = process.env.NODE_ENV !== "production";
@@ -17,35 +16,31 @@ app.prepare().then(() => {
   const io = new Server(httpServer);
 
   io.on("connection", (socket) => {
-    // ...
-    // console.log('hi');
-    // setUserStatus()
-
-    //to the user only
-    socket.emit('message', `welcome to the app ${socket.id}`)
-
-    //to the other user only
-    socket.broadcast.emit('message', ` ${socket.id} has joined the chat`,)
-
-    // console.log('user id:', socket.id);
 
     //listnenig for the message event
-    socket.on('message', (data) => {
-      // console.log('connected', data);
-      // socket.emit('message', `${data}`)
+    // socket.on('message', (data) => {
+    //   // console.log('connected', data);
+    //   io.emit('message', `${data}`)
 
+    // })
+    //listnenig for the revalidate event
+
+    socket.on('revalidateAll', (data) => {
+      // console.log('connected', data);
+      io.emit('revalidateAll', 'revalidate all') //TODO edit message
     })
+
+    socket.on('revalidateUser', (data) => {
+      socket.emit('revalidateUser', '') //TODO edit message
+      socket.to(data.socketId).emit('userMessage', data) //TODO edit message
+    })
+
+
 
     //listnenig for the disconnect event
     socket.on('disconnect', async (data) => {
-      console.log('disconnected', data);
-      // const user=await prisma.user.findFirst({
-      //   where:{
-      //     socketId:socket.id
-      //   }
-
-      // })
-      // if(user){
+      // console.log('disconnected', data);
+      socket.broadcast.emit('revalidateAll', '')
       await prisma.user.updateMany({
         where: {
           socketId: socket.id
@@ -55,14 +50,9 @@ app.prepare().then(() => {
           status: false
         }
       })
-      // }
 
-      // io.emit('message', `user ${data} disconnected socket ${socket.id}`)
     })
-    socket.on('connect', (data) => {
-      console.log('connected', data);
-      io.emit('message', `user ${data} connected socket ${socket.id}`)
-    })
+
 
   });
 
