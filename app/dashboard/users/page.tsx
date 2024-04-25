@@ -1,8 +1,9 @@
 import { getRequestSentUsers, getRequested } from '@/serverActions/requests/requests'
 import { getFriends } from '@/serverActions/users/getFriends'
 import { getAllUsers } from '@/serverActions/users/getUsers'
-import { User } from 'next-auth'
+
 import UserCard from '../_components/UserCard'
+import { User } from '@prisma/client'
 
 export default async function usersPage() {
     const users = await getAllUsers()
@@ -11,7 +12,7 @@ export default async function usersPage() {
     const requested = await getRequested()
     // const [users, friends, requestedUsers] = await Promise.all([getAllUsers(), getFriends(), getRequestSentUsers()])
 
-    const nonFriends = (users as []).filter(user => !friends.some(friend => friend.friendId === user.id))
+    const nonFriends = (users as Partial<User>[]).filter(user => !friends.some(friend => friend.friendId === user.id))
     //TODO type error fix
     const requestedUsersList = requestedUsers.map(user => {
         return user.receiverId
@@ -21,7 +22,7 @@ export default async function usersPage() {
     return (
         <section className="relative overflow-y-auto h-[90svh]">
             <div>
-                {(nonFriends as Partial<User[]>).map((user, i) => {
+                {(nonFriends).map((user, i) => {
                     if (requestedUsersList.includes(user?.id as string)) {
                         return (<UserCard key={i} user={user} request='SENT_REQUEST' />)
                     }

@@ -15,8 +15,11 @@ const useSocket = () => {
         async function onConnect() {
             setIsConnected(true)
             setTransport(socket.io.engine.transport.name)
+            await setOnlineUserStatus({
+                socketId: socket.id,
+                status: true,
+            })
             socket.emit('revalidateAll', '')
-            await setOnlineUserStatus({ socketId: socket.id, status: true })
 
             socket.io.engine.on('upgrade', (transport) => {
                 setTransport(transport.name)

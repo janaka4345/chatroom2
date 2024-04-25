@@ -11,13 +11,10 @@ export default async function conversationsPage({ params }: { params: { id: stri
     return <h1>this user is not a friend</h1>
   }
 
-  const messages = await getPrivateMessages({ senderId: session?.user?.id as string, receiverId: params.id })
+  const messages = await getPrivateMessages({ receiverId: params.id })
   return (
     <>
       <section className="relative overflow-y-auto h-[70svh] ">
-        {/* <div>conversation of a user {params.id} </div> */}
-        {/* <pre>{JSON.stringify(session, null, 2)}</pre>*/}
-        {/* <pre>{JSON.stringify(messages, null, 2)}</pre> */}
 
         {messages.map((message) => (
           message.senderId === session?.user?.id ?
