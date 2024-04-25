@@ -8,6 +8,8 @@ import { useEffect } from "react"
 
 const WSComponent = () => {
     const [isConnected, transport] = useSocket()
+    console.log({ id: socket.id });
+
     useEffect(() => {
 
         socket.on('userMessage', async (data) => {
@@ -25,7 +27,17 @@ const WSComponent = () => {
         // console.log(socket.id);
 
         return () => {
-
+            socket.off('userMessage', async (data) => {
+                // console.log('message', data)
+                toast(`message ${data.message}`)
+                await revalidateRequest()
+            })
+            socket.off('revalidateUser', async () => {
+                await revalidateRequest()
+            })
+            socket.off('revalidateAll', async () => {
+                await revalidateRequest()
+            })
         }
     }, [])
 
