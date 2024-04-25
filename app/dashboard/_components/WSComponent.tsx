@@ -8,7 +8,7 @@ import { useEffect } from "react"
 
 const WSComponent = () => {
     const [isConnected, transport] = useSocket()
-    console.log({ id: socket.id });
+    // console.log({ id: socket.id });
 
     useEffect(() => {
 
