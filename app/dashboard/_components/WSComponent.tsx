@@ -1,6 +1,6 @@
 'use client'
 
-import { revalidateTest } from "@/serverActions/test/page"
+import { revalidateRequest } from "@/serverActions/revalidate/revalidateRequest"
 import { socket } from "@/socket"
 import useSocket from "@/utils/useSocket"
 import { toast } from "sonner"
@@ -13,13 +13,13 @@ const WSComponent = () => {
         socket.on('userMessage', async (data) => {
             // console.log('message', data)
             toast(`message${data.message}`)
-            await revalidateTest()
+            await revalidateRequest()
         })
         socket.on('revalidateUser', async () => {
-            await revalidateTest()
+            await revalidateRequest()
         })
         socket.on('revalidateAll', async () => {
-            await revalidateTest()
+            await revalidateRequest()
         })
 
         // console.log(socket.id);
