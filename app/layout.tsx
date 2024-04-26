@@ -4,7 +4,7 @@ import { Nunito } from 'next/font/google'
 import './globals.css'
 import WSComponent from './dashboard/_components/WSComponent'
 import { auth } from "@/auth"; //TODO uncomment if necessary use Server actions instead
-// import  SessionProvider  from '@/components/custom/SessionProvider'
+import SessionProvider from '@/components/custom/SessionProvider'
 import { Toaster } from "@/components/ui/sonner"
 
 const nunito = Nunito({ subsets: ['latin'] })
@@ -23,17 +23,17 @@ export default async function RootLayout({
     return (
         <html lang="en">
             <body className={nunito.className}>
-                {/* <SessionProvider session={session}> */}
+                <SessionProvider session={session}>
 
-                <main>
-                    {/* <Navbar /> */}
-                    {session?.user && <WSComponent />}
-                    <User className="fixed top-0 right-0 w-10 h-10 z-50" />
-                    {children}
-                </main>
-                <Toaster />
+                    <main>
+                        {/* <Navbar /> */}
+                        {session?.user && <WSComponent />}
+                        <User className="fixed top-0 right-0 w-10 h-10 z-50" />
+                        {children}
+                    </main>
+                    <Toaster />
 
-                {/* </SessionProvider> */}
+                </SessionProvider>
             </body>
         </html>
     )
