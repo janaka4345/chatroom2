@@ -13,6 +13,7 @@ import { sendPrivateMessages } from "@/serverActions/message/sendMessages"
 import { getFriendBySocketId } from "@/serverActions/users/getUsers"
 import { socket } from "@/socket"
 import { zodResolver } from "@hookform/resolvers/zod"
+import { useSession } from "next-auth/react"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 
@@ -26,15 +27,12 @@ const MessageInput = ({ receiverId }: { receiverId: string }) => {
             message: "",
         },
     })
+    const session = useSession()
     async function onSubmit(values: z.infer<typeof formSchema>) {
-        // Do something with the form values.
-        // ✅ This will be type-safe and validated.
-        // console.log(values)
+
         const message = await sendPrivateMessages({ receiverId: receiverId, message: values.message })
         const friend = await getFriendBySocketId(receiverId);
-        // console.log(message);
-        // console.log(socket.id);
-        socket.emit('revalidateUser', { socketId: friend?.socketId, message: values.message, image: friend?.image, name: friend?.name })
+        socket.emit('revalidateUser', { socketId: friend?.socketId, message: values.message, image: session?.data?.user?.image, name: session?.data?.user?.name }) //TODO do i need friends image and name or just senders name and image
 
         form.reset()
 
