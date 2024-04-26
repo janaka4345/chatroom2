@@ -5,6 +5,7 @@ import { socket } from "@/socket"
 import useSocket from "@/utils/useSocket"
 import { toast } from "sonner"
 import { useEffect } from "react"
+import MessageToast from "@/components/custom/MessageToast"
 
 const WSComponent = () => {
     const [isConnected, transport] = useSocket()
@@ -14,7 +15,9 @@ const WSComponent = () => {
 
         socket.on('userMessage', async (data) => {
             // console.log('message', data)
-            toast(`message${data.message}`)
+            // toast(`message${data.message}`)
+            toast(<MessageToast image={data?.image} name={data?.name} message={data.message} />);
+
             await revalidateRequest()
         })
         socket.on('revalidateUser', async () => {
