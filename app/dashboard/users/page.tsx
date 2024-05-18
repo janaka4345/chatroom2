@@ -12,7 +12,7 @@ export default async function usersPage() {
     const requested = await getRequested()
     // const [users, friends, requestedUsers] = await Promise.all([getAllUsers(), getFriends(), getRequestSentUsers()])
 
-    const nonFriends = (users as Partial<User>[]).filter(user => !friends.some(friend => friend.friendId === user.id))
+    const nonFriends = !!friends?.length ? (users as Partial<User>[]).filter(user => friends?.some(friend => friend.friendId != user.id)) : users as Partial<User>[]
     //TODO type error fix
     const requestedUsersList = requestedUsers.map(user => {
         return user.receiverId
@@ -25,13 +25,13 @@ export default async function usersPage() {
                 {(nonFriends).map((user, i) => {
                     if (requestedUsersList.includes(user?.id as string)) {
                         return (<UserCard key={i} user={user} request='SENT_REQUEST' />)
+
                     }
                     if (requestedList.includes(user?.id as string)) {
                         return (<UserCard key={i} user={user} request='REQUESTED' />)
+
                     }
                     return (<UserCard key={i} user={user} request='NONE' />) //TODO fix type errors
-
-
 
                 })}
             </div>

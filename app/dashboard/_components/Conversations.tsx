@@ -8,9 +8,9 @@ export default async function Conversations() {
         <div className="overflow-y-auto w-full">
             <h1>Conversations</h1>
             <div className="flex flex-col gap-2 ">
-                {friends.map((friend, i) => (
+                {friends ? friends.map((friend, i) => (
                     <ConversationCard key={i} friend={friend} />
-                ))}
+                )) : null}
             </div>
         </div>
     )
