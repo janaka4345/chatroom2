@@ -2,23 +2,26 @@ import { auth } from '@/auth'
 import prisma from '@/utils/prismaClient'
 export const getFriends = async () => {
     const session = await auth()
-    const friends = await prisma.user_friend.findMany({
-        where: { userId: session?.user?.id },
-        select: {
-            friend: {
-                select: {
-                    id: true,
-                    image: true,
-                    name: true,
-                    status: true,
-                    email: true,
+    if (session?.user) {
+        const friends = await prisma.user_friend.findMany({
+            where: { userId: session?.user?.id },
+            select: {
+                friend: {
+                    select: {
+                        id: true,
+                        image: true,
+                        name: true,
+                        status: true,
+                        email: true,
+                    },
                 },
+                status: true,
+                friendId: true,
             },
-            status: true,
-            friendId: true,
-        },
-    })
-    return friends
+        })
+        return friends
+    }
+    return null
 }
 
 export const getAFriendById = async (friendId: string) => {
