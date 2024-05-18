@@ -27,7 +27,7 @@ export const RequestAcceptButton = ({ senderId }: { senderId: string }) => {
             <form
                 action={async () => {
                     'use server'
-                    console.log('accepted');
+                    // console.log('accepted');
                     await acceptRequest(senderId)
                     await makeFriends({ friendId: senderId })
                     revalidatePath('/dashboard/users')
@@ -40,7 +40,7 @@ export const RequestAcceptButton = ({ senderId }: { senderId: string }) => {
                     'use server'
                     console.log('rejected');
                     // await sendFriendRequest({ receiverId: user.id as string, groupId: null, message: 'ght' })
-                    // revalidatePath('/dashboard/users')
+                    // revalidatePath('/dashboard/users') //TODO
                 }}
             >
 
