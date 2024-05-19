@@ -35,6 +35,16 @@ app.prepare().then(() => {
       socket.to(data.socketId).emit('userMessage', data) //TODO edit message
     })
 
+    socket.on('revalidateUserForRequest', (data) => {
+      socket.emit('revalidateUser', '') //TODO edit message
+      socket.to(data.socketId).emit('userRequest', data) //TODO edit message
+    })
+
+    socket.on('revalidateUserForRequestAccept', (data) => {
+      socket.emit('revalidateUser', '') //TODO edit message
+      socket.to(data.socketId).emit('userRequestAccepted', data) //TODO edit message
+    })
+
 
 
     //listnenig for the disconnect event
