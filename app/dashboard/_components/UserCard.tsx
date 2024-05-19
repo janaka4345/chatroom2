@@ -6,7 +6,7 @@ type Requested = "REQUESTED" | "SENT_REQUEST" | "NONE"
 
 import UserAvatar from '@/components/custom/UserAvatar'
 import { type User } from '@prisma/client'
-export default function UserCard({ user, request }: { user: Partial<User>, request: Requested }) {
+export default async function UserCard({ user, request }: { user: Partial<User>, request: Requested }) {
 
     const CTAButton = (request: Requested) => {
         switch (request) {
