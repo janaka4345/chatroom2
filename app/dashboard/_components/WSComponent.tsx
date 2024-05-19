@@ -6,6 +6,7 @@ import useSocket from "@/utils/useSocket"
 import { toast } from "sonner"
 import { useEffect } from "react"
 import MessageToast from "@/components/custom/MessageToast"
+import { FriendRequestAcceptedToast, FriendRequestSentToast } from "@/components/custom/FriendRequestToast"
 
 const WSComponent = () => {
     const [isConnected, transport] = useSocket()
@@ -16,7 +17,22 @@ const WSComponent = () => {
         socket.on('userMessage', async (data) => {
             // console.log('message', data)
             // toast(`message${data.message}`)
-            toast(<MessageToast image={data?.image} name={data?.name} message={data.message} />);
+            toast(< MessageToast image={data?.image} name={data?.name} message={data.message} />);
+
+            await revalidateRequest()
+        })
+
+        socket.on('userRequest', async (data) => {
+            console.log('message', data)
+            // toast(`message${data.message}`)
+            toast(<FriendRequestSentToast image={data?.image} name={data?.name} message={data.message} senderId={data.senderId} />);
+
+            await revalidateRequest()
+        })
+
+        socket.on('userRequestAccepted', async (data) => {
+            // toast(`message${data.message}`)
+            toast(<FriendRequestAcceptedToast image={data?.image} name={data?.name} message={data.message} />);
 
             await revalidateRequest()
         })
@@ -31,7 +47,6 @@ const WSComponent = () => {
 
         return () => {
             socket.off('userMessage', async (data) => {
-                // console.log('message', data)
                 toast(`message ${data.message}`)
                 await revalidateRequest()
             })
