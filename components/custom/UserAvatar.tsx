@@ -1,13 +1,11 @@
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import AvatarIcon from './AvatarIcon'
+
 
 const UserAvatar = ({ image, name }: { image: string, name: string }) => {
     return (
-        <Avatar >
-            <AvatarImage src={image} alt="avatar" />
-            <AvatarFallback>
-                {name.slice(0, 2).toUpperCase()}
-            </AvatarFallback>
-        </Avatar>
+        <AvatarIcon image={image} name={name} />
+        // TODO user details popup 
+
     )
 }
 export default UserAvatar

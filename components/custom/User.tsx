@@ -1,18 +1,13 @@
 import { auth } from '@/auth'
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
-import { cn } from '@/lib/utils'
-export default async function User({ className }: { className?: String }) {
+import AvatarIcon from './AvatarIcon'
+export default async function User({ className }: { className?: string }) {
     const session = await auth()
 
     if (!session?.user) {
         return null
     }
     return (
-        <Avatar className={cn(className)}>
-            <AvatarImage src={session?.user?.image!} alt="avatar" />
-            <AvatarFallback>
-                {(session.user?.name as string).slice(0, 2).toUpperCase()}
-            </AvatarFallback>
-        </Avatar>
+        <AvatarIcon className={className} image={session?.user?.image!} name={session.user?.name as string} />
+        // TODO user setiings including edit profile sign out etc
     )
 }
