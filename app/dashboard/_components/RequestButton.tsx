@@ -1,7 +1,11 @@
+'use client'
 import { Button } from "@/components/ui/button"
-import { acceptRequest, sendFriendRequest } from "@/serverActions/requests/requests"
+import { acceptRequest, rejectRequest, sendFriendRequest } from "@/serverActions/requests/requests"
+import { getFriendWithSocketId } from "@/serverActions/users/getUsers"
 import { makeFriends } from "@/serverActions/users/makeFriends"
-import { revalidatePath } from "next/cache"
+import { socket } from "@/socket"
+import { useSession } from "next-auth/react"
+import { useRouter } from "next/navigation"
 
 export const RequestSentButton = () => {
     return (
@@ -9,42 +13,38 @@ export const RequestSentButton = () => {
     )
 }
 export const RequestButton = ({ receiverId, groupId, message }: { receiverId: string, groupId: string | null, message: string | null }) => {
-    return (<form
-        action={async () => {
-            'use server'
-            await sendFriendRequest({ receiverId: receiverId, groupId: groupId, message: message })
-            revalidatePath('/dashboard/users')
-        }}
-    >
+    const { data } = useSession()
 
-        <Button type='submit'>Send Request</Button>
-
-    </form>)
+    const handleClick = async () => {
+        await sendFriendRequest({ receiverId: receiverId, groupId: groupId, message: message })
+        const friend = await getFriendWithSocketId(receiverId);
+        socket.emit('revalidateUserForRequest', { socketId: friend?.socketId, message: message, image: data?.user?.image, name: data?.user?.name, senderId: data?.user?.id }) //TODO do i need friends image and name or just senders name and image
+    }
+    return (
+        <Button onClick={handleClick}>Send Request</Button>
+    )
 }
 export const RequestAcceptButton = ({ senderId }: { senderId: string }) => {
+    const { data } = useSession()
+    const router = useRouter()
+    const handleAcceptClick = async () => {
+        await acceptRequest(senderId)
+        await makeFriends({ friendId: senderId })
+        const friend = await getFriendWithSocketId(senderId);
+        socket.emit('revalidateUserForRequestAccept', { socketId: friend?.socketId, image: data?.user?.image, name: data?.user?.name }) //TODO do i need friends image and name or just senders name and image
+
+    }
+    const handleRejectClick = async () => {
+        console.log('rejected');
+        await rejectRequest({ senderId: senderId, receiverId: data?.user?.id as string })
+        // await sendFriendRequest({ receiverId: user.id as string, groupId: null, message: 'ght' })
+        router.refresh()
+    }
     return (
         <div className="flex flex-row gap-2">
-            <form
-                action={async () => {
-                    'use server'
-                    // console.log('accepted');
-                    await acceptRequest(senderId)
-                    await makeFriends({ friendId: senderId })
-                    revalidatePath('/dashboard/users')
-                }}
-            >
-
-                <Button type="submit">Accept</Button> </form>
-            <form
-                action={async () => {
-                    'use server'
-                    console.log('rejected');
-                    // await sendFriendRequest({ receiverId: user.id as string, groupId: null, message: 'ght' })
-                    // revalidatePath('/dashboard/users') //TODO
-                }}
-            >
-
-                <Button type="submit">Reject</Button> </form></div>
+            <Button onClick={handleAcceptClick}>Accept</Button>
+            <Button onClick={handleRejectClick}>Reject</Button>
+        </div>
     )
 }
 export const DefaultButton = () => {
