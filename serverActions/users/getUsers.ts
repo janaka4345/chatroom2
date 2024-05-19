@@ -96,7 +96,7 @@ export const getAllUsersWithoutFriends = async () => {
     }
 }
 
-export const getFriendBySocketId = async (userId: string) => {
+export const getFriendWithSocketId = async (userId: string) => {
     const friend = await prisma.user.findUnique({
         where: {
             id: userId,
