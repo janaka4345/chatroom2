@@ -42,6 +42,17 @@ export const getRequestSentUsers = async () => {
     })
     return requestSentUsers
 }
+// export const getRequestSentAndPendingUsers = async () => {
+//     const session = await auth()
+
+//     const requestSentUsers = await prisma.request.findMany({
+//         where: {
+//             senderId: session?.user?.id as string,
+//             status: { not: 'ACCEPTED' },
+//         },
+//     })
+//     return requestSentUsers
+// }
 
 export const getRequested = async () => {
     const session = await auth()
@@ -69,4 +80,19 @@ export const acceptRequest = async (senderId: string) => {
         },
     })
     return { success: 'success accepted' } //TODO
+}
+
+export const rejectRequest = async ({
+    senderId,
+    receiverId,
+}: {
+    senderId: string
+    receiverId: string
+}) => {
+    await prisma.request.deleteMany({
+        where: {
+            senderId: senderId,
+            receiverId: receiverId,
+        },
+    })
 }
