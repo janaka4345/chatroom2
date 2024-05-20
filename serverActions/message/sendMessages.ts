@@ -29,3 +29,22 @@ export const sendPrivateMessages = async ({
         return { error: 'error' }
     }
 }
+
+export const setReadMessages = async ({
+    senderId,
+    receiverId,
+}: {
+    senderId: string
+    receiverId: string
+}) => {
+    await prisma.user_message.updateMany({
+        where: {
+            receiverId: receiverId,
+            senderId: senderId,
+            seen: false,
+        },
+        data: {
+            seen: true,
+        },
+    })
+}
