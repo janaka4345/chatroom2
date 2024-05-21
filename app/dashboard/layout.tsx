@@ -1,5 +1,5 @@
-import Conversations from './_components/Conversations'
-import Sidebar from './_components/Sidebar'
+import Conversations from './_components/Conversations';
+import Sidebar from './_components/Sidebar';
 
 export default function layout({ children }: { children: React.ReactNode }) {
     return (
@@ -9,7 +9,6 @@ export default function layout({ children }: { children: React.ReactNode }) {
                 <Conversations />
             </div>
             <div className="w-[70%]  bg-green-500  relative">{children}</div>
-
         </div>
-    )
+    );
 }

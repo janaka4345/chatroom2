@@ -1,19 +1,19 @@
-'use server'
+'use server';
 
-import { auth } from '@/auth'
-import prisma from '@/utils/prismaClient'
+import { auth } from '@/auth';
+import prisma from '@/utils/prismaClient';
 type FriendRequest = {
-    receiverId: string
-    groupId: string | null
-    message: string | null
-}
+    receiverId: string;
+    groupId: string | null;
+    message: string | null;
+};
 
 export const sendFriendRequest = async ({
     receiverId,
     groupId,
     message,
 }: FriendRequest) => {
-    const session = await auth()
+    const session = await auth();
     // if (!session) {
     //     return null
     // } TODO error handle
@@ -25,23 +25,23 @@ export const sendFriendRequest = async ({
                 message: message,
                 senderId: session?.user?.id as string, // TODO typescript fix
             },
-        })
-        return { success: 'request ent' }
+        });
+        return { success: 'request ent' };
     } catch (error) {
-        return { error: 'something went wrong' }
+        return { error: 'something went wrong' };
     }
-}
+};
 
 export const getRequestSentUsers = async () => {
-    const session = await auth()
+    const session = await auth();
 
     const requestSentUsers = await prisma.request.findMany({
         where: {
             senderId: session?.user?.id as string,
         },
-    })
-    return requestSentUsers
-}
+    });
+    return requestSentUsers;
+};
 // export const getRequestSentAndPendingUsers = async () => {
 //     const session = await auth()
 
@@ -55,18 +55,18 @@ export const getRequestSentUsers = async () => {
 // }
 
 export const getRequested = async () => {
-    const session = await auth()
+    const session = await auth();
 
     const requested = await prisma.request.findMany({
         where: {
             receiverId: session?.user?.id as string,
         },
-    })
-    return requested
-}
+    });
+    return requested;
+};
 
 export const acceptRequest = async (senderId: string) => {
-    const session = await auth()
+    const session = await auth();
 
     await prisma.request.updateMany({
         where: {
@@ -78,21 +78,21 @@ export const acceptRequest = async (senderId: string) => {
         data: {
             status: 'ACCEPTED',
         },
-    })
-    return { success: 'success accepted' } //TODO
-}
+    });
+    return { success: 'success accepted' }; //TODO
+};
 
 export const rejectRequest = async ({
     senderId,
     receiverId,
 }: {
-    senderId: string
-    receiverId: string
+    senderId: string;
+    receiverId: string;
 }) => {
     await prisma.request.deleteMany({
         where: {
             senderId: senderId,
             receiverId: receiverId,
         },
-    })
-}
+    });
+};

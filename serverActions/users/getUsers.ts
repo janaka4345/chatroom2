@@ -1,7 +1,7 @@
-'use server'
+'use server';
 
-import { auth } from '@/auth'
-import prisma from '@/utils/prismaClient'
+import { auth } from '@/auth';
+import prisma from '@/utils/prismaClient';
 
 export const getUserByEmailForAdmin = async (email: string) => {
     try {
@@ -9,12 +9,12 @@ export const getUserByEmailForAdmin = async (email: string) => {
             where: {
                 email: email,
             },
-        })
-        return user
+        });
+        return user;
     } catch (error) {
-        return { error }
+        return { error };
     }
-}
+};
 export const getUserByEmail = async (email: string) => {
     try {
         const user = await prisma.user.findFirst({
@@ -26,12 +26,12 @@ export const getUserByEmail = async (email: string) => {
                 name: true,
                 email: true,
             },
-        })
-        return user
+        });
+        return user;
     } catch (error) {
-        return { error }
+        return { error };
     }
-}
+};
 export const getUserByName = async (name: string) => {
     try {
         const user = await prisma.user.findMany({
@@ -43,18 +43,18 @@ export const getUserByName = async (name: string) => {
                 name: true,
                 email: true,
             },
-        })
-        return user
+        });
+        return user;
     } catch (error) {
-        return { error }
+        return { error };
     }
-}
+};
 export const getAllUsers = async () => {
     try {
-        const session = await auth()
-        const currentUser = session?.user
+        const session = await auth();
+        const currentUser = session?.user;
         if (!currentUser?.email) {
-            return { error: 'need to log in first' } //TODO
+            return { error: 'need to log in first' }; //TODO
         }
         const users = await prisma.user.findMany({
             where: {
@@ -68,18 +68,18 @@ export const getAllUsers = async () => {
                 name: true,
                 email: true,
             },
-        })
-        return users
+        });
+        return users;
     } catch (error) {
-        return { error: 'error' }
+        return { error: 'error' };
     }
-}
+};
 export const getAllUsersWithoutFriends = async () => {
     try {
-        const session = await auth()
-        const currentUser = session?.user
+        const session = await auth();
+        const currentUser = session?.user;
         if (!currentUser?.email) {
-            return { error: 'need to log in first' } //TODO
+            return { error: 'need to log in first' }; //TODO
         }
         const users = await prisma.user.findMany({
             include: {
@@ -89,12 +89,12 @@ export const getAllUsersWithoutFriends = async () => {
                     },
                 },
             },
-        })
-        return users
+        });
+        return users;
     } catch (error) {
-        return { error: 'error' }
+        return { error: 'error' };
     }
-}
+};
 
 export const getFriendWithSocketId = async (userId: string) => {
     const friend = await prisma.user.findUnique({
@@ -107,6 +107,6 @@ export const getFriendWithSocketId = async (userId: string) => {
             name: true,
             image: true,
         },
-    })
-    return friend
-}
+    });
+    return friend;
+};

@@ -1,6 +1,4 @@
 export default function AuthForm() {
     // TODO
-  return (
-    <div>AuthForm</div>
-  )
+    return <div>AuthForm</div>;
 }

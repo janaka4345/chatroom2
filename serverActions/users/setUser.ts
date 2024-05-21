@@ -1,5 +1,5 @@
-'use server'
-import prisma from '@/utils/prismaClient'
+'use server';
+import prisma from '@/utils/prismaClient';
 export const setUserStatus = async (id: string, status: boolean) => {
     await prisma.user.update({
         where: {
@@ -8,5 +8,5 @@ export const setUserStatus = async (id: string, status: boolean) => {
         data: {
             status: status,
         },
-    })
-}
+    });
+};
