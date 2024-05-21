@@ -6,6 +6,7 @@ import WSComponent from './dashboard/_components/WSComponent'
 import { auth } from "@/auth"; //TODO uncomment if necessary use Server actions instead
 import SessionProvider from '@/components/custom/SessionProvider'
 import { Toaster } from "@/components/ui/sonner"
+import Navbar from '@/components/custom/Navbar'
 
 const nunito = Nunito({ subsets: ['latin'] })
 
@@ -26,7 +27,7 @@ export default async function RootLayout({
                 <SessionProvider session={session}>
 
                     <main>
-                        {/* <Navbar /> */}
+                        <Navbar />
                         {session?.user && <WSComponent />}
                         <User className="fixed top-0 right-0 w-10 h-10 z-50" />
                         {children}
