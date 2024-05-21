@@ -1,7 +1,17 @@
-import { RequestAcceptButton } from "@/app/dashboard/_components/RequestButton"
-import UserAvatar from "./UserAvatar"
+import { RequestAcceptButton } from '@/app/dashboard/_components/RequestButton';
+import UserAvatar from './UserAvatar';
 
-export const FriendRequestSentToast = ({ image, name, message, senderId }: { image: string, name: string, message: string, senderId: string }) => {
+export const FriendRequestSentToast = ({
+    image,
+    name,
+    message,
+    senderId,
+}: {
+    image: string;
+    name: string;
+    message: string;
+    senderId: string;
+}) => {
     return (
         <div className="flex flex-col">
             <h1>{name} has Sent you a friend request</h1>
@@ -14,10 +24,18 @@ export const FriendRequestSentToast = ({ image, name, message, senderId }: { ima
                 <RequestAcceptButton senderId={senderId} />
             </div>
         </div>
-    )
-}
+    );
+};
 
-export const FriendRequestAcceptedToast = ({ image, name, message, }: { image: string, name: string, message: string, }) => {
+export const FriendRequestAcceptedToast = ({
+    image,
+    name,
+    message,
+}: {
+    image: string;
+    name: string;
+    message: string;
+}) => {
     return (
         <div className="flex flex-col">
             <h1>{name} has accepted your friend request</h1>
@@ -26,5 +44,5 @@ export const FriendRequestAcceptedToast = ({ image, name, message, }: { image: s
                 <h1>{name}</h1>
             </div>
         </div>
-    )
-}
+    );
+};

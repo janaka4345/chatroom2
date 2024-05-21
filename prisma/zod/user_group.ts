@@ -1,18 +1,23 @@
-import * as z from "zod"
-import { groupRole } from "@prisma/client"
-import { CompleteUser, RelatedUserModel, CompleteGroup, RelatedGroupModel } from "./index"
+import * as z from 'zod';
+import { groupRole } from '@prisma/client';
+import {
+    CompleteUser,
+    RelatedUserModel,
+    CompleteGroup,
+    RelatedGroupModel,
+} from './index';
 
 export const user_groupModel = z.object({
-  id: z.string(),
-  userId: z.string(),
-  groupId: z.string(),
-  role: z.nativeEnum(groupRole),
-  joined: z.date(),
-})
+    id: z.string(),
+    userId: z.string(),
+    groupId: z.string(),
+    role: z.nativeEnum(groupRole),
+    joined: z.date(),
+});
 
 export interface Completeuser_group extends z.infer<typeof user_groupModel> {
-  user: CompleteUser
-  group: CompleteGroup
+    user: CompleteUser;
+    group: CompleteGroup;
 }
 
 /**
@@ -20,7 +25,10 @@ export interface Completeuser_group extends z.infer<typeof user_groupModel> {
  *
  * NOTE: Lazy required in case of potential circular dependencies within schema
  */
-export const Relateduser_groupModel: z.ZodSchema<Completeuser_group> = z.lazy(() => user_groupModel.extend({
-  user: RelatedUserModel,
-  group: RelatedGroupModel,
-}))
+export const Relateduser_groupModel: z.ZodSchema<Completeuser_group> = z.lazy(
+    () =>
+        user_groupModel.extend({
+            user: RelatedUserModel,
+            group: RelatedGroupModel,
+        })
+);

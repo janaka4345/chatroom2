@@ -1,8 +1,8 @@
 const page = () => {
     return (
-        <section className="relative overflow-y-auto h-[90svh] ">
+        <section className="relative h-[90svh] overflow-y-auto ">
             <p>select a conversation</p>
         </section>
-    )
-}
-export default page
+    );
+};
+export default page;

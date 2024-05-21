@@ -1,8 +1,8 @@
-'use server'
-import { auth } from '@/auth'
-import prisma from '@/utils/prismaClient'
+'use server';
+import { auth } from '@/auth';
+import prisma from '@/utils/prismaClient';
 export const makeFriends = async ({ friendId }: { friendId: string }) => {
-    const session = await auth()
+    const session = await auth();
     await prisma.user_friend.createMany({
         data: [
             {
@@ -14,7 +14,7 @@ export const makeFriends = async ({ friendId }: { friendId: string }) => {
                 friendId: session?.user?.id as string,
             },
         ],
-    })
-}
+    });
+};
 
-export const manageFriend = () => {} // TODO manage friend state
+export const manageFriend = () => {}; // TODO manage friend state

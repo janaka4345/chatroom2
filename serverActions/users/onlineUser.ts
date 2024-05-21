@@ -1,15 +1,15 @@
-'use server'
-import { auth } from '@/auth'
-import prisma from '@/utils/prismaClient'
+'use server';
+import { auth } from '@/auth';
+import prisma from '@/utils/prismaClient';
 
 export const setOnlineUserStatus = async ({
     status,
     socketId,
 }: {
-    status: boolean
-    socketId: string | undefined | null
+    status: boolean;
+    socketId: string | undefined | null;
 }) => {
-    const session = await auth()
+    const session = await auth();
     // console.log(session)
 
     // if (session) {
@@ -21,6 +21,6 @@ export const setOnlineUserStatus = async ({
             status: status,
             socketId: socketId,
         },
-    })
+    });
     // }
-}
+};

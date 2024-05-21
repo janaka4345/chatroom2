@@ -1,15 +1,15 @@
-'use server'
+'use server';
 
-import { auth } from '@/auth'
-import prisma from '@/utils/prismaClient'
+import { auth } from '@/auth';
+import prisma from '@/utils/prismaClient';
 export const sendPrivateMessages = async ({
     receiverId,
     message,
 }: {
-    receiverId: string
-    message: string
+    receiverId: string;
+    message: string;
 }) => {
-    const session = await auth()
+    const session = await auth();
     try {
         await prisma.message.create({
             data: {
@@ -23,19 +23,19 @@ export const sendPrivateMessages = async ({
                     ],
                 },
             },
-        })
-        return { success: 'success' }
+        });
+        return { success: 'success' };
     } catch (error) {
-        return { error: 'error' }
+        return { error: 'error' };
     }
-}
+};
 
 export const setReadMessages = async ({
     senderId,
     receiverId,
 }: {
-    senderId: string
-    receiverId: string
+    senderId: string;
+    receiverId: string;
 }) => {
     await prisma.user_message.updateMany({
         where: {
@@ -46,5 +46,5 @@ export const setReadMessages = async ({
         data: {
             seen: true,
         },
-    })
-}
+    });
+};

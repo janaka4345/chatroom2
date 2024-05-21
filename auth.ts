@@ -1,8 +1,8 @@
-import NextAuth from 'next-auth'
+import NextAuth from 'next-auth';
 
-import { PrismaAdapter } from '@auth/prisma-adapter'
-import prisma from './utils/prismaClient'
-import authConfig from './auth.config'
+import { PrismaAdapter } from '@auth/prisma-adapter';
+import prisma from './utils/prismaClient';
+import authConfig from './auth.config';
 // import { setUserStatus } from './serverActions/users/setUser'
 
 export const {
@@ -35,10 +35,10 @@ export const {
 
         session({ session, token }) {
             if (token.sub && session.user) {
-                session.user.id = token.sub
+                session.user.id = token.sub;
             }
-            return session
+            return session;
         },
     },
     ...authConfig,
-})
+});

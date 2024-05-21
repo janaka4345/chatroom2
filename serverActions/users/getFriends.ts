@@ -1,7 +1,7 @@
-import { auth } from '@/auth'
-import prisma from '@/utils/prismaClient'
+import { auth } from '@/auth';
+import prisma from '@/utils/prismaClient';
 export const getFriends = async () => {
-    const session = await auth()
+    const session = await auth();
     if (session?.user) {
         const friends = await prisma.user_friend.findMany({
             where: { userId: session?.user?.id },
@@ -18,14 +18,14 @@ export const getFriends = async () => {
                 status: true,
                 friendId: true,
             },
-        })
-        return friends
+        });
+        return friends;
     }
-    return null
-}
+    return null;
+};
 
 export const getAFriendById = async (friendId: string) => {
-    const session = await auth()
+    const session = await auth();
     const friend = await prisma.user_friend.findFirst({
         where: { AND: [{ userId: session?.user?.id }, { friendId: friendId }] },
         select: {
@@ -33,13 +33,13 @@ export const getAFriendById = async (friendId: string) => {
             status: true,
             friendId: true,
         },
-    })
-    return friend
-}
+    });
+    return friend;
+};
 export const isMyFriend = async (friendId: string) => {
-    const friend = await getAFriendById(friendId)
+    const friend = await getAFriendById(friendId);
     if (friend) {
-        return true
+        return true;
     }
-    return false
-}
+    return false;
+};

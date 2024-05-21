@@ -8,10 +8,10 @@
 
 ## stack
 
-- nextjs
-- server actions
-- socket.io
-- mongodb
-- prisma
-- authjs
-- tailwindcss
+-   nextjs
+-   server actions
+-   socket.io
+-   mongodb
+-   prisma
+-   authjs
+-   tailwindcss

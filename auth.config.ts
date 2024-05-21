@@ -1,10 +1,10 @@
-import GitHub from 'next-auth/providers/github'
-import Google from 'next-auth/providers/google'
+import GitHub from 'next-auth/providers/github';
+import Google from 'next-auth/providers/google';
 
-import Credentials from 'next-auth/providers/credentials'
-import prisma from '@/utils/prismaClient'
+import Credentials from 'next-auth/providers/credentials';
+import prisma from '@/utils/prismaClient';
 
-import type { NextAuthConfig } from 'next-auth'
+import type { NextAuthConfig } from 'next-auth';
 
 export default {
     providers: [
@@ -20,15 +20,15 @@ export default {
                     where: {
                         email: credentials.email as string,
                     },
-                })
+                });
                 if (!user || !user.password) {
-                    throw new Error('User not found.')
+                    throw new Error('User not found.');
                 }
                 if (user.password != credentials.password) {
-                    throw new Error('invalid credentials')
+                    throw new Error('invalid credentials');
                 }
 
-                return user
+                return user;
             },
         }),
         Google({
@@ -40,4 +40,4 @@ export default {
             clientSecret: process.env.GITHUB_CLIENT_SECRET,
         }),
     ],
-} satisfies NextAuthConfig
+} satisfies NextAuthConfig;

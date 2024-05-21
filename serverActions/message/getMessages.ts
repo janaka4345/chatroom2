@@ -1,12 +1,12 @@
-'use server'
-import { auth } from '@/auth'
-import prisma from '@/utils/prismaClient'
+'use server';
+import { auth } from '@/auth';
+import prisma from '@/utils/prismaClient';
 export const getPrivateMessages = async ({
     receiverId,
 }: {
-    receiverId: string
+    receiverId: string;
 }) => {
-    const session = await auth()
+    const session = await auth();
 
     const privateMessages = await prisma.user_message.findMany({
         where: {
@@ -40,16 +40,16 @@ export const getPrivateMessages = async ({
                 },
             },
         },
-    })
-    return privateMessages
-}
+    });
+    return privateMessages;
+};
 
 export const getLastMessage = async ({
     receiverId,
 }: {
-    receiverId: string
+    receiverId: string;
 }) => {
-    const session = await auth()
+    const session = await auth();
     const lastMessage = await prisma.user_message.findFirst({
         orderBy: {
             message: {
@@ -80,6 +80,6 @@ export const getLastMessage = async ({
                 },
             },
         },
-    })
-    return lastMessage
-}
+    });
+    return lastMessage;
+};
