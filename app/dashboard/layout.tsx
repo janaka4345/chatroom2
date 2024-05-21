@@ -3,7 +3,7 @@ import Sidebar from './_components/Sidebar';
 
 export default function layout({ children }: { children: React.ReactNode }) {
     return (
-        <div className="mx-4 flex h-[100svh] flex-row gap-4 p-4 ">
+        <div className="mx-4 flex h-[100svh] flex-row gap-4 px-4 ">
             <div className="flex w-[30%] flex-row gap-4 bg-red-500 ">
                 <Sidebar />
                 <Conversations />
