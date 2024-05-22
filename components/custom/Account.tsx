@@ -1,23 +1,24 @@
 import Link from 'next/link';
 import User from './User';
 import { buttonVariants } from '../ui/button';
+import { cn } from '@/lib/utils';
 
 const Account = () => {
     return (
         <>
             {true ? (
-                <div className="ml-auto flex  w-fit space-x-3">
+                <div className="ml-auto flex  w-fit space-x-3 ">
                     <Link
-                        className={buttonVariants()}
+                        className={cn(buttonVariants({ variant: 'default' }), 'hover:scale-110 duration-150 transition-all')}
                         href="/api/auth/signin"
-                        // className=":bg-blue-700 :ring-blue-800 rounded-lg bg-blue-700 px-4 py-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none  focus:ring-4 focus:ring-blue-300"
+
                     >
                         Sign In
                     </Link>
                     <Link
                         href="/api/auth/signin"
-                        className={buttonVariants()}
-                        // className=":bg-blue-700 :ring-blue-800 rounded-lg bg-blue-700 px-4 py-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none  focus:ring-4 focus:ring-blue-300"
+                        className={cn(buttonVariants({ variant: 'tertiary' }), 'hover:scale-110 duration-150 transition-all')}
+
                     >
                         Log In
                     </Link>

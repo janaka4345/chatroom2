@@ -34,7 +34,7 @@ export default function Navbar() {
                         height={40}
                         alt="Chatter Logo"
                     />
-                    <span className="self-center whitespace-nowrap text-2xl font-semibold text-primary ">
+                    <span className="self-center drop-shadow-lg whitespace-nowrap text-2xl font-semibold text-primary ">
                         Chatter
                     </span>
                 </Link>
@@ -52,7 +52,7 @@ export default function Navbar() {
                             <li key={menuItem.name}>
                                 <Link
                                     href={menuItem.path}
-                                    className=" block rounded px-3 py-2 text-primaryAccent transition-all  duration-150  hover:scale-110 md:p-0 "
+                                    className=" block rounded px-3 py-2 text-primary transition-all drop-shadow-lg   duration-150  hover:scale-110 md:p-0 "
                                 >
                                     {menuItem.name}
                                 </Link>
