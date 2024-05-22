@@ -28,18 +28,11 @@ const config = {
                     DEFAULT: 'hsl(var(--primary))',
                     foreground: 'hsl(var(--primary-foreground))',
                 },
-                primaryAccent: {
-                    DEFAULT: 'hsl(var(--primary-accent))',
-                    foreground: 'hsl(var(--primary-accent-foreground))',
-                },
                 secondary: {
                     DEFAULT: 'hsl(var(--secondary))',
                     foreground: 'hsl(var(--secondary-foreground))',
                 },
-                secondaryAccent: {
-                    DEFAULT: 'hsl(var(--secondary-accent))',
-                    foreground: 'hsl(var(--secondary-accent-foreground))',
-                },
+
                 destructive: {
                     DEFAULT: 'hsl(var(--destructive))',
                     foreground: 'hsl(var(--destructive-foreground))',
