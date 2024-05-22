@@ -2,17 +2,17 @@ import { auth } from '@/auth'; //TODO uncomment if necessary use Server actions 
 import Navbar from '@/components/custom/Navbar';
 import SessionProvider from '@/components/custom/SessionProvider';
 import { Toaster } from '@/components/ui/sonner';
+import { cn } from '@/lib/utils';
 import type { Metadata } from 'next';
 import { Nunito } from 'next/font/google';
 import WSComponent from './dashboard/_components/WSComponent';
 import './globals.css';
-import { cn } from '@/lib/utils';
 
 const nunito = Nunito({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
     title: 'Chatter',
-    description: 'Your most trusted end to end encrypted Chat app',
+    description: 'Your most trusted end-to-end encrypted Chat app',
 };
 
 export default async function RootLayout({
@@ -23,9 +23,15 @@ export default async function RootLayout({
     const session = await auth();
     return (
         <html lang="en">
-            <body className={cn(nunito.className, 'bg-gradient-to-b via-slate-200 from-white  to-accent')}>
+            {/* <body className={cn(nunito.className, 'bg-gradient-to-b via-slate-200 from-white  to-accent')}> */}
+            <body
+                className={nunito.className}
+                style={{
+                    background: 'radial-gradient(circle at 0px 0px, rgba(34,193,195,1) 0%, rgba(45,245,253,0) 100%)'
+                }}
+            >
                 <SessionProvider session={session}>
-                    <main >
+                    <main>
                         <Navbar />
                         {session?.user && <WSComponent />}
                         {children}

@@ -1,11 +1,9 @@
 const BentoMessage = () => {
     return (
-        <div className="relative w-[168px] h-[168px]  flex justify-center items-center  mx-auto overflow-hidden">
-
-            {/* <div className="absolute z-20 h-8 w-[84px] top-1/2 left-0 origin-bottom-right   bg-green-500 animate-spin-slow  " /> */}
-            <div className="absolute z-0 h-8 w-[120px] top-1/2 left-1/2  origin-top-left bg-gradient-to-t  from-blue-500  animate-spin-slow" />
-            <div className="z-10 w-40 h-40 bg-red-500"></div>
+        <div className="relative mx-auto flex h-[168px]  w-[168px] items-center justify-center  overflow-hidden rounded-lg">
+            <div className="absolute left-1/2 top-1/2 z-0 h-8 w-[120px]  origin-top-left animate-spin-slow  bg-gradient-to-t  from-white" />
+            <div className="z-10 h-40 w-40 rounded-lg bg-red-500"></div>
         </div>
-    )
-}
-export default BentoMessage
+    );
+};
+export default BentoMessage;

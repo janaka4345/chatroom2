@@ -3,25 +3,27 @@ import Link from 'next/link';
 import Account from './Account';
 
 export default function Navbar() {
-    const menuItems = [{
-        name: 'Home',
-        path: '/'
-    },
-    {
-        name: 'Dashboard',
-        path: '/dashboard'
-    },
-    {
-        name: 'Pricing',
-        path: '/pricing'
-    },
-    {
-        name: 'Contact Us',
-        path: '/contact'
-    }]
+    const menuItems = [
+        {
+            name: 'Home',
+            path: '/',
+        },
+        {
+            name: 'Dashboard',
+            path: '/dashboard',
+        },
+        {
+            name: 'Pricing',
+            path: '/pricing',
+        },
+        {
+            name: 'Contact Us',
+            path: '/contact',
+        },
+    ];
     return (
-        <nav className=" px-32 backdrop:blur-md">
-            <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto py-4">
+        <nav className="px-4  lg:px-20 backdrop:blur-md">
+            <div className="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between py-4">
                 <Link
                     href="/"
                     className="flex items-center space-x-3 rtl:space-x-reverse"
@@ -44,13 +46,13 @@ export default function Navbar() {
                         </svg>
                     </button> */}
                 </div>
-                <div className="hidden w-full items-center justify-between  md:flex md:w-fit md:mx-auto">
+                <div className="hidden w-full items-center justify-between  md:mx-auto md:flex md:w-fit">
                     <ul className="md: mt-4 flex flex-col rounded-lg border  p-4 font-medium md:mt-0 md:flex-row md:space-x-8 md:border-0   ">
-                        {menuItems.map(menuItem => (
+                        {menuItems.map((menuItem) => (
                             <li key={menuItem.name}>
                                 <Link
                                     href={menuItem.path}
-                                    className=" block rounded px-3 py-2 text-primaryAccent hover:scale-110  md:p-0  duration-150 transition-all "
+                                    className=" block rounded px-3 py-2 text-primaryAccent transition-all  duration-150  hover:scale-110 md:p-0 "
                                 >
                                     {menuItem.name}
                                 </Link>
