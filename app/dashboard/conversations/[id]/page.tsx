@@ -4,6 +4,7 @@ import { isMyFriend } from '@/serverActions/users/getFriends';
 import MessageBox from '../_components/MessageBox';
 import MessageInput from '../_components/MessageInput';
 import { setReadMessages } from '@/serverActions/message/sendMessages';
+import AutoScroll from '../../_components/AutoScroll';
 
 export default async function conversationsPage({
     params,
@@ -11,6 +12,7 @@ export default async function conversationsPage({
     params: { id: string };
 }) {
     const session = await auth();
+
     const isFriend = await isMyFriend(params.id);
     if (!isFriend) {
         return <h1>this user is not a friend</h1>;
@@ -21,9 +23,11 @@ export default async function conversationsPage({
         senderId: params.id,
         receiverId: session?.user?.id as string,
     });
+
+
     return (
         <>
-            <section className="relative h-[70svh] overflow-y-auto ">
+            <section className="relative h-[65svh] overflow-y-auto mt-5">
                 {messages.map((message) =>
                     message.senderId === session?.user?.id ? (
                         <MessageBox
@@ -43,6 +47,7 @@ export default async function conversationsPage({
                         />
                     )
                 )}
+                <AutoScroll />
             </section>
             <MessageInput receiverId={params.id} />
         </>
