@@ -44,7 +44,7 @@ const MessageInput = ({ receiverId }: { receiverId: string }) => {
         form.reset();
     }
     return (
-        <div className="ml-auto w-[50dvw] mt-auto mr-4 mb-4">
+        <div className="mb-4 ml-auto mr-4 mt-auto w-[50dvw]">
             <Form {...form}>
                 <form
                     onSubmit={form.handleSubmit(onSubmit)}
@@ -66,7 +66,9 @@ const MessageInput = ({ receiverId }: { receiverId: string }) => {
                             </FormItem>
                         )}
                     />
-                    <Button type="submit" className='ml-auto rou'>Send</Button>
+                    <Button type="submit" className="rou ml-auto">
+                        Send
+                    </Button>
                 </form>
             </Form>
         </div>

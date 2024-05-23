@@ -24,10 +24,9 @@ export default async function conversationsPage({
         receiverId: session?.user?.id as string,
     });
 
-
     return (
         <>
-            <section className="relative h-[65svh] overflow-y-auto mt-5">
+            <section className="relative mt-5 h-[65svh] overflow-y-auto">
                 {messages.map((message) =>
                     message.senderId === session?.user?.id ? (
                         <MessageBox

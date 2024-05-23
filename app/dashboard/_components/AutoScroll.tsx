@@ -1,5 +1,5 @@
-'use client'
-import { useEffect, useRef } from "react"
+'use client';
+import { useEffect, useRef } from 'react';
 
 const AutoScroll = () => {
     const targetRef = useRef<HTMLDivElement>(null);
@@ -9,11 +9,9 @@ const AutoScroll = () => {
         if (targetRef.current) {
             targetRef.current.scrollIntoView({ behavior: 'smooth' });
         }
-        return () => { }
-    }, [targetRef.current?.offsetTop])
+        return () => {};
+    }, [targetRef.current?.offsetTop]);
 
-    return (
-        <div ref={targetRef} />
-    )
-}
-export default AutoScroll
+    return <div ref={targetRef} />;
+};
+export default AutoScroll;

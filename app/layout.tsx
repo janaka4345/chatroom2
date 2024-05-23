@@ -25,7 +25,8 @@ export default async function RootLayout({
             <body
                 className={poppins.className}
                 style={{
-                    background: 'radial-gradient(circle at 0px 0px, rgba(34,193,195,1) 0%, rgba(45,245,253,0) 100%)'
+                    background:
+                        'radial-gradient(circle at 0px 0px, rgba(34,193,195,1) 0%, rgba(45,245,253,0) 100%)',
                 }}
             >
                 <SessionProvider session={session}>

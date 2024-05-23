@@ -9,16 +9,20 @@ const Account = () => {
             {true ? (
                 <div className="ml-auto flex  w-fit space-x-3 ">
                     <Link
-                        className={cn(buttonVariants({ variant: 'default' }), 'hover:scale-110 duration-150 transition-all')}
+                        className={cn(
+                            buttonVariants({ variant: 'default' }),
+                            'transition-all duration-150 hover:scale-110'
+                        )}
                         href="/api/auth/signin"
-
                     >
                         Sign In
                     </Link>
                     <Link
                         href="/api/auth/signin"
-                        className={cn(buttonVariants({ variant: 'tertiary' }), 'hover:scale-110 duration-150 transition-all')}
-
+                        className={cn(
+                            buttonVariants({ variant: 'tertiary' }),
+                            'transition-all duration-150 hover:scale-110'
+                        )}
                     >
                         Log In
                     </Link>
