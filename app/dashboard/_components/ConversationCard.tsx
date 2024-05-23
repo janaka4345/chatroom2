@@ -20,7 +20,7 @@ export default async function ConversationCard({ friend }: { friend: friend }) {
 
     return (
         <Link href={`/dashboard/conversations/${friend.friendId}`}>
-            <Card className="relative bg-transparent ">
+            <Card className="relative bg-gray-400 rounded-3xl bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-10 border border-gray-100 ">
                 {friend.friend.status && (
                     <Badge variant="notificationMessage" />
                 )}
