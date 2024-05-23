@@ -13,6 +13,8 @@
         --popover: 0 0% 100%;
         --popover-foreground: 0 0% 3.9%;
 
+        --bubble: 49 100% 65%;
+
         --primary: 209 86% 25%;
         --primary-foreground: 0 0% 98%;
 
@@ -91,18 +93,19 @@ body,
 }
 
 *::-webkit-scrollbar-track {
-    background: #f1f1f1;
+    background: hsl(var(--primary-foreground));
+    border-radius: 32px;
     /* Track color */
 }
 
 *::-webkit-scrollbar-thumb {
-    background-color: #888;
+    background-color: hsl(var(--primary));
     /* Thumb color */
     border-radius: 6px;
     /* Rounded corners */
 }
 
 *::-webkit-scrollbar-thumb:hover {
-    background-color: #666;
+    background-color: hsl(var(--primary));
     /* Thumb hover color */
 }
