@@ -1,6 +1,7 @@
 import { auth } from '@/auth';
 import BentoMessage from './_components/BentoMessage';
 import BentoImage from './_components/BentoImage';
+import BentoInfo from './_components/BentoInfo';
 export default async function Home() {
     console.log('home rendered');
 
@@ -15,7 +16,9 @@ export default async function Home() {
                 <BentoMessage />
             </div>
             <div className=" col-start-1 col-end-2 row-start-2 row-end-4 bg-red-500">4</div>
-            <div className=" col-start-1 col-end-3 row-start-4 row-end-6 bg-red-500">5</div>
+            <div className="relative col-start-1 col-end-3 row-start-4 row-end-6 bg-red-500">
+                <BentoInfo />
+            </div>
             <div className="relative col-start-3 col-end-5 row-start-4 row-end-7 bg-red-500"><BentoImage /></div>
             <div className=" col-start-2 col-end-3 row-start-6 row-end-7 bg-red-500">7</div>
 
