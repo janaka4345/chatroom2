@@ -44,18 +44,17 @@ const MessageInput = ({ receiverId }: { receiverId: string }) => {
         form.reset();
     }
     return (
-        <div className=" ">
+        <div className="ml-auto w-[50dvw] mt-auto mr-4 mb-4">
             <Form {...form}>
                 <form
                     onSubmit={form.handleSubmit(onSubmit)}
-                    className="space-y-8"
+                    className="flex flex-col space-y-4 "
                 >
                     <FormField
                         control={form.control}
                         name="message"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Message</FormLabel>
                                 <FormControl>
                                     <Input
                                         placeholder="Your message"
@@ -67,7 +66,7 @@ const MessageInput = ({ receiverId }: { receiverId: string }) => {
                             </FormItem>
                         )}
                     />
-                    <Button type="submit">Submit</Button>
+                    <Button type="submit" className='ml-auto rou'>Send</Button>
                 </form>
             </Form>
         </div>
