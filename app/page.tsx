@@ -1,9 +1,9 @@
 import { auth } from '@/auth';
 import BentoMessage from './_components/BentoMessage';
 import BentoImage from './_components/BentoImage';
-import BentoInfo from './_components/BentoInfo';
+import BentoInfo from './_components/BentoInfoDefault';
 export default async function Home() {
-    console.log('home rendered');
+    // console.log('home rendered');
 
     const session = await auth();
     return (
@@ -20,7 +20,7 @@ export default async function Home() {
             <div className=" col-start-1 col-end-2 row-start-2 row-end-4 bg-red-500">
                 4
             </div>
-            <div className="relative col-start-1 col-end-3 row-start-4 row-end-6 bg-red-500">
+            <div className="relative col-start-1 col-end-3 row-start-4 row-end-6 bg-red-500 overflow-hidden">
                 <BentoInfo />
             </div>
             <div className="relative col-start-3 col-end-5 row-start-4 row-end-7 bg-red-500">
