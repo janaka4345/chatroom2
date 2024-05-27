@@ -6,8 +6,8 @@ import { cn } from '@/lib/utils';
 const Account = () => {
     return (
         <>
-            {true ? (
-                <div className="ml-auto flex  w-fit space-x-3 ">
+            {false ? (
+                <div className="ml-auto md:flex  w-fit space-x-3 hidden ">
                     <Link
                         className={cn(
                             buttonVariants({ variant: 'default' }),
