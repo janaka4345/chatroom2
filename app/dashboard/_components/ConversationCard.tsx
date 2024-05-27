@@ -29,9 +29,9 @@ export default async function ConversationCard({ friend }: { friend: friend }) {
                         name={friend.friend.name!}
                         image={friend.friend.image!}
                     />
-                    <div className="ms-3 space-y-0.5 text-left font-medium dark:text-white rtl:text-right">
+                    <div className="ms-3 space-y-0.5 text-left font-medium rtl:text-right">
                         <div>{friend.friend.name as string}</div>
-                        <div className="line-clamp-2 text-sm text-gray-500 dark:text-gray-400 ">
+                        <div className="line-clamp-2 text-sm text-gray-500 ">
                             {lastMessage?.message.message}
                         </div>
                     </div>
