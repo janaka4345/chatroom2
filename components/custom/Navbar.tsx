@@ -22,7 +22,6 @@ const menuItems = [
 ];
 
 export default function Navbar() {
-
     return (
         <nav className="px-4  backdrop:blur-md lg:px-20">
             <div className="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between py-4">
@@ -40,8 +39,6 @@ export default function Navbar() {
                         Chatter
                     </span>
                 </Link>
-
-
 
                 <div className="hidden w-full items-center justify-between  md:mx-auto md:flex md:w-fit">
                     <ul className="md: mt-4 flex flex-col rounded-lg border  p-4 font-medium md:mt-0 md:flex-row md:space-x-8 md:border-0   ">
@@ -63,4 +60,3 @@ export default function Navbar() {
         </nav>
     );
 }
-

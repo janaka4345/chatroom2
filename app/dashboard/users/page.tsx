@@ -50,10 +50,20 @@ export default async function usersPage() {
                     }
                     if (requestedList.includes(user?.id as string)) {
                         return (
-                            <UserCard key={i} user={user} request="REQUESTED" />
+                            <UserCard
+                                key={i}
+                                user={user}
+                                request="REQUESTED"
+                            />
                         );
                     }
-                    return <UserCard key={i} user={user} request="NONE" />; //TODO fix type errors
+                    return (
+                        <UserCard
+                            key={i}
+                            user={user}
+                            request="NONE"
+                        />
+                    ); //TODO fix type errors
                 })}
             </div>
         </section>

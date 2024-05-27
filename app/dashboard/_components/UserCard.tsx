@@ -41,7 +41,10 @@ export default async function UserCard({
         <Card className="relative w-fit bg-transparent">
             <Badge variant="notificationOnline" />
             <CardContent className="flex items-center justify-center p-0 ">
-                <UserAvatar name={user?.name!} image={user?.image!} />
+                <UserAvatar
+                    name={user?.name!}
+                    image={user?.image!}
+                />
                 <div className="ms-3 space-y-0.5 text-left font-medium dark:text-white rtl:text-right">
                     <div>{user?.name}</div>
                     {CTAButton(request)}

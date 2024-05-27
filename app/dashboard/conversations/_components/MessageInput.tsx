@@ -66,7 +66,10 @@ const MessageInput = ({ receiverId }: { receiverId: string }) => {
                             </FormItem>
                         )}
                     />
-                    <Button type="submit" className="rou ml-auto">
+                    <Button
+                        type="submit"
+                        className="rou ml-auto"
+                    >
                         Send
                     </Button>
                 </form>

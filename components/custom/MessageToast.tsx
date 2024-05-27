@@ -12,7 +12,10 @@ const MessageToast = ({
     return (
         <>
             {' '}
-            <UserAvatar image={image} name={name} />
+            <UserAvatar
+                image={image}
+                name={name}
+            />
             <div className="flex flex-col">
                 <h1>{name}</h1>
                 <h1>{message}</h1>

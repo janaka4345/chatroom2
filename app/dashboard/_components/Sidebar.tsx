@@ -24,7 +24,10 @@ export default function Sidebar() {
             </Link>
             <br />
 
-            <Link href="/dashboard/settings" className="mt-auto">
+            <Link
+                href="/dashboard/settings"
+                className="mt-auto"
+            >
                 {' '}
                 <svg className=" h-8 w-8 fill-black   ">
                     <use xlinkHref="http://localhost:3000/svg/sprite.svg#FiSettings"></use>

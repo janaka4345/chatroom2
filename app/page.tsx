@@ -17,7 +17,6 @@ export default async function Home() {
                 {/* <BentoDescription /> */}1
             </div>
             <div className="relative  col-start-2 col-end-4 row-start-1 row-end-4  bg-red-500">
-
                 {/* <BentoImageMove /> */}2
             </div>
             <div className=" col-start-4 col-end-5 row-start-1 row-end-3 bg-red-500">
@@ -29,14 +28,16 @@ export default async function Home() {
             <div className="relative col-start-1 col-end-3 row-start-4 row-end-6  bg-red-500">
                 {/* <BentoInfo /> */}5
             </div>
-            <div style={{
-                background:
-                    'radial-gradient(circle at 0px 0px, hsl(var(--primary))  0%, hsl(var(--accent)) 100%)',
-            }}
-                className=" col-start-3 col-end-5 row-start-4 row-end-7 border border-gray-100 bg-red-500 overflow-hidden rounded-3xl   relative">
+            <div
+                style={{
+                    background:
+                        'radial-gradient(circle at 0px 0px, hsl(var(--primary))  0%, hsl(var(--accent)) 100%)',
+                }}
+                className=" relative col-start-3 col-end-5 row-start-4 row-end-7 overflow-hidden rounded-3xl border border-gray-100   bg-red-500"
+            >
                 {/* <BentoPreview /> */}6
             </div>
-            <div className=" col-start-2 col-end-3 row-start-6 row-end-7  relative bg-red-500">
+            <div className=" relative col-start-2 col-end-3 row-start-6  row-end-7 bg-red-500">
                 {/* <BentoUserNotification /> */}7
             </div>
 

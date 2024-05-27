@@ -7,7 +7,7 @@ const Account = () => {
     return (
         <>
             {false ? (
-                <div className="ml-auto md:flex  w-fit space-x-3 hidden ">
+                <div className="ml-auto hidden  w-fit space-x-3 md:flex ">
                     <Link
                         className={cn(
                             buttonVariants({ variant: 'default' }),

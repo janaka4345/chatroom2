@@ -16,7 +16,10 @@ export const FriendRequestSentToast = ({
         <div className="flex flex-col">
             <h1>{name} has Sent you a friend request</h1>
             <div className="flex flex-row">
-                <UserAvatar image={image} name={name} />
+                <UserAvatar
+                    image={image}
+                    name={name}
+                />
                 <h1>{name}</h1>
             </div>
             <p>{message}</p>
@@ -40,7 +43,10 @@ export const FriendRequestAcceptedToast = ({
         <div className="flex flex-col">
             <h1>{name} has accepted your friend request</h1>
             <div className="flex flex-row">
-                <UserAvatar image={image} name={name} />
+                <UserAvatar
+                    image={image}
+                    name={name}
+                />
                 <h1>{name}</h1>
             </div>
         </div>

@@ -15,7 +15,10 @@ const MessageBox = ({
     if (type === 'RECEIVE') {
         return (
             <div className="m-4 flex items-start gap-2 ">
-                <UserAvatar name={name} image={image} />
+                <UserAvatar
+                    name={name}
+                    image={image}
+                />
                 <div className="flex flex-col gap-1">
                     <div className="max-w-[300px] text-pretty rounded-b-full rounded-tr-full border border-white  bg-gradient-to-r  from-bubble to-transparent py-2 pl-3  pr-6 text-sm">
                         <p>{message.message}</p>
@@ -38,7 +41,10 @@ const MessageBox = ({
                         {message.sent!.toUTCString()}
                     </div>
                 </div>
-                <UserAvatar name={name} image={image} />
+                <UserAvatar
+                    name={name}
+                    image={image}
+                />
             </div>
         );
     }

@@ -10,7 +10,10 @@ export default async function Conversations() {
             <div className="flex flex-col gap-2 ">
                 {friends
                     ? friends.map((friend, i) => (
-                          <ConversationCard key={i} friend={friend} />
+                          <ConversationCard
+                              key={i}
+                              friend={friend}
+                          />
                       ))
                     : null}
             </div>

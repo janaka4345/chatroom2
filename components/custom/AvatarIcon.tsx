@@ -10,7 +10,10 @@ const AvatarIcon = ({
 }) => {
     return (
         <Avatar className={className}>
-            <AvatarImage src={image} alt="avatar" />
+            <AvatarImage
+                src={image}
+                alt="avatar"
+            />
             <AvatarFallback>{name.slice(0, 2).toUpperCase()}</AvatarFallback>
         </Avatar>
     );
