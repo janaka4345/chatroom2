@@ -2,7 +2,13 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Account from './Account';
 import MobileNav from './MobileNav';
-const menuItems = [
+
+export type MenuItems = {
+    name: string,
+    path: string
+}
+
+const menuItems: MenuItems[] = [
     {
         name: 'Home',
         path: '/',
@@ -24,7 +30,7 @@ const menuItems = [
 export default function Navbar() {
     return (
         <nav className="px-4  backdrop:blur-md lg:px-20">
-            <div className="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between py-4">
+            <div className="mx-auto flex max-w-screen-2xl flex-wrap items-center justify-between py-4">
                 <Link
                     href="/"
                     className="flex items-center space-x-3 rtl:space-x-reverse"
@@ -55,7 +61,7 @@ export default function Navbar() {
                     </ul>
                 </div>
                 <Account />
-                <MobileNav />
+                <MobileNav menuItems={menuItems} login={true} />
             </div>
         </nav>
     );

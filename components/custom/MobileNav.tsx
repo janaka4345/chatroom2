@@ -2,23 +2,21 @@ import {
     Sheet,
     SheetClose,
     SheetContent,
-    SheetDescription,
-    SheetFooter,
-    SheetHeader,
-    SheetTitle,
-    SheetTrigger,
+    SheetTrigger
 } from '@/components/ui/sheet';
-import { Button } from '../ui/button';
-import Account from './Account';
-const MobileNav = () => {
+import { cn } from '@/lib/utils';
+import Link from 'next/link';
+import { Button, buttonVariants } from '../ui/button';
+import { type MenuItems } from './Navbar';
+const MobileNav = ({ menuItems, login }: { menuItems: MenuItems[], login: boolean }) => {
     return (
         <Sheet>
             <SheetTrigger asChild>
                 <div className="flex space-x-3 md:hidden  ">
-                    <button
-                        type="button"
-                        className="inline-flex h-10 w-10 items-center justify-center rounded-lg p-2 text-sm text-primary hover:scale-110 md:hidden "
-                        aria-controls="navbar-cta"
+                    <Button
+                        variant='ghost'
+                        className=" inline-flex h-10 w-10 items-center justify-center rounded-lg p-2 text-sm text-primary hover:scale-110 md:hidden "
+                        aria-controls="navbar"
                         aria-expanded="false"
                     >
                         <span className="sr-only">Open main menu</span>
@@ -36,23 +34,37 @@ const MobileNav = () => {
                                 d="M1 1h15M1 7h15M1 13h15"
                             />
                         </svg>
-                    </button>
+                    </Button>
                 </div>
             </SheetTrigger>
-            <SheetContent>
-                <div className="grid gap-4 py-4">
-                    <div className="grid grid-cols-4 items-center gap-4">
-                        home
-                    </div>
-                    <div className="grid grid-cols-4 items-center gap-4">
-                        dashboard
-                    </div>
+            <SheetContent className=' w-[60dvw]   h-[100dvh] pb-0'>
+                <div className="flex flex-col h-[100dvh] pb-10  gap-2">
+                    {menuItems.map(menuItem => (
+                        <SheetClose key={menuItem.path} asChild>
+                            <Link href={menuItem.path} className={cn(buttonVariants({ variant: 'outline' }), 'text-sm')}>{menuItem.name}</Link>
+                        </SheetClose>
+                    ))}
+                    {login && (
+                        <div className="mt-auto flex flex-col gap-2 ">
+                            <SheetClose asChild><Link
+                                className={cn(
+                                    buttonVariants({ variant: 'default' }),
+                                )}
+                                href="/api/auth/signin"
+                            >
+                                Sign In
+                            </Link></SheetClose>
+                            <SheetClose asChild><Link
+                                href="/api/auth/signin"
+                                className={cn(
+                                    buttonVariants({ variant: 'tertiary' }),
+                                )}
+                            >
+                                Log In
+                            </Link></SheetClose>
+                        </div>
+                    )}
                 </div>
-                <SheetFooter>
-                    <SheetClose asChild>
-                        <Account />
-                    </SheetClose>
-                </SheetFooter>
             </SheetContent>
         </Sheet>
     );
