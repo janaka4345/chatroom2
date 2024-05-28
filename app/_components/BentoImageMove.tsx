@@ -24,9 +24,10 @@ const BentoImageMove = () => {
         >
             <div
                 style={{
-                    transform: 'rotateY(0deg) translateZ(calc((100dvw - 160px)/4))',
+                    transform:
+                        'rotateY(0deg) translateZ(calc((100dvw - 160px)/4))',
                 }}
-                className=" absolute left-0  top-0 flex h-[calc(100dvh/5-8px)] w-[calc((100dvw-32px))] md:h-[calc(85dvh/2-12px)] md:w-[calc((100dvw-160px)/2)] flex-col items-center justify-center   "
+                className=" absolute left-0  top-0 flex h-[calc(100dvh/5-8px)] w-[calc((100dvw-32px))] flex-col items-center justify-center md:h-[calc(85dvh/2-12px)] md:w-[calc((100dvw-160px)/2)]   "
             >
                 <Image
                     src="/image1.png"
@@ -37,9 +38,10 @@ const BentoImageMove = () => {
             </div>
             <div
                 style={{
-                    transform: 'rotateY(90deg) translateZ(calc((100dvw - 160px)/4))',
+                    transform:
+                        'rotateY(90deg) translateZ(calc((100dvw - 160px)/4))',
                 }}
-                className="absolute flex h-[calc(100dvh/5-8px)] w-[calc((100dvw-32px))] md:h-[calc(85dvh/2-12px)] md:w-[calc((100dvw-160px)/2)] flex-col items-center justify-center  rounded-xl "
+                className="absolute flex h-[calc(100dvh/5-8px)] w-[calc((100dvw-32px))] flex-col items-center justify-center rounded-xl md:h-[calc(85dvh/2-12px)]  md:w-[calc((100dvw-160px)/2)] "
             >
                 <Image
                     src="/image2.jpg"
@@ -50,9 +52,10 @@ const BentoImageMove = () => {
             </div>
             <div
                 style={{
-                    transform: 'rotateY(180deg) translateZ(calc((100dvw - 160px)/4))',
+                    transform:
+                        'rotateY(180deg) translateZ(calc((100dvw - 160px)/4))',
                 }}
-                className="absolute flex h-[calc(100dvh/5-8px)] w-[calc((100dvw-32px))] md:h-[calc(85dvh/2-12px)] md:w-[calc((100dvw-160px)/2)] items-center justify-center  rounded-xl "
+                className="absolute flex h-[calc(100dvh/5-8px)] w-[calc((100dvw-32px))] items-center justify-center rounded-xl md:h-[calc(85dvh/2-12px)]  md:w-[calc((100dvw-160px)/2)] "
             >
                 <Image
                     src="/image3.png"
@@ -63,9 +66,10 @@ const BentoImageMove = () => {
             </div>
             <div
                 style={{
-                    transform: 'rotateY(-90deg) translateZ(calc((100dvw - 160px)/4))',
+                    transform:
+                        'rotateY(-90deg) translateZ(calc((100dvw - 160px)/4))',
                 }}
-                className="absolute flex h-[calc(100dvh/5-8px)] w-[calc((100dvw-32px))] md:h-[calc(85dvh/2-12px)] md:w-[calc((100dvw-160px)/2)] items-center justify-center  rounded-xl "
+                className="absolute flex h-[calc(100dvh/5-8px)] w-[calc((100dvw-32px))] items-center justify-center rounded-xl md:h-[calc(85dvh/2-12px)]  md:w-[calc((100dvw-160px)/2)] "
             >
                 <Image
                     src="/image4.jpg"

@@ -4,9 +4,9 @@ import Account from './Account';
 import MobileNav from './MobileNav';
 
 export type MenuItems = {
-    name: string,
-    path: string
-}
+    name: string;
+    path: string;
+};
 
 const menuItems: MenuItems[] = [
     {
@@ -61,7 +61,10 @@ export default function Navbar() {
                     </ul>
                 </div>
                 <Account />
-                <MobileNav menuItems={menuItems} login={true} />
+                <MobileNav
+                    menuItems={menuItems}
+                    login={true}
+                />
             </div>
         </nav>
     );
