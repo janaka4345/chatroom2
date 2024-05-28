@@ -1,7 +1,7 @@
 'use client';
+import { useAnimationFrame } from 'framer-motion';
 import Image from 'next/image';
-import { LazyMotion, domAnimation, useAnimationFrame } from 'framer-motion';
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 
 const BentoImageMove = () => {
     const boxRef = useRef<HTMLDivElement>(null);
@@ -15,67 +15,66 @@ const BentoImageMove = () => {
         );
     });
     return (
-        <LazyMotion features={domAnimation}>
+        <div
+            ref={boxRef}
+            style={{
+                transformStyle: 'preserve-3d',
+            }}
+            className="relative h-[calc(100dvh/5-8px)] w-[calc((100dvw-32px))] md:h-[calc(85dvh/2-12px)] md:w-[calc((100dvw-160px)/2)] "
+        >
             <div
-                ref={boxRef}
                 style={{
-                    transformStyle: 'preserve-3d',
+                    transform: 'rotateY(0deg) translateZ(calc((100dvw - 160px)/4))',
                 }}
-                className="relative h-[280px] w-[600px] "
+                className=" absolute left-0  top-0 flex h-[calc(100dvh/5-8px)] w-[calc((100dvw-32px))] md:h-[calc(85dvh/2-12px)] md:w-[calc((100dvw-160px)/2)] flex-col items-center justify-center   "
             >
-                <div
-                    style={{
-                        transform: 'rotateY(0deg) translateZ(300px)',
-                    }}
-                    className=" absolute left-0  top-0 flex h-[280px] w-[600px] flex-col items-center justify-center   "
-                >
-                    <Image
-                        src="/image1.png"
-                        alt="banner iamge"
-                        fill
-                        className=" object-cover hue-rotate-15 saturate-50 "
-                    />
-                </div>
-                <div
-                    style={{
-                        transform: 'rotateY(90deg) translateZ(300px)',
-                    }}
-                    className="absolute flex h-[280px] w-[600px] flex-col items-center justify-center  rounded-xl "
-                >
-                    <Image
-                        src="/image2.jpg"
-                        alt="banner iamge"
-                        fill
-                        className=" object-cover hue-rotate-15 saturate-50"
-                    />
-                </div>
-                <div
-                    style={{
-                        transform: 'rotateY(180deg) translateZ(300px)',
-                    }}
-                    className="absolute flex h-[280px] w-[600px] items-center justify-center  rounded-xl "
-                >
-                    <Image
-                        src="/image3.png"
-                        alt="banner iamge"
-                        fill
-                        className=" object-cover hue-rotate-15 saturate-50"
-                    />
-                </div>
-                <div
-                    style={{
-                        transform: 'rotateY(-90deg) translateZ(300px)',
-                    }}
-                    className="absolute flex h-[280px] w-[600px] items-center justify-center  rounded-xl "
-                >
-                    <Image
-                        src="/image4.jpg"
-                        alt="banner iamge"
-                        fill
-                        className=" object-cover hue-rotate-15 saturate-50"
-                    />
-                </div>
-                {/* <div
+                <Image
+                    src="/image1.png"
+                    alt="banner image"
+                    fill
+                    className=" object-cover "
+                />
+            </div>
+            <div
+                style={{
+                    transform: 'rotateY(90deg) translateZ(calc((100dvw - 160px)/4))',
+                }}
+                className="absolute flex h-[calc(100dvh/5-8px)] w-[calc((100dvw-32px))] md:h-[calc(85dvh/2-12px)] md:w-[calc((100dvw-160px)/2)] flex-col items-center justify-center  rounded-xl "
+            >
+                <Image
+                    src="/image2.jpg"
+                    alt="banner image"
+                    fill
+                    className=" object-cover"
+                />
+            </div>
+            <div
+                style={{
+                    transform: 'rotateY(180deg) translateZ(calc((100dvw - 160px)/4))',
+                }}
+                className="absolute flex h-[calc(100dvh/5-8px)] w-[calc((100dvw-32px))] md:h-[calc(85dvh/2-12px)] md:w-[calc((100dvw-160px)/2)] items-center justify-center  rounded-xl "
+            >
+                <Image
+                    src="/image3.png"
+                    alt="banner image"
+                    fill
+                    className=" object-cover"
+                />
+            </div>
+            <div
+                style={{
+                    transform: 'rotateY(-90deg) translateZ(calc((100dvw - 160px)/4))',
+                }}
+                className="absolute flex h-[calc(100dvh/5-8px)] w-[calc((100dvw-32px))] md:h-[calc(85dvh/2-12px)] md:w-[calc((100dvw-160px)/2)] items-center justify-center  rounded-xl "
+            >
+                <Image
+                    src="/image4.jpg"
+                    alt="banner image"
+                    fill
+                    className=" object-cover"
+                />
+            </div>
+            {/* <div
                         style={{
                             transform: 'rotateX(90deg) translateZ(300px)'
                         }}
@@ -89,8 +88,7 @@ const BentoImageMove = () => {
                         className="absolute w-[600px] flex justify-center items-center h-[280px]  rounded-xl "
 
                     >6</div> */}
-            </div>
-        </LazyMotion>
+        </div>
     );
 };
 export default BentoImageMove;
