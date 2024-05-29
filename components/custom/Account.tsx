@@ -28,7 +28,7 @@ const Account = () => {
                     </Link>
                 </div>
             ) : (
-                <User className="ml-auto flex h-10 w-10" />
+                <User className="ml-auto flex w-8 h-8 md:h-10 md:w-10" />
             )}
         </>
     );
