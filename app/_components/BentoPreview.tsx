@@ -5,9 +5,9 @@ import { LazyMotion, domAnimation, m } from 'framer-motion';
 const BentoPreview = () => {
     return (
         <>
-            <div className="m-2 mt-2 md:mt-4 flex items-start gap-2 ">
+            <div className="m-2 mt-2 flex items-start gap-2 md:mt-4 ">
                 <AvatarIcon
-                    className='w-7 h-7 md:w-10 md:h-10'
+                    className="h-7 w-7 md:h-10 md:w-10"
                     name="Justin Sunderland"
                     image="/avatars/avatar1.png"
                 />
@@ -15,7 +15,7 @@ const BentoPreview = () => {
                     <div className="max-w-[300px] text-pretty rounded-b-full rounded-tr-full border border-white  bg-gradient-to-r  from-bubble to-transparent py-2 pl-3  pr-6 text-xs md:text-sm">
                         <p>Hi how u doing?</p>
                     </div>
-                    <div className="ml-auto text-[8px] md:text-xs text-gray-100 ">
+                    <div className="ml-auto text-[8px] text-gray-100 md:text-xs ">
                         2.23 p.m.
                     </div>
                 </div>
@@ -33,20 +33,20 @@ const BentoPreview = () => {
                     </div>
                 </div>
                 <AvatarIcon
-                    className='w-7 h-7 md:w-10 md:h-10'
+                    className="h-7 w-7 md:h-10 md:w-10"
                     name="Timmy Arnold"
                     image="/avatars/avatar2.png"
                 />
             </div>
             <div className=" m-2  flex items-start gap-2 ">
                 <AvatarIcon
-                    className='w-7 h-7 md:w-10 md:h-10'
+                    className="h-7 w-7 md:h-10 md:w-10"
                     name="Justin Sunderland"
                     image="/avatars/avatar1.png"
                 />
                 <div className="flex flex-col gap-1">
                     <div className="max-w-[300px] text-pretty rounded-b-full rounded-tr-full border border-white  bg-gradient-to-r  from-bubble to-transparent py-2 pl-3  pr-6 text-xs md:text-sm">
-                        < TypingSkeleton />
+                        <TypingSkeleton />
                     </div>
                 </div>
             </div>
@@ -61,22 +61,20 @@ const BentoPreview = () => {
                             repeat: Infinity,
                             repeatDelay: 2,
                             repeatType: 'mirror',
-
                         },
                     }}
-                    className="absolute bottom-[-90px]  md:bottom-2 right-2  flex h-fit w-fit md:w-[350px] rounded-xl border  border-gray-200 bg-gradient-to-l from-accent to-gray-200 md:p-2 p-[2px] text-gray-500 "
+                    className="absolute bottom-[-90px]  right-2 flex  h-fit w-fit rounded-xl border border-gray-200 bg-gradient-to-l  from-accent to-gray-200 p-[2px] text-gray-500 md:bottom-2 md:w-[350px] md:p-2 "
                 >
-
                     <AvatarIcon
-                        className='w-7 h-7 md:w-10 md:h-10'
+                        className="h-7 w-7 md:h-10 md:w-10"
                         image="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/karen-nelson.png"
                         name="Bonnie Green"
                     />
                     <div className="ms-3  font-normal">
-                        <span className="mb-1 text-xs md:text-sm font-semibold text-gray-900 ">
+                        <span className="mb-1 text-xs font-semibold text-gray-900 md:text-sm ">
                             Jese Leos
                         </span>
-                        <div className="mb-2 w-[50dvw] md:w-full text-xs md:text-sm font-normal line-clamp-1 md:line-clamp-none">
+                        <div className="mb-2 line-clamp-1 w-[50dvw] text-xs font-normal md:line-clamp-none md:w-full md:text-sm">
                             Hi Neil, thanks for sharing your thoughts regarding
                             Flowbite.
                         </div>

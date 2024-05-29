@@ -1,10 +1,10 @@
 const TypingSkeleton = () => {
     return (
-        <div className="relative flex flex-row gap-1 items-end justify-start py-1 ">
-            <span className="animate-blink delay-200 w-2 h-2 md:w-3 md:h-3 scale-75 bg-gray-700 rounded-full" />
-            <span className="animate-blink delay-500 w-2 h-2 md:w-3 md:h-3  scale-75 bg-gray-700 rounded-full" />
-            <span className="animate-blink delay-700 w-2 h-2 md:w-3 md:h-3 scale-75 bg-gray-700 rounded-full" />
+        <div className="relative flex flex-row items-end justify-start gap-1 py-1 ">
+            <span className="h-2 w-2 scale-75 animate-blink rounded-full bg-gray-700 delay-200 md:h-3 md:w-3" />
+            <span className="h-2 w-2 scale-75 animate-blink rounded-full bg-gray-700  delay-500 md:h-3 md:w-3" />
+            <span className="h-2 w-2 scale-75 animate-blink rounded-full bg-gray-700 delay-700 md:h-3 md:w-3" />
         </div>
-    )
-}
-export default TypingSkeleton
+    );
+};
+export default TypingSkeleton;
