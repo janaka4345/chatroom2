@@ -3,10 +3,14 @@ import User from './User';
 import { buttonVariants } from '../ui/button';
 import { cn } from '@/lib/utils';
 
-const Account = () => {
+const Account = ({
+    login,
+}: {
+    login: boolean;
+}) => {
     return (
         <>
-            {false ? (
+            {!login ? (
                 <div className="ml-auto hidden  w-fit space-x-3 md:flex ">
                     <Link
                         className={cn(

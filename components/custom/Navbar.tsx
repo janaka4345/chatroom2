@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Account from './Account';
 import MobileNav from './MobileNav';
+import { auth } from '@/auth';
 
 export type MenuItems = {
     name: string;
@@ -27,7 +28,8 @@ const menuItems: MenuItems[] = [
     },
 ];
 
-export default function Navbar() {
+const Navbar = async () => {
+    const session = await auth();
     return (
         <nav className="px-4  backdrop:blur-md lg:px-20">
             <div className="mx-auto flex max-w-screen-2xl flex-wrap items-center justify-between py-4">
@@ -60,12 +62,14 @@ export default function Navbar() {
                         ))}
                     </ul>
                 </div>
-                <Account />
+                <Account login={!!session?.user} />
                 <MobileNav
                     menuItems={menuItems}
-                    login={true}
+                    login={!!session?.user}
                 />
             </div>
         </nav>
     );
 }
+
+export default Navbar

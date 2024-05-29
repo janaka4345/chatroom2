@@ -61,7 +61,7 @@ const MobileNav = ({
                             </Link>
                         </SheetClose>
                     ))}
-                    {login && (
+                    {!login && (
                         <div className="mt-auto flex flex-col gap-2 ">
                             <SheetClose asChild>
                                 <Link
