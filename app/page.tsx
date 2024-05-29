@@ -21,7 +21,7 @@ export default async function Home() {
                 <BentoImageMove />
                 {/* 2 */}
             </div>
-            <div className="col-start-2 col-end-5 row-start-1 row-end-2 md:col-start-4 md:col-end-5 md:row-start-1 md:row-end-3 ">
+            <div className="z-50 col-start-2 col-end-5 row-start-1 row-end-2 md:col-start-4 md:col-end-5 md:row-start-1 md:row-end-3 ">
                 <BentoMessage />
                 {/* 3 */}
             </div>
@@ -38,12 +38,12 @@ export default async function Home() {
                     background:
                         'radial-gradient(circle at 0px 0px, hsl(var(--primary))  0%, hsl(var(--accent)) 100%)',
                 }}
-                className=" relative col-start-2 col-end-5 row-start-5 row-end-6 overflow-hidden rounded-3xl border border-gray-100 md:col-start-3 md:col-end-5 md:row-start-4 md:row-end-7   "
+                className=" relative col-start-1 col-end-5 row-start-5 row-end-6 overflow-y-auto overflow-x-hidden  rounded-3xl border border-gray-100 md:col-start-3 md:col-end-5 md:row-start-4 md:row-end-7   "
             >
                 <BentoPreview />
                 {/* 6 */}
             </div>
-            <div className=" relative col-start-3 col-end-5 row-start-3 row-end-4 md:col-start-2 md:col-end-3 md:row-start-6  md:row-end-7 ">
+            <div className=" relative col-start-3 col-end-5 row-start-3 row-end-4 md:col-start-2 md:col-end-3 md:row-start-6  md:row-end-7">
                 <BentoUserNotification />
                 {/* 7 */}
             </div>

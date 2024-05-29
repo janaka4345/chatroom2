@@ -21,7 +21,7 @@ const AvatarGroup = ({
                     key={avatar.name}
                     image={avatar.src}
                     name={avatar.name}
-                    className="h-8 w-8 duration-300 hover:h-12 hover:w-12 hover:-translate-y-2 md:h-10 md:w-10 "
+                    className="h-7 w-7 duration-300 md:hover:h-12 md:hover:w-12 hover:h-8 hover:w-8 hover:-translate-y-2 md:h-10 md:w-10 "
                 />
             ))}
         </div>
