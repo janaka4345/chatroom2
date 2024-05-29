@@ -85,11 +85,23 @@ const config = {
                         transform: 'translateX(0px) translateY(190px)',
                     },
                 },
+                blink: {
+                    '0%': {
+                        opacity: '.1',
+                    },
+                    '20%': {
+                        opacity: '1',
+                    },
+                    '100%': {
+                        opacity: '.1',
+                    },
+                },
             },
             animation: {
                 'accordion-down': 'accordion-down 0.2s ease-out',
                 'accordion-up': 'accordion-up 0.2s ease-out',
                 'spin-slow': 'spin 5s linear infinite',
+                blink: 'blink 1s linear 1s  infinite',
                 wiggle: 'wiggle 1s ease-in-out infinite',
                 'border-1': 'border-1 5s linear infinite',
             },
