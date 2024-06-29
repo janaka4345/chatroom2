@@ -26,7 +26,7 @@ const BentoPreview = () => {
                         <p>Fine. How are you</p>
                     </div>
                     <div className="relative max-w-[300px] text-pretty rounded-b-full rounded-tl-full border  border-white bg-gradient-to-l  from-accent  to-transparent px-6 py-2 pl-6 pr-3 text-xs md:text-sm">
-                        <p>i'm at the shopping mall btw ::</p>
+                        <p>im at the shopping mall btw ::</p>
                     </div>
                     <div className="text-right text-xs  text-gray-100 ">
                         2.45 p.m.

@@ -5,11 +5,8 @@ import {
     useAnimate,
     usePresence,
 } from 'framer-motion';
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 const BentoInfo = () => {
-    // const box1ref = useRef<HTMLMotionProps>(null)
-    const box2ref = useRef<HTMLDivElement>(null);
-    const box3ref = useRef<HTMLDivElement>(null);
 
     const [box1Ref, animate] = useAnimate();
     const [isPresent, safeToRemove] = usePresence();
@@ -28,7 +25,7 @@ const BentoInfo = () => {
             exitAnimation();
         }
 
-        return () => {};
+        return () => { };
     }, [isPresent]);
 
     return (
@@ -44,8 +41,8 @@ const BentoInfo = () => {
                         Get your besties even closer
                     </p>
                     <h1 className=" text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl ">
-                        Your <span className="text-primary">FRIENDS</span> are{' '}
-                        <br /> just a <span className="text-primary">TAP</span>{' '}
+                        Your <span className="text-primary">FRIENDS</span> are
+                        <br /> just a <span className="text-primary">TAP</span>
                         away
                     </h1>
                 </div>
