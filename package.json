@@ -5,7 +5,7 @@
     "scripts": {
         "dev": "nodemon server.mjs -p 4000",
         "build": "next build",
-        "start": "NODE_ENV=production nodemon server.mjs -p 4000",
+        "start": "nodemon server.mjs -p 4000",
         "lint": "next lint"
     },
     "dependencies": {
