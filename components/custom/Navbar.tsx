@@ -38,7 +38,7 @@ const Navbar = async () => {
                     className="flex items-center space-x-3 rtl:space-x-reverse"
                 >
                     <Image
-                        src="/logo/logo.png"
+                        src="/logo/Logo.png"
                         width={40}
                         height={40}
                         alt="Chatter Logo"
