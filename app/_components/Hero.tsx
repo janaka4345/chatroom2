@@ -1,5 +1,5 @@
 import BentoMessage from './BentoMessage';
-import BentoInfo from './BentoInfoDefault';
+import BentoInfo from './BentoInfo';
 import BentoUserNotification from './BentoUserNotification';
 import BentoUsercards from './BentoUsercards';
 import BentoImageMove from './BentoImageMove';
