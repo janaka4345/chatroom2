@@ -30,6 +30,9 @@ const BentoImageMove = () => {
                 className=" absolute left-0  top-0 flex h-[calc(100dvh/5-8px)] w-[calc((100dvw-32px))] flex-col items-center justify-center md:h-[calc(85dvh/2-12px)] md:w-[calc((100dvw-160px)/2)]   "
             >
                 <Image
+                    loading="lazy"
+                    decoding="async"
+                    sizes="(min-width: 780px) calc(50vw - 80px), calc(100vw - 32px)"
                     src="/image1.png"
                     alt="banner image"
                     fill
@@ -44,6 +47,9 @@ const BentoImageMove = () => {
                 className="absolute flex h-[calc(100dvh/5-8px)] w-[calc((100dvw-32px))] flex-col items-center justify-center rounded-xl md:h-[calc(85dvh/2-12px)]  md:w-[calc((100dvw-160px)/2)] "
             >
                 <Image
+                    loading="lazy"
+                    decoding="async"
+                    sizes="(min-width: 780px) calc(50vw - 80px), calc(100vw - 32px)"
                     src="/image2.jpg"
                     alt="banner image"
                     fill
@@ -58,6 +64,9 @@ const BentoImageMove = () => {
                 className="absolute flex h-[calc(100dvh/5-8px)] w-[calc((100dvw-32px))] items-center justify-center rounded-xl md:h-[calc(85dvh/2-12px)]  md:w-[calc((100dvw-160px)/2)] "
             >
                 <Image
+                    loading="lazy"
+                    decoding="async"
+                    sizes="(min-width: 780px) calc(50vw - 80px), calc(100vw - 32px)"
                     src="/image3.png"
                     alt="banner image"
                     fill
@@ -72,6 +81,9 @@ const BentoImageMove = () => {
                 className="absolute flex h-[calc(100dvh/5-8px)] w-[calc((100dvw-32px))] items-center justify-center rounded-xl md:h-[calc(85dvh/2-12px)]  md:w-[calc((100dvw-160px)/2)] "
             >
                 <Image
+                    loading="lazy"
+                    decoding="async"
+                    sizes="(min-width: 780px) calc(50vw - 80px), calc(100vw - 32px)"
                     src="/image4.jpg"
                     alt="banner image"
                     fill
