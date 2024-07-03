@@ -15,16 +15,20 @@ const menuItems: MenuItems[] = [
         path: '/',
     },
     {
+        name: 'My Messages',
+        path: '/dashboard/conversations',
+    },
+    {
         name: 'Dashboard',
         path: '/dashboard',
     },
     {
         name: 'Pricing',
-        path: '/pricing',
+        path: '/#pricing',
     },
     {
         name: 'Contact Us',
-        path: '/contact',
+        path: '/#contact',
     },
 ];
 
