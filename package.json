@@ -5,7 +5,7 @@
     "scripts": {
         "dev": "nodemon server.mjs",
         "build": "next build",
-        "start": "NODE_ENV=production nodemon server.mjs",
+        "start": "nodemon server.mjs",
         "lint": "next lint"
     },
     "dependencies": {
