@@ -9,7 +9,7 @@ const Hero = () => {
     return (
         <section
             id="hero"
-            className="grid h-[100dvh] w-[100dvw] grid-cols-4  grid-rows-5 gap-2 px-4 pb-2 md:h-[85dvh]  md:grid-rows-6  md:gap-4 lg:px-20"
+            className="grid h-[100dvh]  grid-cols-4  grid-rows-5 gap-2 px-4 pb-2 md:h-[85dvh]  md:grid-rows-6  md:gap-4 lg:px-20"
         >
             <div className="z-50 col-start-1 col-end-2 row-start-1 row-end-2  md:col-start-1 md:col-end-2 md:row-start-1 md:row-end-2  ">
                 <BentoDescription />
