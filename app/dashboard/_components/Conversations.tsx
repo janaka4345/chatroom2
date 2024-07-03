@@ -5,9 +5,10 @@ export default async function Conversations() {
     const friends = await getFriends(); //TODO use ID instead
 
     return (
-        <div className="w-full overflow-y-auto">
-            <h1>Conversations</h1>
+        <div className="w-full overflow-y-auto bg-blue-500">
+
             <div className="flex flex-col gap-2 ">
+                <h1 className='ml-2 mt-2'>Conversations</h1>
                 {friends
                     ? friends.map((friend, i) => (
                         <ConversationCard
