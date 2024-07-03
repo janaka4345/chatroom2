@@ -6,12 +6,17 @@
 
 ## ERD for database ![ERD for database](https://res.cloudinary.com/dqjfskfxu/image/upload/v1719846701/ERd.drawio_1_f9ofss.png)
 
-## stack
+## Stack
 
--   nextjs
--   server actions
--   socket.io
--   mongodb
--   prisma
--   authjs
--   tailwindcss
+-   Nextjs
+-   Server actions
+-   Socket.io
+-   Mongodb
+-   Prisma
+-   Authjs
+-   Tailwindcss
+-   Docker
+
+## Deployment
+
+Dockerized droplet deployment on digital-ocean with nginx serving as reverse proxy
