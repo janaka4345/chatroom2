@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     output: 'standalone',
-    reactStrictMode: false,
+    // reactStrictMode: false,
     env: {
         AUTH_SECRET: process.env.AUTH_SECRET,
     },
