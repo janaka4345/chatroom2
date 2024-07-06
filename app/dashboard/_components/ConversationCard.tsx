@@ -4,7 +4,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { getLastMessage } from '@/serverActions/message/getMessages';
 import Link from 'next/link';
 
-export type friend = {
+type friend = {
     friend: {
         id: string;
         status: boolean;
@@ -30,7 +30,7 @@ export default async function ConversationCard({ friend }: { friend: friend }) {
                         image={friend.friend.image!}
                     />
                     <div className="  ms-3 space-y-0.5 text-left font-medium rtl:text-right">
-                        <div className='hidden lg:block'>{friend.friend.name as string}</div>
+                        <div className=' lg:block'>{friend.friend.name as string}</div>
                         <div className="line-clamp-2 text-sm text-gray-500 ">
                             {lastMessage?.message.message}
                         </div>
