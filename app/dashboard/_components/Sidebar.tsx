@@ -6,6 +6,7 @@ export default function Sidebar() {
             <Link href="/dashboard">
                 <svg className=" mt-auto h-8 w-8 fill-black  stroke-black" viewBox="0 0 32 33"><path stroke="#000" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.7" d="M12 4.5H5.3c-.7 0-1.3.6-1.3 1.3v9.4c0 .7.6 1.3 1.3 1.3H12c.7 0 1.3-.6 1.3-1.3V5.8c0-.7-.6-1.3-1.3-1.3ZM26.7 4.5H20c-.7 0-1.3.6-1.3 1.3v4c0 .8.6 1.4 1.3 1.4h6.7c.7 0 1.3-.6 1.3-1.4v-4c0-.7-.6-1.3-1.3-1.3ZM26.7 16.5H20c-.7 0-1.3.6-1.3 1.3v9.4c0 .7.6 1.3 1.3 1.3h6.7c.7 0 1.3-.6 1.3-1.3v-9.4c0-.7-.6-1.3-1.3-1.3ZM12 21.8H5.3c-.7 0-1.3.6-1.3 1.4v4c0 .7.6 1.3 1.3 1.3H12c.7 0 1.3-.6 1.3-1.3v-4c0-.8-.6-1.4-1.3-1.4Z" /></svg>
             </Link>
+
             <br />
 
             <Link href="/dashboard/conversations"> <svg className=" mt-auto h-8 w-8 fill-black" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
