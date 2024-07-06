@@ -67,16 +67,15 @@ const BentoPreview = () => {
                 >
                     <AvatarIcon
                         className="h-7 w-7 md:h-10 md:w-10"
-                        image="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/karen-nelson.png"
-                        name="Bonnie Green"
+                        image="/avatars/avatar2.png"
+                        name="Eran McDugal"
                     />
                     <div className="ms-3  font-normal">
                         <span className="mb-1 text-xs font-semibold text-gray-900 md:text-sm ">
-                            Jese Leos
+                            Eran McDugal
                         </span>
                         <div className="mb-2 line-clamp-1 w-[50dvw] text-xs font-normal md:line-clamp-none md:w-full md:text-sm">
-                            Hi Neil, thanks for sharing your thoughts regarding
-                            Flowbite.
+                            Hey shriya darling. luv u
                         </div>
                     </div>
                 </m.div>

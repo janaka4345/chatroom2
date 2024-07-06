@@ -11,7 +11,17 @@ const BentoUsercards = () => {
             >
                 <AvatarIcon
                     className="h-7 w-7 md:h-10 md:w-10"
-                    image="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/karen-nelson.png"
+                    image="/avatars/avatar1.png"
+                    name="Bonnie Green"
+                />
+                <h1 className="ms-1 text-left  text-xs font-medium  md:ms-3  md:text-lg">
+                    Samantha Cook
+                </h1>
+            </div>
+            <div className="gray-200 flex w-full items-center justify-start rounded-full border border-gray-200 bg-gradient-to-l from-accent py-1 pl-2  pr-2 shadow-sm md:w-fit md:pr-14 ">
+                <AvatarIcon
+                    className="h-7 w-7 md:h-10 md:w-10"
+                    image="/avatars/avatar2.png"
                     name="Bonnie Green"
                 />
                 <h1 className="ms-1 text-left  text-xs font-medium  md:ms-3  md:text-lg">
@@ -21,21 +31,11 @@ const BentoUsercards = () => {
             <div className="gray-200 flex w-full items-center justify-start rounded-full border border-gray-200 bg-gradient-to-l from-accent py-1 pl-2  pr-2 shadow-sm md:w-fit md:pr-14 ">
                 <AvatarIcon
                     className="h-7 w-7 md:h-10 md:w-10"
-                    image="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/karen-nelson.png"
+                    image="/avatars/avatar3.png"
                     name="Bonnie Green"
                 />
                 <h1 className="ms-1 text-left  text-xs font-medium  md:ms-3  md:text-lg">
-                    Bonnie Green
-                </h1>
-            </div>
-            <div className="gray-200 flex w-full items-center justify-start rounded-full border border-gray-200 bg-gradient-to-l from-accent py-1 pl-2  pr-2 shadow-sm md:w-fit md:pr-14 ">
-                <AvatarIcon
-                    className="h-7 w-7 md:h-10 md:w-10"
-                    image="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/karen-nelson.png"
-                    name="Bonnie Green"
-                />
-                <h1 className="ms-1 text-left  text-xs font-medium  md:ms-3  md:text-lg">
-                    Bonnie Green
+                    Nirmali Fonseka
                 </h1>
             </div>
         </div>

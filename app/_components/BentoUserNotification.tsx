@@ -6,15 +6,14 @@ const BentoUserNotification = () => {
             <AvatarIcon
                 className="h-7 w-7 md:h-10 md:w-10"
                 image="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/avatars/karen-nelson.png"
-                name="Bonnie Green"
+                name="Jese Leos"
             />
             <div className="ms-3 text-xs font-normal">
                 <span className="mb-1 text-xs font-semibold text-gray-900 md:text-base ">
                     Jese Leos
                 </span>
                 <div className="line-clamp-2 text-xs font-normal md:line-clamp-none md:text-sm">
-                    Hi Neil, thanks for sharing your thoughts regarding
-                    Flowbite.
+                    Hi Neil, thanks for the dinner last night. It was wonderful.
                 </div>
             </div>
         </div>
