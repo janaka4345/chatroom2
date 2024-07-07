@@ -1,12 +1,13 @@
 import UserAvatar from "@/components/custom/UserAvatar";
+import { cn } from "@/lib/utils";
 import { getFriends } from "@/serverActions/users/getFriends";
 import Link from "next/link";
 
-async function ActiveFriends() {
+async function ActiveFriends({ className }: { className?: string }) {
     const friends = await getFriends();
 
     return (
-        <div className='rounded-lg bg-white border mt-0 min-h-10 lg:mt-4 flex h-fit md:hidden flex-row gap-2  pt-2 pb-4  w-full overflow-x-auto overflow-hidden'>
+        <div className={cn('rounded-xl bg-white border  flex h-fit  flex-row gap-2 py-2 pl-4 w-full overflow-x-auto overflow-hidden', className)}>
             {friends?.map((friend, i) => (
                 friend.friend.status ? <Link key={friend.friend.name} href={`/dashboard/conversations/${friend.friendId}`}>
                     <UserAvatar
