@@ -12,14 +12,12 @@ export default async function layout({ children }: { children: React.ReactNode }
             <MobileSideDrawer />
 
             <div
-
-                style={{
-                    background:
-                        'radial-gradient(circle at 800px 0px, rgba(60,105,151,1) 0%, rgba(100,219,253,1) 88%)',
-                }}
-                className="relative h-[85svh]  flex   w-[100%] lg:w-[70%] flex-col overflow-hidden rounded-3xl md:pl-2 pt-2"
+                // style={{
+                //     background:
+                //         'radial-gradient(circle at 800px 0px, rgba(60,105,151,1) 0%, rgba(100,219,253,1) 88%)',
+                // }}
+                className="relative h-[85svh]  flex   w-[100%] lg:w-[70%] flex-col overflow-hidden"
             >
-
                 {children}
             </div>
         </div>
