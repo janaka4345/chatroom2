@@ -44,37 +44,36 @@ const MessageInput = ({ receiverId }: { receiverId: string }) => {
         form.reset();
     }
     return (
-        <div className="mb-4 ml-auto mr-4 mt-auto w-[50dvw]">
-            <Form {...form}>
-                <form
-                    onSubmit={form.handleSubmit(onSubmit)}
-                    className="flex flex-col space-y-4 "
-                >
-                    <FormField
-                        control={form.control}
-                        name="message"
-                        render={({ field }) => (
-                            <FormItem>
-                                <FormControl>
-                                    <Input
-                                        placeholder="Your message"
-                                        {...field}
-                                    />
-                                </FormControl>
+        <Form {...form}>
+            <form
+                onSubmit={form.handleSubmit(onSubmit)}
+                className="mt-auto flex justify-between gap-2  flex-row "
+            >
+                <FormField
+                    control={form.control}
+                    name="message"
+                    render={({ field }) => (
+                        <FormItem className='w-full '>
+                            <FormControl>
+                                <Input
+                                    className='w-[100%]'
+                                    placeholder="Your message"
+                                    {...field}
+                                />
+                            </FormControl>
 
-                                <FormMessage />
-                            </FormItem>
-                        )}
-                    />
-                    <Button
-                        type="submit"
-                        className="rou ml-auto"
-                    >
-                        Send
-                    </Button>
-                </form>
-            </Form>
-        </div>
+                            <FormMessage />
+                        </FormItem>
+                    )}
+                />
+                <Button
+                    type="submit"
+                    className="rounded-lg "
+                >
+                    Send
+                </Button>
+            </form>
+        </Form>
     );
 };
 export default MessageInput;

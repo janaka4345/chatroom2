@@ -23,8 +23,8 @@ const MessageBox = ({
                     <div className="max-w-[300px] text-pretty rounded-b-full rounded-tr-full border border-white  bg-gradient-to-r  from-bubble to-transparent py-2 pl-3  pr-6 text-sm">
                         <p>{message.message}</p>
                     </div>
-                    <div className="ml-auto text-xs text-gray-100 ">
-                        {message.sent!.toUTCString()}
+                    <div className="ml-auto text-xs text-gray-600 ">
+                        {message.sent!.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true, weekday: 'short' })}
                     </div>
                 </div>
             </div>
@@ -37,8 +37,8 @@ const MessageBox = ({
                     <div className="relative max-w-[300px] text-pretty rounded-b-full rounded-tl-full border  border-white bg-gradient-to-l  from-accent  to-transparent px-6 py-2 pl-6 pr-3 text-sm">
                         <p>{message.message}</p>
                     </div>
-                    <div className="text-right text-xs  text-gray-100 ">
-                        {message.sent!.toUTCString()}
+                    <div className="text-right text-xs  text-gray-600 ">
+                        {message.sent!.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true, weekday: 'short' })}
                     </div>
                 </div>
                 <UserAvatar
