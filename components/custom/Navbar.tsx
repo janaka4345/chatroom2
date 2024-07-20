@@ -35,7 +35,7 @@ const menuItems: MenuItems[] = [
 const Navbar = async () => {
     const session = await auth();
     return (
-        <nav className="px-4  backdrop:blur-md lg:px-20">
+        <nav className="px-4 h-[10svh] backdrop:blur-md lg:px-20">
             <div className="mx-auto flex max-w-screen-2xl flex-wrap items-center justify-between py-4">
                 <Link
                     href="/"
