@@ -17,7 +17,7 @@ const Account = ({
                             buttonVariants({ variant: 'default' }),
                             'transition-all duration-150 hover:scale-110'
                         )}
-                        href="/api/auth/signin"
+                        href="/auth/register"
                     >
                         Sign In
                     </Link>

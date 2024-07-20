@@ -27,6 +27,9 @@ export const {
     //         // }
     //     },
     // },
+    pages: {
+        signIn: '/auth/login/',
+    },
     callbacks: {
         //     signIn(params) {
         //         //TODO email verification check
