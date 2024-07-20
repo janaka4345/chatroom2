@@ -29,16 +29,18 @@ export default async function usersPage() {
     //get non friends list
     const nonFriends = !!friendsList?.length
         ? (users as Partial<User>[]).filter(
-              (user) => !friendsList.includes(user.id as string)
-          )
+            (user) => !friendsList.includes(user.id as string)
+        )
         : (users as Partial<User>[]);
     //TODO type error fix
-
+    console.log(nonFriends);
     return (
         <section className="relative h-[90svh] overflow-y-auto">
             <div>
                 {/* render the user card component with respective action buttons */}
-                {nonFriends.map((user, i) => {
+
+
+                {nonFriends?.map((user, i) => {
                     if (requestedUsersList.includes(user?.id as string)) {
                         return (
                             <UserCard
