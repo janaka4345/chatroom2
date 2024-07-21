@@ -8,6 +8,8 @@ import authConfig from './auth.config';
 export const {
     handlers: { GET, POST },
     auth,
+    signIn,
+    signOut,
 } = NextAuth({
     adapter: PrismaAdapter(prisma),
     session: { strategy: 'jwt' },
@@ -29,18 +31,39 @@ export const {
     // },
     pages: {
         signIn: '/auth/login/',
+        // error: '/auth/error/',
     },
     callbacks: {
-        //     signIn(params) {
-        //         //TODO email verification check
-        //         return true
-        //     },
+        // async signIn({ user, account }) {
+        //     if (account?.provider !== 'credentials') {
+        //         return true;
+        //     }
+        //     const existingUser = await getUserById(user.id!);
+        //     if (existingUser?.emailVerified) {
+        //         return true;
+        //     }
+        //     return false;
+        //     // throw Error('verify your email');
+        //     // return { error: 'verify your email' };
+        // },
 
         session({ session, token }) {
             if (token.sub && session.user) {
                 session.user.id = token.sub;
             }
             return session;
+        },
+    },
+    events: {
+        async linkAccount({ user }) {
+            await prisma.user.update({
+                where: {
+                    id: user.id,
+                },
+                data: {
+                    emailVerified: new Date(),
+                },
+            });
         },
     },
     ...authConfig,

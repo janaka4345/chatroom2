@@ -5,39 +5,59 @@ import Credentials from 'next-auth/providers/credentials';
 import prisma from '@/utils/prismaClient';
 
 import type { NextAuthConfig } from 'next-auth';
+import { loginFormSchema } from './lib/schema';
+import { compare } from 'bcryptjs';
 
 export default {
     providers: [
         Credentials({
-            credentials: {
-                email: { label: 'Email', type: 'email' },
-                password: { label: 'Password', type: 'password' },
-            },
             authorize: async (credentials) => {
-                // console.log({ credentials })
+                // console.log({ credentials });
+                const validatedFields = loginFormSchema.safeParse(credentials);
+                if (!validatedFields.success) {
+                    // throw Error('Invalid Fields');
+                    return null;
+                }
+                const { email, password } = validatedFields.data;
 
                 const user = await prisma.user.findFirst({
                     where: {
-                        email: credentials.email as string,
+                        email,
                     },
                 });
+                console.log({ user });
+
                 if (!user || !user.password) {
-                    throw new Error('User not found.');
+                    // throw new Error('User not found.');
+                    return null;
                 }
-                if (user.password != credentials.password) {
-                    throw new Error('invalid credentials');
+                const isPasswordMatching = await compare(
+                    password,
+                    user.password
+                );
+
+                if (isPasswordMatching) {
+                    const userDetails = {
+                        id: user.id,
+                        name: user.name,
+                        image: user.image,
+                        email: user.email,
+                        emailVerified: user.emailVerified,
+                    };
+                    return userDetails;
                 }
 
-                return user;
+                // throw Error('Invalid Credentials');
+                return null;
             },
         }),
         Google({
-            clientId: process.env.GOOGLE_CLIENT_ID,
-            clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+            clientId: process.env.AUTH_GOOGLE_ID,
+            clientSecret: process.env.AUTH_GOOGLE_SECRET,
         }),
         GitHub({
-            clientId: process.env.GITHUB_CLIENT_ID,
-            clientSecret: process.env.GITHUB_CLIENT_SECRET,
+            clientId: process.env.AUTH_GITHUB_ID,
+            clientSecret: process.env.AUTH_GITHUB_SECRET,
         }),
     ],
 } satisfies NextAuthConfig;
