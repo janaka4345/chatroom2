@@ -36,7 +36,7 @@ export default async function RootLayout({
                         {session?.user && <WSComponent />}
                         {children}
                     </main>
-                    <Toaster />
+                    <Toaster richColors />
                 </SessionProvider>
             </body>
         </html>
