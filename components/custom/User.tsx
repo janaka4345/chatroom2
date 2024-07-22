@@ -12,6 +12,8 @@ import AvatarIcon from './AvatarIcon';
 import Link from 'next/link';
 export default async function User({ className }: { className?: string }) {
     const session = await auth();
+    console.log(session);
+
 
     if (!session?.user) {
         return null;
@@ -27,8 +29,8 @@ export default async function User({ className }: { className?: string }) {
             </DropdownMenuTrigger>
             <DropdownMenuContent className="w-56">
                 <DropdownMenuLabel>
-                    <h1>name name2</h1>
-                    <p>email</p>
+                    <h1>{session.user.name}</h1>
+                    <p>{session.user.email}</p>
                 </DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 <DropdownMenuGroup>

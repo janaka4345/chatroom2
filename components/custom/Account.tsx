@@ -19,7 +19,7 @@ const Account = ({
                         )}
                         href="/auth/register"
                     >
-                        Sign In
+                        Register
                     </Link>
                     <Link
                         href="/api/auth/signin"
