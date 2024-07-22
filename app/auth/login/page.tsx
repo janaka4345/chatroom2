@@ -13,13 +13,13 @@ export default function page() {
                 </p>
             </div>
             <LoginAuthForm />
-            <p className="px-8 text-center text-sm text-muted-foreground">
-                Don't remember your password{' '}
+            <p className="text-start text-sm text-muted-foreground">
+                Don't have an account{' '}
                 <Link
-                    href="/passwordRecovery"
+                    href="/auth/register/"
                     className="underline underline-offset-4 hover:text-primary"
                 >
-                    Click Here
+                    Register Here
                 </Link>{" "}
             </p>
         </div>
