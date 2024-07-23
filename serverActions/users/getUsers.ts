@@ -12,7 +12,8 @@ export const getUserByEmailForAdmin = async (email: string) => {
         });
         return user;
     } catch (error) {
-        return { error };
+        console.log(error);
+        return null;
     }
 };
 export const getUserByEmail = async (email: string) => {
@@ -30,6 +31,25 @@ export const getUserByEmail = async (email: string) => {
         return user;
     } catch (error) {
         return { error };
+    }
+};
+export const getUserById = async (id: string) => {
+    try {
+        const user = await prisma.user.findFirst({
+            where: {
+                id,
+            },
+            select: {
+                image: true,
+                name: true,
+                email: true,
+                emailVerified: true,
+            },
+        });
+        return user;
+    } catch (error) {
+        // return { error };
+        console.log(error);
     }
 };
 export const getUserByName = async (name: string) => {
