@@ -96,6 +96,10 @@ const config = {
                         opacity: '.1',
                     },
                 },
+                'caret-blink': {
+                    '0%,70%,100%': { opacity: '1' },
+                    '20%,50%': { opacity: '0' },
+                },
             },
             animation: {
                 'accordion-down': 'accordion-down 0.2s ease-out',
@@ -104,6 +108,7 @@ const config = {
                 blink: 'blink 1s linear 1s  infinite',
                 wiggle: 'wiggle 1s ease-in-out infinite',
                 'border-1': 'border-1 5s linear infinite',
+                'caret-blink': 'caret-blink 1.25s ease-out infinite',
             },
         },
     },
