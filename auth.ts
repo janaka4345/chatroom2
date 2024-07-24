@@ -46,6 +46,10 @@ export const {
         //     // throw Error('verify your email');
         //     // return { error: 'verify your email' };
         // },
+        authorized: async ({ auth }) => {
+            // Logged in users are authenticated, otherwise redirect to login page
+            return !!auth;
+        },
 
         session({ session, token }) {
             if (token.sub && session.user) {
