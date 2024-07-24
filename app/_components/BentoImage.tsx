@@ -4,7 +4,7 @@ const BentoImage = () => {
     return (
         <Image
             src="/image.png"
-            alt="banner iamge"
+            alt="banner image"
             fill
             className="rounded-2xl object-cover"
         />
