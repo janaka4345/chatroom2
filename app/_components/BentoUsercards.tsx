@@ -1,6 +1,6 @@
 import AvatarIcon from '@/components/custom/AvatarIcon';
 
-const BentoUsercards = () => {
+const BentoUserCards = () => {
     return (
         <div className="relative mt-0 flex flex-col gap-[2px] md:mt-2 md:gap-2">
             <div
@@ -10,35 +10,35 @@ const BentoUsercards = () => {
                 className="gray-200 flex w-full items-center justify-start rounded-full border border-gray-200 bg-gradient-to-l from-accent py-1 pl-2  pr-2 shadow-sm md:w-fit md:pr-14 "
             >
                 <AvatarIcon
-                    className="h-7 w-7 md:h-10 md:w-10"
+                    className="h-7 w-7 lg:h-10 lg:w-10"
                     image="/avatars/avatar1.png"
                     name="Bonnie Green"
                 />
-                <h1 className="ms-1 text-left  text-xs font-medium  md:ms-3  md:text-lg">
+                <h1 className="text-wrap lg:text-nowrap ms-1 text-left  text-xs font-medium  md:ms-3   xl:text-lg">
                     Samantha Cook
                 </h1>
             </div>
             <div className="gray-200 flex w-full items-center justify-start rounded-full border border-gray-200 bg-gradient-to-l from-accent py-1 pl-2  pr-2 shadow-sm md:w-fit md:pr-14 ">
                 <AvatarIcon
-                    className="h-7 w-7 md:h-10 md:w-10"
+                    className="h-7 w-7 lg:h-10 lg:w-10"
                     image="/avatars/avatar2.png"
                     name="Bonnie Green"
                 />
-                <h1 className="ms-1 text-left  text-xs font-medium  md:ms-3  md:text-lg">
+                <h1 className="text-wrap lg:text-nowrap ms-1 text-left  text-xs font-medium  md:ms-3   xl:text-lg">
                     Bonnie Green
                 </h1>
             </div>
             <div className="gray-200 flex w-full items-center justify-start rounded-full border border-gray-200 bg-gradient-to-l from-accent py-1 pl-2  pr-2 shadow-sm md:w-fit md:pr-14 ">
                 <AvatarIcon
-                    className="h-7 w-7 md:h-10 md:w-10"
+                    className="h-7 w-7 lg:h-10 lg:w-10"
                     image="/avatars/avatar3.png"
                     name="Bonnie Green"
                 />
-                <h1 className="ms-1 text-left  text-xs font-medium  md:ms-3  md:text-lg">
+                <h1 className="text-wrap lg:text-nowrap ms-1 text-left  text-xs font-medium  md:ms-3   xl:text-lg">
                     Nirmali Fonseka
                 </h1>
             </div>
         </div>
     );
 };
-export default BentoUsercards;
+export default BentoUserCards;
