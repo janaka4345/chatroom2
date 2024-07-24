@@ -1,3 +1,4 @@
+'use server';
 import { auth } from '@/auth';
 import prisma from '@/utils/prismaClient';
 export const getFriends = async () => {

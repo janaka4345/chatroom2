@@ -46,6 +46,8 @@ export const loginFormSchema = z.object({
     password: z.string().min(2, { message: 'password required' }).max(50),
 });
 
+export const recoverPasswordSchema = loginFormSchema.pick({ email: true });
+
 export const verificationTokenSchema = z.object({
     email: z.string().email(),
     verificationToken: z.string().length(6, {

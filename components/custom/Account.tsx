@@ -22,7 +22,7 @@ const Account = ({
                         Register
                     </Link>
                     <Link
-                        href="/api/auth/signin"
+                        href="/auth/login"
                         className={cn(
                             buttonVariants({ variant: 'tertiary' }),
                             'transition-all duration-150 hover:scale-110'
