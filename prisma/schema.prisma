@@ -198,12 +198,12 @@ model VerificationToken {
 model PasswordToken {
   id String @id @default(auto()) @map("_id") @db.ObjectId
 
-  email   String
-  token   String   @unique
+  email   String   @unique
+  token   String
   expires DateTime
 
   @@unique([email, token])
-  @@map("passwordtokens")
+  @@map("passwordtoken")
 }
 
 model twofactorToken {
