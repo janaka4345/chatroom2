@@ -226,7 +226,7 @@ export default function RecoverPasswordVerifyForm() {
                 </form>
             </Form>
             <p>
-                didn't receive the code?
+                didn&apos;t receive the code?
                 <Button variant="link" onClick={requestNewToken}>
                     Request Another
                 </Button>

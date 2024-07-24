@@ -14,7 +14,7 @@ export default function page() {
             </div>
             <LoginAuthForm />
             <p className="text-start text-sm text-muted-foreground">
-                Don't have an account{' '}
+                Don&apos;t have an account{' '}
                 <Link
                     href="/auth/register/"
                     className="underline underline-offset-4 hover:text-primary"

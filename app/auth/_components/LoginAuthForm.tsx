@@ -93,7 +93,7 @@ export function LoginAuthForm() {
                         )}
                     />
                     <p className="ml-auto text-center text-sm text-muted-foreground">
-                        Don't remember your password{' '}
+                        Don&apos;t remember your password{' '}
                         <Link
                             href="/auth/recoverPassword"
                             className="underline underline-offset-4 hover:text-primary"

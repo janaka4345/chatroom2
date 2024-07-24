@@ -175,7 +175,7 @@ export default function VerifyEmailForm() {
                 </form>
             </Form>
             <p>
-                Didn't receive the code?
+                Didn&apos;t receive the code?
                 <Button variant="link" onClick={requestNewToken}>
                     Request Another
                 </Button>
