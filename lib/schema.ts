@@ -62,13 +62,26 @@ export const passwordTokenSchema = z.object({
     }),
 });
 
-export const passwordResetSchema = z.object({
-    email: z.string().email(),
-    passwordToken: z.string().length(6, {
-        message: 'Your one-time password is in invalid format',
-    }),
-    newPassword: z
-        .string()
-        .min(8, { message: 'Password must be at least 8 characters long' }),
-    confirmPassword: z.string().trim(),
-});
+export const passwordResetSchema = z
+    .object({
+        email: z.string().email(),
+        passwordToken: z.string().length(6, {
+            message: 'Your one-time password is in invalid format',
+        }),
+        newPassword: z
+            .string()
+            .min(8, { message: 'Password must be at least 8 characters long' }),
+        confirmPassword: z.string().trim(),
+    })
+    .refine(
+        (data) => {
+            if (data.newPassword === data.confirmPassword) {
+                return true;
+            }
+            return false;
+        },
+        {
+            message: 'password and confirm password must match',
+            path: ['confirmPassword'],
+        }
+    );
