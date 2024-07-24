@@ -21,15 +21,14 @@ import {
 } from '@/components/ui/input-otp'
 
 
-import { passwordResetSchema, passwordTokenSchema } from '@/lib/schema'
-import { useSearchParams } from 'next/navigation'
 import { Input } from '@/components/ui/input'
-import { toast } from 'sonner'
-import { useRouter } from 'next/navigation'
-import { useState } from 'react'
-import { z } from 'zod'
-import { recoverPasswordVerify } from '@/serverActions/credentialAuth/recoverPasswordVerify'
+import { passwordResetSchema } from '@/lib/schema'
 import { newPasswordToken } from '@/serverActions/credentialAuth/newPasswordToken'
+import { recoverPasswordVerify } from '@/serverActions/credentialAuth/recoverPasswordVerify'
+import { useRouter, useSearchParams } from 'next/navigation'
+import { useState } from 'react'
+import { toast } from 'sonner'
+import { z } from 'zod'
 
 export default function RecoverPasswordVerifyForm() {
     const router = useRouter()
