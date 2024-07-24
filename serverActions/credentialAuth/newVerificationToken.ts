@@ -1,8 +1,12 @@
 'use server';
 
+import RegisterVerificationEmail from '@/emails/RegisterVerificationEmail';
 import { verificationTokenSchema } from '@/lib/schema';
 import { generateToken } from '@/utils/generateToken';
 import prisma from '@/utils/prismaClient';
+import { render } from '@react-email/components';
+import { createElement } from 'react';
+import sendEmail from '../sendEmails/sendMail';
 
 type Values = {
     email: string;
@@ -33,6 +37,11 @@ export async function newVerificationToken(values: Values) {
 
     // console.log({ token, expires });
     // console.log(existingToken?.token);
+    const emailHtml = render(
+        createElement(RegisterVerificationEmail, {
+            verificationCode: token,
+        })
+    );
 
     try {
         await prisma.verificationToken.updateMany({
@@ -44,7 +53,17 @@ export async function newVerificationToken(values: Values) {
                 expires,
             },
         });
-        return { success: 'new verification token created successfully' };
+
+        await sendEmail({
+            to: email as string,
+            subject: 'Verify Your Email Address with chatter',
+            text: 'Please verify Your Email Address by providing the following code ',
+            html: emailHtml,
+        });
+        return {
+            success:
+                'new verification token created successfully.Check your email',
+        };
     } catch (error) {
         console.log(error);
         return { error: 'something went wrong' };
