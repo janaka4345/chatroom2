@@ -12,7 +12,7 @@ export default {
     providers: [
         Credentials({
             authorize: async (credentials) => {
-                // console.log({ credentials });
+                // //console.log({ credentials });
                 const validatedFields = loginFormSchema.safeParse(credentials);
                 if (!validatedFields.success) {
                     // throw Error('Invalid Fields');
@@ -25,7 +25,7 @@ export default {
                         email,
                     },
                 });
-                console.log({ user });
+                //console.log({ user });
 
                 if (!user || !user.password) {
                     // throw new Error('User not found.');

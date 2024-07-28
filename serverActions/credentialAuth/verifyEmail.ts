@@ -7,9 +7,9 @@ import prisma from '@/utils/prismaClient';
 export async function verifyEmail(
     values: z.infer<typeof verificationTokenSchema>
 ) {
-    console.log(values);
+    //console.log(values);
     const validatedFields = verificationTokenSchema.safeParse(values);
-    console.log(validatedFields);
+    //console.log(validatedFields);
 
     if (!validatedFields.success) {
         return { error: 'Invalid Fileds' };
@@ -21,7 +21,7 @@ export async function verifyEmail(
                 email,
             },
         });
-        console.log({ existingToken });
+        //console.log({ existingToken });
 
         if (!existingToken) {
             return { error: 'No registered under this email address' };
@@ -37,7 +37,7 @@ export async function verifyEmail(
             };
         }
     } catch (error) {
-        console.log(error);
+        //console.log(error);
         return { error: 'Something went wring' };
     }
 
@@ -57,7 +57,7 @@ export async function verifyEmail(
         });
         return { success: 'Your Email is verified.' };
     } catch (error) {
-        console.log(error);
+        //console.log(error);
         return {
             error: "couldn't verify the email address. Try again later",
         };

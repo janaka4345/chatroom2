@@ -12,7 +12,7 @@ export async function newPasswordToken(
     values: z.infer<typeof recoverPasswordSchema>
 ) {
     const validatedFields = passwordTokenSchema.partial().safeParse(values);
-    console.log(validatedFields);
+    
 
     if (!validatedFields.success) {
         return { error: 'Invalid Fields' };
@@ -32,8 +32,6 @@ export async function newPasswordToken(
 
     const { token, expires } = generateToken();
 
-    // console.log({ token, expires });
-    // console.log(existingToken?.token);
     const emailHtml = render(
         createElement(PasswordResetEmail, { verificationCode: token })
     );
@@ -58,7 +56,6 @@ export async function newPasswordToken(
 
         return { success: 'new password token has been sent successfully' };
     } catch (error) {
-        console.log(error);
         return { error: 'something went wrong' };
     }
 }

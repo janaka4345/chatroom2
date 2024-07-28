@@ -12,7 +12,7 @@ export const getUserByEmailForAdmin = async (email: string) => {
         });
         return user;
     } catch (error) {
-        console.log(error);
+        //console.log(error);
         return null;
     }
 };
@@ -49,7 +49,7 @@ export const getUserById = async (id: string) => {
         return user;
     } catch (error) {
         // return { error };
-        console.log(error);
+        //console.log(error);
     }
 };
 export const getUserByName = async (name: string) => {

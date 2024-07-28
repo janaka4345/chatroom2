@@ -12,10 +12,10 @@ type Values = {
     email: string;
 };
 export async function newVerificationToken(values: Values) {
-    console.log(values);
+    
 
     const validatedFields = verificationTokenSchema.partial().safeParse(values);
-    console.log(validatedFields);
+   
 
     if (!validatedFields.success) {
         return { error: 'Invalid Fields' };
@@ -35,8 +35,7 @@ export async function newVerificationToken(values: Values) {
 
     const { token, expires } = generateToken();
 
-    // console.log({ token, expires });
-    // console.log(existingToken?.token);
+    
     const emailHtml = render(
         createElement(RegisterVerificationEmail, {
             verificationCode: token,
@@ -65,7 +64,7 @@ export async function newVerificationToken(values: Values) {
                 'new verification token created successfully.Check your email',
         };
     } catch (error) {
-        console.log(error);
+        //console.log(error);
         return { error: 'something went wrong' };
     }
 }

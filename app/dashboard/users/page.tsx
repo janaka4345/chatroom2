@@ -33,7 +33,7 @@ export default async function usersPage() {
         )
         : (users as Partial<User>[]);
     //TODO type error fix
-    console.log(nonFriends);
+    //console.log(nonFriends);
     return (
         <section className="relative h-[90svh] overflow-y-auto">
             <div>

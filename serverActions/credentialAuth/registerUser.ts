@@ -54,7 +54,7 @@ export async function registerUser(values: z.infer<typeof registerFormSchema>) {
             });
         }
     } catch (error) {
-        console.log(error);
+        //console.log(error);
         return { error: 'something went wrong. try again later' };
     }
     return { success: 'User created successfully.Please verify your Email' };

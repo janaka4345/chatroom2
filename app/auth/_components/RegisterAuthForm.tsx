@@ -42,10 +42,10 @@ export function RegisterAuthForm() {
     })
 
     async function onSubmit(values: z.infer<typeof registerFormSchema>) {
-        console.log(values)
+        //console.log(values)
         try {
             const response = await registerUser(values)
-            console.log(response);
+            //console.log(response);
             if (response.success) {
                 toast.success(response.success)
                 router.push(`/auth/verifyEmail/?email=${values.email}`)
@@ -56,7 +56,7 @@ export function RegisterAuthForm() {
             }
 
         } catch (error) {
-            console.log(error);
+            //console.log(error);
             toast.error('Something went wrong')
         }
     }

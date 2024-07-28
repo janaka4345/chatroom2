@@ -63,10 +63,10 @@ export async function recoverPasswordRequest(
                 html: emailHtml, // html body
             });
         } catch (error) {
-            console.log(error);
+            //console.log(error);
             return { error: 'Something went wrong' };
         }
-        console.log({ token, expires });
+        //console.log({ token, expires });
     }
     return { success: 'Check your provided Email for a verification Code' };
 }

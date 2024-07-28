@@ -34,7 +34,7 @@ export function LoginAuthForm() {
     })
 
     async function onSubmit(values: z.infer<typeof loginFormSchema>) {
-        console.log(values)
+        //console.log(values)
         try {
             const res = await login(values)
             if (res?.error) {
@@ -42,7 +42,7 @@ export function LoginAuthForm() {
             }
 
         } catch (error) {
-            console.log({ error });
+            //console.log({ error });
             toast.error('Invalid Details')
         }
 

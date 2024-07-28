@@ -36,7 +36,7 @@ export default function RecoverPasswordVerifyForm() {
 
     const [verify, setVerify] = useState(false)
 
-    console.log({ email })
+    //console.log({ email })
     const form = useForm({
         resolver: zodResolver(passwordResetSchema),
         defaultValues: {
@@ -47,16 +47,10 @@ export default function RecoverPasswordVerifyForm() {
         },
     })
     async function onSubmit(values: z.infer<typeof passwordResetSchema>) {
-        console.log(values)
+        //console.log(values)
 
-        // const response = await axios.post(
-        //     '/api/manualAuth/recoverPassword/verify',
-        //     {
-        //         values,
-        //     }
-        // )
         const response = await recoverPasswordVerify(values)
-        console.log(response)
+        //console.log(response)
         if (response?.success) {
             toast.success(response?.success)
             router.push('/auth/login')
@@ -66,19 +60,16 @@ export default function RecoverPasswordVerifyForm() {
         }
     }
     async function requestNewToken() {
-        console.log(form.getValues('email'))
+        //console.log(form.getValues('email'))
 
         if (!email && !form.getValues('email')) {
             return toast.error('Empty email is provided')
         }
-        // const res = await axios.post('/api/manualAuth/newPasswordToken/', {
-        //     values: { email: email || form.getValues('email') },
-        // })
         const values = {
             email: email || form.getValues('email')
         }
         const res = await newPasswordToken(values)
-        console.log(res)
+        //console.log(res)
         if (res.success) {
             toast.success(res.success)
             router.refresh()
@@ -216,7 +207,7 @@ export default function RecoverPasswordVerifyForm() {
                             <Button
                                 onClick={() => {
                                     setVerify(true)
-                                    console.log('button clicked')
+                                    //console.log('button clicked')
                                 }}
                             >
                                 Verify

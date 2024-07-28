@@ -42,12 +42,9 @@ export default function VerifyEmailForm() {
         },
     })
     async function onSubmit(values: z.infer<typeof verificationTokenSchema>) {
-        console.log(values)
-        // const response = await axios.post('/api/manualAuth/verifyEmail', {
-        //     values,
-        // })
+        
         const response = await verifyEmail(values)
-        console.log(response)
+        
         if (response?.success) {
             toast.success(response?.success)
             router.push('/auth/login')
@@ -57,30 +54,17 @@ export default function VerifyEmailForm() {
         }
     }
     async function requestNewToken() {
-        // const response = await axios.post('/api/manualAuth/verifyEmail', {
-        //     values,
-        // })
-        // console.log(response)
-        // if (response?.success) {
-        //     toast.success(response?.success)
-        //     router.push('/auth/signin')
-        // }
-        // if (response?.error) {
-        //     toast.error(response?.error)
-        // }
-
+        
         if (!email && !form.getValues('email')) {
             return toast.error('Empty email is provided')
         }
 
-        // const res = await axios.post('/api/manualAuth/newVerificationToken/', {
-        //     values: { email: email || form.getValues('email') },
-        // })
+        
         const values = { email: email || form.getValues('email') }
-        console.log(values);
+        
 
         const res = await newVerificationToken(values)
-        console.log(res)
+        
 
         if (res.success) {
             toast.success(res.success)

@@ -13,11 +13,11 @@ import {
 
 const WSComponent = () => {
     const [isConnected, transport] = useSocket();
-    // console.log({ id: socket.id });
+    // //console.log({ id: socket.id });
 
     useEffect(() => {
         socket.on('userMessage', async (data) => {
-            // console.log('message', data)
+            // //console.log('message', data)
             // toast(`message${data.message}`)
             toast(
                 <MessageToast
@@ -31,7 +31,7 @@ const WSComponent = () => {
         });
 
         socket.on('userRequest', async (data) => {
-            console.log('message', data);
+            //console.log('message', data);
             // toast(`message${data.message}`)
             toast(
                 <FriendRequestSentToast
@@ -64,7 +64,7 @@ const WSComponent = () => {
             await revalidateRequest();
         });
 
-        // console.log(socket.id);
+        // //console.log(socket.id);
 
         return () => {
             socket.off('userMessage', async (data) => {

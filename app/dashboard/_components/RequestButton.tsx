@@ -56,7 +56,7 @@ export const RequestAcceptButton = ({ senderId }: { senderId: string }) => {
         }); //TODO do i need friends image and name or just senders name and image
     };
     const handleRejectClick = async () => {
-        console.log('rejected');
+        //console.log('rejected');
         await rejectRequest({
             senderId: senderId,
             receiverId: data?.user?.id as string,

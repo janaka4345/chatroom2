@@ -12,7 +12,7 @@ import AvatarIcon from './AvatarIcon';
 import Link from 'next/link';
 export default async function User({ className }: { className?: string }) {
     const session = await auth();
-    console.log(session);
+    //console.log(session);
 
 
     if (!session?.user) {

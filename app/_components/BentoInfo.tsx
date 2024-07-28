@@ -23,7 +23,7 @@ const BentoInfo = () => {
             orientation="vertical"
             className="h-full w-full overflow-hidden"
         >
-            {/* <CarouselContent className="-mt-1 h-[200px]"> */}
+
             <CarouselContent className="-mt-1 h-[calc(100svh/5)] md:h-[calc(85svh/3)]">
                 <CarouselItem className="basis-1/2 pt-1">
                     <div className="mx-auto flex h-[calc(100svh/5-8px)] w-full flex-col items-center justify-evenly rounded-3xl border  border-gray-100 bg-opacity-10 bg-gradient-to-b from-accent/80 to-gray-200 bg-clip-padding  text-xl backdrop-blur-lg backdrop-filter md:h-[calc(85svh/3-12px)] md:justify-center ">
@@ -66,8 +66,6 @@ const BentoInfo = () => {
                     </div>
                 </CarouselItem>
             </CarouselContent>
-            {/* <CarouselPrevious />
-            <CarouselNext /> */}
         </Carousel>
     );
 };

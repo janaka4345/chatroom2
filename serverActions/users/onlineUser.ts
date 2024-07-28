@@ -10,7 +10,7 @@ export const setOnlineUserStatus = async ({
     socketId: string | undefined | null;
 }) => {
     const session = await auth();
-    // console.log(session)
+    // //console.log(session)
 
     // if (session) {
     await prisma.user.update({

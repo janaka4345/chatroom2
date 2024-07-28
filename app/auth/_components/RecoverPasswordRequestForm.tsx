@@ -31,28 +31,22 @@ export function RecoverPasswordRequestForm() {
     })
 
     async function onSubmit(values: z.infer<typeof recoverPasswordSchema>) {
-        console.log(values)
+        //console.log(values)
         try {
-            // const res = await axios.post(
-            //     '/api/manualAuth/recoverPassword/request',
-            //     {
-            //         values: values,
-            //     }
-            // )
+
             const res = await recoverPasswordRequest(values)
-            console.log(res)
-            if (res.success) {
+
+            if (res?.success) {
                 toast(
                     'If credentials are correct, an email has been sent to the provided email address'
                 )
                 router.push(`/auth/recoverPasswordVerify?email=${values.email}`)
             }
-            // console.log({ res })
-            // if (res?.error) {
-            //     toast.error(res?.error)
-            // }
+            if (res?.error) {
+                toast.error(res?.error)
+            }
         } catch (error) {
-            console.log(error)
+            //console.log(error)
             toast.error('something went wrong')
         }
     }

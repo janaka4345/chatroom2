@@ -6,7 +6,7 @@
 // import { auth } from './auth';
 
 // export default auth((req) => {
-//     console.log('req.auth');
+//     //console.log('req.auth');
 //     // req.auth
 // });
 export { auth as middleware } from '@/auth';

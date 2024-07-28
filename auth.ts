@@ -19,10 +19,10 @@ export const {
     //         //     await setUserStatus(message.user.id, true)
     //         // }
 
-    //         // console.log('signin', message)
+    //         // //console.log('signin', message)
     //     },
     //     async signOut(message) {
-    //         // console.log(message.token.sub)
+    //         // //console.log(message.token.sub)
     //         //TODO fix type errors
     //         // if (message.token.sub) {
     //         //     await setUserStatus(message.token.sub, false)

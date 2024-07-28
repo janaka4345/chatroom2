@@ -5,7 +5,7 @@ import Stats from "./_components/Stats";
 import Testimonials from "./_components/Testimonials";
 
 export default function Home() {
-    console.log('home rendered');
+    //console.log('home rendered');
 
     return (
         <>

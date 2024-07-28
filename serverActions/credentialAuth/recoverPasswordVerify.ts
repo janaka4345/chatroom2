@@ -8,7 +8,7 @@ export async function recoverPasswordVerify(
     values: z.infer<typeof passwordResetSchema>
 ) {
     const validatedFields = passwordResetSchema.safeParse(values);
-    console.log(validatedFields);
+    //console.log(validatedFields);
     if (!validatedFields.success) {
         return { error: 'Invalid Fields' };
     }
@@ -19,7 +19,7 @@ export async function recoverPasswordVerify(
                 email,
             },
         });
-        console.log(existingToken);
+        //console.log(existingToken);
         if (!existingToken) {
             return {
                 error: 'Something went wrong.Request another',
@@ -57,7 +57,7 @@ export async function recoverPasswordVerify(
             };
         }
     } catch (error) {
-        console.log(error);
+        //console.log(error);
         return { error: 'Something went wrong' };
     }
 }
