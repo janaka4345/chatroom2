@@ -1,12 +1,10 @@
 import { signIn } from "@/auth";
-import { Button, buttonVariants } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
-import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 export default function SocialLogin() {
 
     return (
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-2 my-auto">
             <div className="relative">
                 <div className="absolute inset-0 flex items-center">
                     <span className="w-full border-t" />

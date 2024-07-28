@@ -45,7 +45,7 @@ export default async function UserCard({
                     name={user?.name!}
                     image={user?.image!}
                 />
-                <div className="ms-3 space-y-0.5 text-left font-medium dark:text-white rtl:text-right">
+                <div className="ms-3 space-y-0.5 text-left font-medium  rtl:text-right">
                     <div>{user?.name}</div>
                     {CTAButton(request)}
                 </div>

@@ -19,7 +19,7 @@ export default function page() {
                 Already have the code?{' '}
                 <Link
                     href="/auth/recoverPasswordVerify"
-                    className="text-primary-600 font-medium hover:underline"
+                    className="text-primary font-medium hover:underline"
                 >
                     Verify it
                 </Link>
@@ -28,7 +28,7 @@ export default function page() {
                 Go back to{' '}
                 <Link
                     href="/auth/signin"
-                    className="text-primary-600 font-medium hover:underline"
+                    className="text-primary font-medium hover:underline"
                 >
                     Sign In
                 </Link>

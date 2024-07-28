@@ -35,8 +35,8 @@ const menuItems: MenuItems[] = [
 const Navbar = async () => {
     const session = await auth();
     return (
-        <nav className="px-4 h-[10svh] backdrop:blur-md lg:px-20">
-            <div className="mx-auto flex max-w-screen-2xl flex-wrap items-center justify-between py-4">
+        <nav className="flex flex-row items-center justify-between px-4 h-[10svh] backdrop:blur-md lg:px-20">
+            <div className="mx-auto flex w-full flex-row max-w-screen-2xl flex-wrap items-center justify-between ">
                 <Link
                     href="/"
                     className="flex items-center space-x-3 rtl:space-x-reverse"
@@ -53,7 +53,7 @@ const Navbar = async () => {
                 </Link>
 
                 <div className="hidden w-full items-center justify-between  md:mx-auto md:flex md:w-fit">
-                    <ul className="md: mt-4 flex flex-col rounded-lg border  p-4 font-medium md:mt-0 md:flex-row md:space-x-8 md:border-0   ">
+                    <ul className="mt-4 flex flex-col rounded-lg border  font-medium md:mt-0 md:flex-row gap-2 text-sm lg:text-base lg:gap-8 md:border-0">
                         {menuItems.map((menuItem) => (
                             <li key={menuItem.name}>
                                 <Link
