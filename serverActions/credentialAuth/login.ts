@@ -15,8 +15,7 @@ export async function login(values: z.infer<typeof loginFormSchema>) {
             email,
             password,
             // TODO
-            // redirectTo: '/dashboard/conversations',
-            redirectTo: '/',
+            redirectTo: '/dashboard/conversations',
         });
     } catch (error) {
         if (error instanceof AuthError) {
