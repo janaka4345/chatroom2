@@ -29,11 +29,11 @@ export default async function ConversationCard({ friend }: { friend: friend }) {
                         name={friend.friend.name!}
                         image={friend.friend.image!}
                     />
-                    <div className="  ms-3 space-y-0.5 text-left font-medium rtl:text-right">
-                        <div className=' lg:block'>{friend.friend.name as string}</div>
-                        <div className="line-clamp-2 text-sm text-gray-500 ">
+                    <div className="ms-3  min-w-fit space-y-0.5 text-left font-medium rtl:text-right">
+                        <p className='text-nowrap lg:block'>{friend.friend.name as string}</p>
+                        <p className="line-clamp-2 text-sm text-gray-500 ">
                             {lastMessage?.message.message}
-                        </div>
+                        </p>
                     </div>
                 </CardContent>
             </Card>

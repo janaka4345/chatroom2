@@ -6,7 +6,7 @@ export default async function Conversations() {
     const friends = await getFriends(); //TODO use ID instead
 
     return (
-        <div className="w-full mr-2 overflow-y-auto border rounded-xl shadow-md">
+        <div className="w-full  overflow-auto  rounded-xl shadow-md">
             <ActiveFriends />
             <div className="flex flex-col gap-2 ">
                 <h1 className='ml-2 mt-2'>Conversations</h1>
