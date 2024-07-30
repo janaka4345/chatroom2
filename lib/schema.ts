@@ -1,5 +1,33 @@
 import { z } from 'zod';
-
+export const settingsPasswordChangeFormSchema = z
+    .object({
+        password: z
+            .string()
+            .min(2, { message: 'password required' })
+            .min(8, { message: '8 characters required' })
+            .max(50),
+        newPassword: z
+            .string()
+            .min(2, { message: 'password required' })
+            .min(8, { message: '8 characters required' })
+            .max(50),
+        confirmPassword: z
+            .string()
+            .min(2, { message: 'confirm password required' })
+            .max(50),
+    })
+    .refine(
+        (data) => {
+            if (data.newPassword === data.confirmPassword) {
+                return true;
+            }
+            return false;
+        },
+        {
+            message: 'new password and confirm password must match',
+            path: ['confirmPassword'],
+        }
+    );
 export const registerFormSchema = z
     .object({
         name: z.string().min(2, { message: 'first name required' }).max(50),
