@@ -38,10 +38,10 @@ export default async function User({ className }: { className?: string }) {
                         <Link href='/dashboard'>Dashboard</Link>
                     </DropdownMenuItem>
                     <DropdownMenuItem>
-                        <Link href='/notification'>Notifications</Link>
+                        <Link href='/dashboard/notification'>Notifications</Link>
                     </DropdownMenuItem>
                     <DropdownMenuItem>
-                        <Link href='/settings'>Settings</Link>
+                        <Link href='/dashboard/settings'>Settings</Link>
                     </DropdownMenuItem>
                 </DropdownMenuGroup>
                 <DropdownMenuSeparator />
