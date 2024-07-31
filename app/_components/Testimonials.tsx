@@ -5,7 +5,7 @@ const Testimonials = () => {
             <div className="py-8 px-4   sm:py-16 lg:px-6">
                 <div className="max-w-screen-md mx-auto  mb-8 lg:mb-16">
                     <h2 className="mb-4 text-2xl md:text-4xl  text-center tracking-tight font-extrabold text-gray-900 ">
-                        Real Results, Real People. Don't just take our word for it.
+                        Real Results, Real People. Don&apos;t just take our word for it.
                     </h2>
                     <p className="text-gray-500  text-center text-base md:text-xl">
                         Break down barriers, boost productivity, and foster innovation with our cutting-edge chat app. Experience seamless collaboration, instant messaging, and efficient file sharing, all in one place.
@@ -19,7 +19,7 @@ const Testimonials = () => {
                         </div>
                         <h3 className="text-center md:text-left mb-2 text-2xl font-bold text-gray-900">Boosted Team Efficiency</h3>
                         <p className="text-gray-500 text-center md:text-left">
-                            "Before using Chatter, communication within our team was chaotic. Now, with its organized channels and features, we've significantly improved our workflow and responsiveness. Our team is more aligned and efficient than ever before."
+                            &quot;Before using Chatter, communication within our team was chaotic. Now, with its organized channels and features, we&apos;ve significantly improved our workflow and responsiveness. Our team is more aligned and efficient than ever before.&quot;
                         </p>
                         <p className="mt-2 ml-auto  text-wrap text-gray-600">
                             - John Doe, CEO, Acme Corporation
@@ -31,7 +31,7 @@ const Testimonials = () => {
                         </div>
                         <h3 className="text-center md:text-left mb-2 text-2xl font-bold text-gray-900">Enhanced Customer Support</h3>
                         <p className="text-gray-500 text-center md:text-left">
-                            "Chatter has revolutionized the way we handle customer inquiries. The real-time chat feature has dramatically reduced response times and increased customer satisfaction. We've seen a noticeable improvement in our customer support efficiency."
+                            &quot;Chatter has revolutionized the way we handle customer inquiries. The real-time chat feature has dramatically reduced response times and increased customer satisfaction. We&apos;ve seen a noticeable improvement in our customer support efficiency.&quot;
                         </p>
                         <p className="mt-2 text-gray-600 ml-auto  text-wrap">
                             - Jane Smith, Customer Support Manager, Global Tech
@@ -43,7 +43,7 @@ const Testimonials = () => {
                         </div>
                         <h3 className="text-center md:text-left mb-2 text-2xl font-bold text-gray-900">Improved Project Management</h3>
                         <p className="text-gray-500 text-center md:text-left">
-                            "We were struggling with project management tools that didn't integrate well with our communication channels. Chatter solved this problem by providing a centralized platform for both. We've seen a significant increase in project visibility and team collaboration."
+                            &quot;We were struggling with project management tools that didn&apos;t integrate well with our communication channels. Chatter solved this problem by providing a centralized platform for both. We&apos;ve seen a significant increase in project visibility and team collaboration.&quot;
                         </p>
                         <p className="mt-2 text-gray-600 ml-auto  text-wrap">
                             - Michael Johnson, Project Manager, Innovate Solutions
@@ -55,7 +55,7 @@ const Testimonials = () => {
                         </div>
                         <h3 className="text-center md:text-left mb-2 text-2xl font-bold text-gray-900">Enhanced Remote Collaboration</h3>
                         <p className="text-gray-500 text-center md:text-left">
-                            "Our remote team was facing challenges with staying connected and informed. Chatter has been a game-changer. The video conferencing and screen sharing features have made remote collaboration seamless. We feel like we're all in the same room."
+                            &quot;Our remote team was facing challenges with staying connected and informed. Chatter has been a game-changer. The video conferencing and screen sharing features have made remote collaboration seamless. We feel like we&apos;re all in the same room.&quot;
                         </p>
                         <p className="mt-2 text-gray-600 ml-auto  text-wrap">
                             - Emily Brown, Marketing Manager, Digital World
@@ -67,7 +67,7 @@ const Testimonials = () => {
                         </div>
                         <h3 className="text-center md:text-left mb-2 text-2xl font-bold text-gray-900">Strong Security and Compliance</h3>
                         <p className="text-gray-500 text-center md:text-left">
-                            "We needed a chat app that was secure and compliant with industry regulations. Chatter exceeded our expectations. The robust security features and data privacy measures give us peace of mind. We can confidently communicate sensitive information within our team."
+                            &quot;We needed a chat app that was secure and compliant with industry regulations. Chatter exceeded our expectations. The robust security features and data privacy measures give us peace of mind. We can confidently communicate sensitive information within our team.&quot;
                         </p>
                         <p className="mt-2 text-gray-600 ml-auto  text-wrap">
                             - David Lee, IT Director, Financial Services Corp.
@@ -79,7 +79,7 @@ const Testimonials = () => {
                         </div>
                         <h3 className="text-center md:text-left mb-2 text-2xl font-bold text-gray-900">User-Friendly Interface</h3>
                         <p className="text-gray-500 text-center md:text-left">
-                            "The user interface of Chatter is incredibly intuitive. Our team adopted it quickly and effortlessly. The app's flexibility allows us to customize it to fit our specific needs. It's become an essential tool for our daily operations."
+                            &quot;The user interface of Chatter is incredibly intuitive. Our team adopted it quickly and effortlessly. The app&apos;s flexibility allows us to customize it to fit our specific needs. It&apos;s become an essential tool for our daily operations.&quot;
                         </p>
                         <p className="mt-2 text-gray-600 ml-auto  text-wrap">
                             - Sarah Wilson, Operations Manager, Creative Agency
