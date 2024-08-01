@@ -113,3 +113,7 @@ export const passwordResetSchema = z
             path: ['confirmPassword'],
         }
     );
+
+export const nameChangeFormSchema = z.object({
+    username: z.string().min(2).max(50),
+});
