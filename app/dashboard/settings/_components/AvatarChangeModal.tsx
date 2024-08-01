@@ -1,16 +1,59 @@
-import { Button } from "@/components/ui/button"
+"use client"
+
+import { z } from "zod";
+
+const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
+const ACCEPTED_IMAGE_TYPES = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'];
+
+
+const formSchema = z.object({
+    avatarImage: typeof window === 'undefined' ? z.any() : z
+        .instanceof(FileList)
+        .refine((file) => file?.[0].size <= MAX_FILE_SIZE, 'Image size cannot exceed 5MB')
+        .refine((file) => ACCEPTED_IMAGE_TYPES.includes(file?.[0].type), 'Invalid image format').optional()
+
+})
+
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+
 import {
     Dialog,
     DialogContent,
     DialogDescription,
-    DialogFooter,
     DialogHeader,
     DialogTitle,
-    DialogTrigger,
-} from "@/components/ui/dialog"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
+    DialogTrigger
+} from "@/components/ui/dialog";
+
+import { Button } from "@/components/ui/button";
+import {
+    Form,
+    FormControl,
+    FormDescription,
+    FormField,
+    FormItem,
+    FormLabel,
+    FormMessage,
+} from "@/components/ui/form";
+
+import { Input } from "@/components/ui/input";
+import Image from "next/image";
+import { useState } from "react";
 export default function AvatarChangeModal() {
+    const [selectedImage, setSelectedImage] = useState(null);
+    const form = useForm<z.infer<typeof formSchema>>({
+        resolver: zodResolver(formSchema),
+        defaultValues: {
+            avatarImage: "avatarImage",
+        },
+    })
+    const fileRef = form.register("avatarImage");
+
+    function onSubmit(values: z.infer<typeof formSchema>) {
+        console.log(values)
+    }
+
     return (
         <Dialog>
             <DialogTrigger asChild className="absolute bottom-0 right-1/2 translate-x-14 cursor-pointer ">
@@ -18,28 +61,46 @@ export default function AvatarChangeModal() {
             </DialogTrigger>
             <DialogContent className="sm:max-w-[425px]">
                 <DialogHeader>
-                    <DialogTitle>Edit profile</DialogTitle>
+                    <DialogTitle>Edit profile picture</DialogTitle>
                     <DialogDescription>
-                        Make changes to your profile here. Click save when you're done.
+                        Upload aa photo to change your profile picture.Click save when you&apos;re done.
                     </DialogDescription>
+                    <Image width={100} height={100} src={'/avatars/avatar1.png'} alt="avatar image" className="mx-auto w-fit" />
                 </DialogHeader>
-                <div className="grid gap-4 py-4">
-                    <div className="grid grid-cols-4 items-center gap-4">
-                        <Label htmlFor="name" className="text-right">
+                <Form {...form}>
+                    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+                        <FormField
+                            control={form.control}
+                            name="avatarImage"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormControl>
+                                        {/* <Input placeholder="shadcn" {...field} /> */}
+                                        <div className="grid w-full max-w-sm items-center gap-1.5">
+                                            <FormLabel>Picture</FormLabel>
+                                            <Input type="file" {...fileRef}
+                                                onChange={(event) => {
+                                                    field.onChange(event.target?.files?.[0] ?? undefined);
+                                                }}
+                                            />
+                                        </div>
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        <Button type="submit">Submit</Button>
+                    </form>
+                </Form>
+                {/* <div className="grid gap-4 py-4">
+                     <Label htmlFor="name" className="text-right">
                             Name
-                        </Label>
-                        <Input id="name" value="Pedro Duarte" className="col-span-3" />
+                        </Label> 
+                    <div className="grid w-full max-w-sm items-center gap-1.5">
+                        <Label htmlFor="picture">Picture</Label>
+                        <Input id="picture" type="file" onChange={ } />
                     </div>
-                    <div className="grid grid-cols-4 items-center gap-4">
-                        <Label htmlFor="username" className="text-right">
-                            Username
-                        </Label>
-                        <Input id="username" value="@peduarte" className="col-span-3" />
-                    </div>
-                </div>
-                <DialogFooter>
-                    <Button type="submit">Save changes</Button>
-                </DialogFooter>
+                </div> */}
             </DialogContent>
         </Dialog>
 
