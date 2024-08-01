@@ -2,16 +2,16 @@
 
 import { Label } from "@/components/ui/label"
 import { Switch } from "@/components/ui/switch"
+import { updateUserOnlineStatus } from "@/serverActions/users/updateUser"
 import { useEffect, useState } from "react"
 export default function OnlineStatus({ status }: { status: boolean }) {
     const [first, setfirst] = useState(status)
-    const handleChange = () => {
+    const handleChange = async () => {
+        const response = await updateUserOnlineStatus(!first)
         setfirst(prev => !prev)
+        console.log(response);
 
     }
-    useEffect(() => {
-        console.log(first);
-    }, [first])
 
     return (
         <div className="flex items-center space-x-2 w-fit mx-auto">

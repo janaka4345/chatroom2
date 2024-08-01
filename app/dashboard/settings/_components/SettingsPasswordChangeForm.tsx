@@ -17,6 +17,7 @@ import { settingsPasswordChangeFormSchema } from "@/lib/schema"
 import { type Session } from "next-auth"
 import { Button } from "@/components/ui/button"
 import { type MouseEvent, useState } from "react"
+import { updatePassword } from "@/serverActions/users/updateUser"
 
 
 export default function SettingsPasswordChangeForm({ session }: { session: Session | null }) {
@@ -34,9 +35,9 @@ export default function SettingsPasswordChangeForm({ session }: { session: Sessi
 
         },
     })
-    function onSubmit(values: z.infer<typeof settingsPasswordChangeFormSchema>) {
-
-        console.log(values)
+    async function onSubmit(values: z.infer<typeof settingsPasswordChangeFormSchema>) {
+        const response = await updatePassword(values)
+        console.log(response)
     }
 
     const handleClick = (e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>, state: string) => {
@@ -60,7 +61,7 @@ export default function SettingsPasswordChangeForm({ session }: { session: Sessi
     return (
         <Form {...form} >
             <form onSubmit={form.handleSubmit(onSubmit)} className=" w-[60dvw] mt-4 flex flex-col gap-2 mx-4 ">
-                <h1>Change your password</h1>
+                <h1 className="pb-2">Change your password</h1>
 
                 <FormField
                     control={form.control}
@@ -118,7 +119,7 @@ export default function SettingsPasswordChangeForm({ session }: { session: Sessi
                     )}
                 />
 
-                <Button className="w-fit px-4 mx-auto" type="submit">Change Password</Button>
+                <Button disabled={form.formState.isSubmitting} className="w-fit px-4 mx-auto mt-4" type="submit">Change Password</Button>
             </form>
         </Form >
     )

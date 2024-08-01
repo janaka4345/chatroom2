@@ -2,7 +2,7 @@ import AvatarIcon from "@/components/custom/AvatarIcon";
 import SettingsForm from "../_components/SettingsPasswordChangeForm";
 import { auth } from "@/auth";
 import OnlineStatus from "../_components/OnlineStatus";
-import AvatarChangeModal from "../_components/AvatarChangeMOdal";
+import AvatarChangeModal from "../_components/AvatarChangeModal";
 import NameChangeModal from "../_components/NameChangeModal";
 
 export default async function page() {
