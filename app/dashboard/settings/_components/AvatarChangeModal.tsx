@@ -2,20 +2,9 @@
 
 import { z } from "zod";
 
-const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
-const ACCEPTED_IMAGE_TYPES = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'];
-
-
-const formSchema = z.object({
-    avatarImage: typeof window === 'undefined' ? z.any() : z
-        .instanceof(FileList)
-        .refine((file) => file?.[0].size <= MAX_FILE_SIZE, 'Image size cannot exceed 5MB')
-        .refine((file) => ACCEPTED_IMAGE_TYPES.includes(file?.[0].type), 'Invalid image format').optional()
-
-})
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
+import { ControllerRenderProps, useForm } from "react-hook-form";
 
 import {
     Dialog,
@@ -30,28 +19,57 @@ import { Button } from "@/components/ui/button";
 import {
     Form,
     FormControl,
-    FormDescription,
     FormField,
     FormItem,
     FormLabel,
-    FormMessage,
+    FormMessage
 } from "@/components/ui/form";
 
 import { Input } from "@/components/ui/input";
+import { avatarChangeFormSchema } from "@/lib/schema";
+import { changeAvatar } from "@/serverActions/users/updateUser";
 import Image from "next/image";
-import { useState } from "react";
-export default function AvatarChangeModal() {
-    const [selectedImage, setSelectedImage] = useState(null);
-    const form = useForm<z.infer<typeof formSchema>>({
-        resolver: zodResolver(formSchema),
+import { ChangeEvent, useState } from "react";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
+
+
+export default function AvatarChangeModal({ image }: { image: string | null | undefined }) {
+    const router = useRouter()
+    const [selectedImageUrl, setSelectedImageUrl] = useState<string | null | undefined>(image);
+
+    const form = useForm<z.infer<typeof avatarChangeFormSchema>>({
+        resolver: zodResolver(avatarChangeFormSchema),
         defaultValues: {
             avatarImage: "avatarImage",
         },
     })
     const fileRef = form.register("avatarImage");
 
-    function onSubmit(values: z.infer<typeof formSchema>) {
-        console.log(values)
+
+    async function onSubmit(values: z.infer<typeof avatarChangeFormSchema>) {
+        const data = new FormData()
+        data.set('file', values?.avatarImage?.[0])
+        const response = await changeAvatar(data)
+        if (response?.success) {
+            toast.success(response?.success)
+            router.refresh()
+        }
+        if (response?.error) {
+            toast.error(response?.error)
+        }
+        // console.log(response)
+    }
+
+    function handleChange(event: ChangeEvent<HTMLInputElement>, field: ControllerRenderProps<{
+        avatarImage?: any;
+    }, "avatarImage">) {
+        field.onChange(event.target?.files?.[0] ?? undefined);
+
+        if (event.target.files?.[0]) {
+            const newUrl = URL.createObjectURL(event.target.files?.[0])
+            setSelectedImageUrl(newUrl)
+        }
     }
 
     return (
@@ -65,7 +83,8 @@ export default function AvatarChangeModal() {
                     <DialogDescription>
                         Upload aa photo to change your profile picture.Click save when you&apos;re done.
                     </DialogDescription>
-                    <Image width={100} height={100} src={'/avatars/avatar1.png'} alt="avatar image" className="mx-auto w-fit" />
+                    <Image width={100} height={100} src={selectedImageUrl ? selectedImageUrl : '/dp-placeholder.png'} alt="avatar image" className="mx-auto rounded-full w-[100px] h-[100px] object-cover" />
+
                 </DialogHeader>
                 <Form {...form}>
                     <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
@@ -75,21 +94,15 @@ export default function AvatarChangeModal() {
                             render={({ field }) => (
                                 <FormItem>
                                     <FormControl>
-                                        {/* <Input placeholder="shadcn" {...field} /> */}
                                         <div className="grid w-full max-w-sm items-center gap-1.5">
                                             <FormLabel>Picture</FormLabel>
-                                            <Input type="file" {...fileRef}
-                                                onChange={(event) => {
-                                                    field.onChange(event.target?.files?.[0] ?? undefined);
-                                                }}
-                                            />
+                                            <Input type="file" {...fileRef} onChange={(event) => handleChange(event, field)} />
                                         </div>
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
-                            )}
-                        />
-                        <Button type="submit">Submit</Button>
+                            )} />
+                        <Button disabled={form.formState.isSubmitting} type="submit">Save Changes</Button>
                     </form>
                 </Form>
                 {/* <div className="grid gap-4 py-4">
