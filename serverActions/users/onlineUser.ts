@@ -24,3 +24,17 @@ export const setOnlineUserStatus = async ({
     });
     // }
 };
+
+export const getOnlineUserStatusById = async (id: string) => {
+    const session = await auth();
+
+    const res = await prisma.user.findFirst({
+        where: {
+            id: session?.user?.id!,
+        },
+        select: {
+            status: true,
+        },
+    });
+    return res;
+};

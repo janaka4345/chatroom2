@@ -2,12 +2,17 @@
 
 import { auth, signOut } from '@/auth';
 import {
+    avatarChangeFormSchema,
     nameChangeFormSchema,
     settingsPasswordChangeFormSchema,
 } from '@/lib/schema';
-import { boolean, z } from 'zod';
+import { z } from 'zod';
 import { getUserByIdForAdmin } from './getUsers';
 import { compare, hash } from 'bcryptjs';
+
+import { cloudConfig } from '@/cloudinary.config';
+import { v2 as cloudinary } from 'cloudinary';
+import { revalidatePath } from 'next/cache';
 
 export async function updateUserName(
     values: z.infer<typeof nameChangeFormSchema>
@@ -32,7 +37,7 @@ export async function updateUserName(
             name: username,
         },
     });
-    return { success: 'Username changed succefully' };
+    return { success: 'Username changed successfully' };
 }
 
 export async function updateUserOnlineStatus(value: boolean) {
@@ -93,4 +98,51 @@ export async function updatePassword(
         return { success: 'password updated successfully' };
     }
     return { error: 'Invalid details' };
+}
+
+export async function changeAvatar(data: FormData) {
+    const file = data.get('file') as File;
+    if (!file) {
+        return { error: 'no file uploaded' };
+    }
+
+    const arrayBuffer = await file.arrayBuffer();
+    const buffer = new Uint8Array(arrayBuffer);
+    // const buffer=new Uint8Array(Buffer.from(arrayBuffer))
+    // console.log(buffer);
+
+    try {
+        const response = await new Promise((resolve, reject) => {
+            cloudConfig;
+            cloudinary.uploader
+                .upload_stream({}, (error, result) => {
+                    if (error) {
+                        reject(error);
+                        return;
+                    }
+                    // console.log({ result });
+
+                    resolve(result);
+                })
+                .end(buffer);
+        });
+
+        const session = await auth();
+
+        await prisma?.user.update({
+            where: {
+                id: session?.user?.id,
+            },
+            data: {
+                //@ts-ignore
+                image: response.secure_url,
+            },
+        });
+
+        return { success: 'Profile picture was successfully changed' };
+    } catch (error) {
+        console.log(error);
+
+        return { error: 'something went wrong' };
+    }
 }
