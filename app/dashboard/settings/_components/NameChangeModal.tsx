@@ -21,12 +21,15 @@ import { Input } from "@/components/ui/input"
 import { nameChangeFormSchema } from "@/lib/schema"
 import { updateUserName } from "@/serverActions/users/updateUser"
 import { zodResolver } from "@hookform/resolvers/zod"
+import { useRouter } from "next/navigation"
 import { useForm } from "react-hook-form"
+import { toast } from "sonner"
 import { z } from "zod"
 
 
 
 export default function NameChangeModal() {
+    const router = useRouter()
 
     const form = useForm<z.infer<typeof nameChangeFormSchema>>({
         resolver: zodResolver(nameChangeFormSchema),
@@ -37,7 +40,14 @@ export default function NameChangeModal() {
 
     async function onSubmit(values: z.infer<typeof nameChangeFormSchema>) {
         const response = await updateUserName(values)
-        console.log(response)
+        // console.log(response)
+        if (response?.success) {
+            toast.success(response?.success)
+            router.refresh()
+        }
+        if (response?.error) {
+            toast.error(response?.error)
+        }
     }
 
     return (
@@ -67,7 +77,7 @@ export default function NameChangeModal() {
                                 </FormItem>
                             )}
                         />
-                        <Button type="submit">Submit</Button>
+                        <Button disabled={form.formState.isSubmitting} type="submit">Save Changes</Button>
                     </form>
                 </Form>
             </DialogContent>
