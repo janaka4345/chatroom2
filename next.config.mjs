@@ -7,6 +7,13 @@ const nextConfig = {
     },
     images: {
         remotePatterns: [
+            // url: 'https://res.cloudinary.com/dqjfskfxu/image/upload/v1722675310/ihhxpjywrp8js43bunbq.png',
+            {
+                protocol: 'https',
+                hostname: 'res.cloudinary.com',
+                port: '',
+                pathname: '/dqjfskfxu/image/upload/**',
+            },
             {
                 protocol: 'https',
                 hostname: 'lh3.googleusercontent.com',
