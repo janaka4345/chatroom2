@@ -13,7 +13,6 @@ import {
 } from "@react-email/components";
 
 
-// export default function RegisterVerificationEmail({ verificationCode }: { verificationCode: string }) {
 export default function RegisterVerificationEmail({ verificationCode }: { verificationCode: string }) {
     return (
         <Html>
@@ -48,28 +47,20 @@ export default function RegisterVerificationEmail({ verificationCode }: { verifi
                             </Section>
                         </Section>
                         <Hr />
-                        <Section style={lowerSection}>
-                            <Text style={cautionText}>
-                                Amazon Web Services will never email you and ask you to disclose
-                                or verify your password, credit card, or banking account number.
-                            </Text>
-                        </Section>
+
                     </Section>
                     {/* TODO customize email messages */}
                     <Text style={footerText}>
-                        This message was produced and distributed by Amazon Web Services,
-                        Inc., 410 Terry Ave. North, Seattle, WA 98109. © 2022, Amazon Web
-                        Services, Inc.. All rights reserved. Chatter is a registered trademark
-                        of{" "}
-                        <Link href="https://amazon.com" target="_blank" style={link}>
-                            Amazon.com
+                        This product is the copyrighted property of ChatterApp Inc., with its principal place of business at [Your Address].
+                        <Link href="https://chatter.janakakariyawasam.xyz" target="_blank" style={link}>
+                            Chatter
                         </Link>
-                        , Inc. View our{" "}
-                        <Link href="https://amazon.com" target="_blank" style={link}>
+                        , © 2024 ChatterApp Inc. All rights reserved. The ChatterApp name and logo are registered trademarks of ChatterApp Inc. View our{" "}
+                        <Link href="https://chatter.janakakariyawasam.xyz/legal/privacy_policy" target="_blank" style={link}>
                             privacy policy
                         </Link>
                         .
-                    </Text>
+                    </Text>O
                 </Container>
             </Body>
         </Html>
