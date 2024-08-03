@@ -3,6 +3,7 @@ import NextAuth from 'next-auth';
 import { PrismaAdapter } from '@auth/prisma-adapter';
 import prisma from './utils/prismaClient';
 import authConfig from './auth.config';
+import { getUserById } from './serverActions/users/getUsers';
 // import { setUserStatus } from './serverActions/users/setUser'
 
 export const {
@@ -56,6 +57,20 @@ export const {
                 session.user.id = token.sub;
             }
             return session;
+        },
+        async jwt({ token }) {
+            if (!token.sub) {
+                return token;
+            }
+
+            const user = await getUserById(token?.sub);
+            if (!user) {
+                return token;
+            }
+            token.name = user.name;
+            token.picture = user.image;
+
+            return token;
         },
     },
     events: {
