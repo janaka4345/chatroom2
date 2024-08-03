@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { ACCEPTED_IMAGE_TYPES, MAX_FILE_SIZE } from '@/lib/constants';
 export const settingsPasswordChangeFormSchema = z
     .object({
         password: z
@@ -116,4 +117,20 @@ export const passwordResetSchema = z
 
 export const nameChangeFormSchema = z.object({
     username: z.string().min(2).max(50),
+});
+
+export const avatarChangeFormSchema = z.object({
+    avatarImage:
+        typeof window === 'undefined'
+            ? z.any()
+            : z
+                  .instanceof(FileList)
+                  .refine(
+                      (file) => file?.[0].size <= MAX_FILE_SIZE,
+                      'Image size cannot exceed 5MB'
+                  )
+                  .refine(
+                      (file) => ACCEPTED_IMAGE_TYPES.includes(file?.[0].type),
+                      'Invalid image format'
+                  ),
 });
