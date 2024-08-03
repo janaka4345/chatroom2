@@ -41,7 +41,7 @@ export default async function User({ className }: { className?: string }) {
                         <Link href='/dashboard/notification'>Notifications</Link>
                     </DropdownMenuItem>
                     <DropdownMenuItem>
-                        <Link href='/dashboard/settings'>Settings</Link>
+                        <Link href='/dashboard/settings/profile'>Settings</Link>
                     </DropdownMenuItem>
                 </DropdownMenuGroup>
                 <DropdownMenuSeparator />
