@@ -2,17 +2,16 @@
 
 import { auth, signOut } from '@/auth';
 import {
-    avatarChangeFormSchema,
     nameChangeFormSchema,
     settingsPasswordChangeFormSchema,
 } from '@/lib/schema';
+import { compare, hash } from 'bcryptjs';
 import { z } from 'zod';
 import { getUserByIdForAdmin } from './getUsers';
-import { compare, hash } from 'bcryptjs';
 
 import { cloudConfig } from '@/cloudinary.config';
 import { v2 as cloudinary } from 'cloudinary';
-import { revalidatePath } from 'next/cache';
+import prisma from '@/utils/prismaClient';
 
 export async function updateUserName(
     values: z.infer<typeof nameChangeFormSchema>
