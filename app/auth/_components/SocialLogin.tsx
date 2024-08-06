@@ -4,12 +4,12 @@ import { Button } from "@/components/ui/button";
 export default function SocialLogin() {
 
     return (
-        <div className="flex flex-col gap-2 my-auto">
+        <div className="flex flex-col gap-2 my-auto w-[80svw] md:w-full">
             <div className="relative">
                 <div className="absolute inset-0 flex items-center">
                     <span className="w-full border-t" />
                 </div>
-                <div className="relative flex justify-center text-xs uppercase">
+                <div className="relative flex justify-center text-xs uppercase mb-4">
                     <span className="bg-background px-2 text-muted-foreground">
                         Or continue with
                     </span>
