@@ -34,21 +34,21 @@ export default async function User({ className }: { className?: string }) {
                 </DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 <DropdownMenuGroup>
-                    <DropdownMenuItem>
+                    <DropdownMenuItem asChild>
                         <Link href='/dashboard'>Dashboard</Link>
                     </DropdownMenuItem>
-                    <DropdownMenuItem>
+                    <DropdownMenuItem asChild>
                         <Link href='/dashboard/notification'>Notifications</Link>
                     </DropdownMenuItem>
-                    <DropdownMenuItem>
+                    <DropdownMenuItem asChild>
                         <Link href='/dashboard/settings/profile'>Settings</Link>
                     </DropdownMenuItem>
                 </DropdownMenuGroup>
                 <DropdownMenuSeparator />
 
                 <DropdownMenuSeparator />
-                <DropdownMenuItem>
-                    <Link href='/api/auth/signout'>Log out</Link>
+                <DropdownMenuItem asChild>
+                    <Link href='/api/auth/signout'>Log Out</Link>
                 </DropdownMenuItem>
             </DropdownMenuContent>
         </DropdownMenu>
